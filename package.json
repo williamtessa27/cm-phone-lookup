@@ -1,6 +1,6 @@
 {
   "name": "@williamtessa27/cm-phone-lookup",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Librairie JavaScript professionnelle pour la détection d'opérateurs mobiles multi-pays avec API unifiée, validation avancée et métadonnées enrichies. Supporte : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭 (MTN, ORANGE, CAMTEL, NEXTTEL, TIGO, EXPRESSO, MOOV, TELECOM, AIRTEL, GLO, 9MOBILE, VODAFONE, AIRTELTIGO).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
