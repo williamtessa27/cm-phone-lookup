@@ -1,7 +1,7 @@
 {
   "name": "@williamtessa27/cm-phone-lookup",
-  "version": "1.3.0",
-  "description": "Détection d'opérateur mobile multi-pays : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬 (MTN, ORANGE, CAMTEL, NEXTTEL, TIGO, EXPRESSO, MOOV, TELECOM, AIRTEL, GLO, 9MOBILE).",
+  "version": "1.4.0",
+  "description": "Détection d'opérateur mobile multi-pays : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭 (MTN, ORANGE, CAMTEL, NEXTTEL, TIGO, EXPRESSO, MOOV, TELECOM, AIRTEL, GLO, 9MOBILE, VODAFONE, AIRTELTIGO).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -23,6 +23,7 @@
     "senegal",
     "cote-divoire",
     "nigeria",
+    "ghana",
     "phone",
     "lookup",
     "operator",
@@ -37,6 +38,8 @@
     "airtel",
     "glo",
     "9mobile",
+    "vodafone",
+    "airteltigo",
     "telephone",
     "mobile",
     "validation",

@@ -110,6 +110,11 @@ const operatorTypes: Record<Operator, string> = {
   NIGERIA_GLO: 'Mobile',
   NIGERIA_9MOBILE: 'Mobile',
 
+  // Ghana
+  GHANA_MTN: 'Mobile',
+  GHANA_VODAFONE: 'Mobile',
+  GHANA_AIRTELTIGO: 'Mobile',
+
   // Inconnu
   Unknown: 'Inconnu',
 };

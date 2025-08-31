@@ -5,6 +5,27 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.4.0] - 2025-01-31
+
+### ✨ Ajouté
+- **Support multi-pays** : Détection des opérateurs ghanéens
+- **Nouveaux opérateurs** : GHANA_MTN, GHANA_VODAFONE, GHANA_AIRTELTIGO
+- **Détection automatique de pays** : Reconnaissance automatique Ghana (+233)
+- **Validation multi-pays** : Support des formats de numéros ghanéens
+- **Formatage multi-pays** : Formatage automatique pour les numéros ghanéens
+- **Architecture modulaire étendue** : Support de 5 pays africains
+
+### 🔧 Fonctionnalités techniques
+- Détection automatique du pays par code (+233)
+- Validation spécifique pour les numéros ghanéens (9 chiffres)
+- Formatage adapté au format ghanéen (XXX XXX XXXX)
+- Support des préfixes ghanéens (024, 054, 055, 059, 020, 050, 057, 026, 056, 027)
+
+### 🏗️ Opérateurs supportés
+- **Ghana** : GHANA_MTN (24, 54, 55, 59), GHANA_VODAFONE (20, 50, 57), GHANA_AIRTELTIGO (26, 56, 27)
+
+---
+
 ## [1.3.0] - 2025-01-31
 
 ### ✨ Ajouté

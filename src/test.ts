@@ -79,6 +79,14 @@ console.log('Formaté Nigeria:', formatPhoneNumber('+2340803123456'));
 console.log('Nigeria valide:', isValidNumber('+2340803123456'));
 console.log('Nigeria valide (10 chiffres):', isValidNumber('+2340803123456'));
 
+console.log('\n🇬🇭 Tests Ghana:');
+console.log('GHANA_MTN:', detectOperator('+233241234567'));
+console.log('GHANA_VODAFONE:', detectOperator('+233201234567'));
+console.log('GHANA_AIRTELTIGO:', detectOperator('+233261234567'));
+console.log('Formaté Ghana:', formatPhoneNumber('+233241234567'));
+console.log('Ghana valide:', isValidNumber('+233241234567'));
+console.log('Ghana valide (9 chiffres):', isValidNumber('+233241234567'));
+
 // Tests des nouvelles fonctionnalités
 console.log('\n🔍 Tests des nouvelles fonctionnalités:');
 console.log('Préfixes CAMEROON_MTN:', getOperatorPrefixes('CAMEROON_MTN'));
