@@ -112,6 +112,16 @@ console.log(`Capitale: ${ghana?.capital}`);
 console.log(`Population: ${ghana?.population}`);
 console.log(`Devise: ${ghana?.currency}`);
 
+// 🇨🇲 Cameroun : Exemple de bilinguisme officiel
+const cameroon = getCountryMetadata('237');
+console.log(`${cameroon?.flag} ${cameroon?.name} (${cameroon?.nameLocal})`);
+console.log(`Langues: ${Array.isArray(cameroon?.language) ? cameroon?.language.join(' + ') : cameroon?.language}`);
+// Affiche: "Langues: fr + en" (Français + Anglais)
+
+// Autres pays : Langue unique
+const senegal = getCountryMetadata('221');
+console.log(`Langue: ${senegal?.language}`); // "fr" (Français uniquement)
+
 // Liste de tous les pays supportés
 const countries = getAllCountries();
 console.log('Pays supportés:', countries);
@@ -318,6 +328,8 @@ Classe d'erreur personnalisée avec codes d'erreur et suggestions.
 #### `getCountryMetadata(countryCode: string): CountryMetadata | null`
 Obtient les métadonnées complètes d'un pays.
 
+> **💡 Note sur les langues** : Le Cameroun 🇨🇲 est le seul pays bilingue officiel (français + anglais) dans notre librairie. Son champ `language` retourne `['fr', 'en']`, tandis que les autres pays retournent une seule langue.
+
 #### `getAllCountries(): string[]`
 Obtient la liste de tous les codes pays supportés.
 
@@ -361,7 +373,7 @@ interface CountryMetadata {
   name: string;
   nameLocal: string;
   flag: string;
-  language: string;
+  language: string | string[]; // Support pour langues multiples (Cameroun bilingue)
   currency: string;
   timezone: string;
   population?: string;
@@ -445,7 +457,8 @@ npm run build
 - **Méthodes chainées** (Fluent API) pour un code plus lisible
 - **Configuration flexible** avec options personnalisables
 - **Validation avancée** avec messages d'erreur détaillés et suggestions
-- **Métadonnées enrichies** des pays (drapeaux, capitales, populations, devises, fuseaux)
+- **Métadonnées enrichies** des pays (drapeaux, capitales, populations, devises, fuseaux, **langues officielles**)
+- **Bilinguisme du Cameroun** 🇨🇲 : Support officiel français + anglais avec `language: ['fr', 'en']`
 - **Gestion d'erreurs robuste** avec codes d'erreur spécifiques
 - **Méthodes statiques** pour un usage rapide et simple
 - **Statistiques globales** de la librairie

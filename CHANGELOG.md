@@ -13,6 +13,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Configuration flexible** : Options personnalisables (strictMode, autoFormat, language, includeMetadata, throwOnError)
 - **Validation avancée** : Système de validation avec messages d'erreur détaillés et suggestions
 - **Métadonnées enrichies** : Drapeaux, capitales, populations, devises, fuseaux horaires pour tous les pays
+- **Bilinguisme officiel du Cameroun** 🇨🇲 : Support des langues français + anglais avec `language: ['fr', 'en']`
 - **Gestion d'erreurs robuste** : Classe `PhoneValidationError` avec codes d'erreur spécifiques
 - **Méthodes statiques** : Accès rapide aux fonctionnalités principales
 - **Statistiques globales** : Vue d'ensemble complète de la librairie
