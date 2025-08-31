@@ -1,0 +1,59 @@
+{
+  "name": "@williamtessa27/cm-phone-lookup",
+  "version": "1.0.0",
+  "description": "Détection d'opérateur mobile au Cameroun (MTN, ORANGE, CAMTEL, NEXTTEL).",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "node dist/test.js",
+    "dev": "ts-node src/test.ts",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "watch": "tsc --watch",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "keywords": [
+    "cameroun",
+    "phone",
+    "lookup",
+    "operator",
+    "mtn",
+    "orange",
+    "camtel",
+    "nexttel",
+    "telephone",
+    "mobile",
+    "validation",
+    "detection",
+    "africa",
+    "afrique"
+  ],
+  "author": "William Tessa <williamtessa270794@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamtessa27/cm-phone-lookup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/williamtessa27/cm-phone-lookup/issues"
+  },
+  "homepage": "https://github.com/williamtessa27/cm-phone-lookup#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {}
+}
