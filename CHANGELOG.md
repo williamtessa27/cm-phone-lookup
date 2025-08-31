@@ -5,6 +5,43 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.5.0] - 2025-01-31
+
+### ✨ Ajouté
+- **API unifiée révolutionnaire** : `PhoneLookup.analyze()` pour une analyse complète en une fonction
+- **Méthodes chainées (Fluent API)** : API fluide et moderne avec chaînage de méthodes
+- **Configuration flexible** : Options personnalisables (strictMode, autoFormat, language, includeMetadata, throwOnError)
+- **Validation avancée** : Système de validation avec messages d'erreur détaillés et suggestions
+- **Métadonnées enrichies** : Drapeaux, capitales, populations, devises, fuseaux horaires pour tous les pays
+- **Bilinguisme officiel du Cameroun** 🇨🇲 : Support des langues français + anglais avec `language: ['fr', 'en']`
+- **Gestion d'erreurs robuste** : Classe `PhoneValidationError` avec codes d'erreur spécifiques
+- **Méthodes statiques** : Accès rapide aux fonctionnalités principales
+- **Statistiques globales** : Vue d'ensemble complète de la librairie
+- **Interface utilisateur améliorée** : Expérience développeur professionnelle
+
+### 🔧 Fonctionnalités techniques
+- **Classe PhoneLookup** : API orientée objet avec méthodes d'instance et statiques
+- **Validation intelligente** : Détection automatique des erreurs avec suggestions de correction
+- **Métadonnées pays** : Informations géographiques, démographiques et culturelles
+- **Gestion d'erreurs avancée** : Codes d'erreur structurés (EMPTY_PHONE, INVALID_COUNTRY_CODE, etc.)
+- **API chainée** : Méthodes fluides pour une expérience de développement moderne
+- **Configuration par défaut** : Paramètres intelligents avec personnalisation avancée
+
+### 🏗️ Architecture et structure
+- **Nouveau module core** : `src/core/phone-lookup.ts` pour la classe principale
+- **Module de validation** : `src/utils/validation-errors.ts` pour la gestion d'erreurs
+- **Module de métadonnées** : `src/countries/metadata.ts` pour les informations pays
+- **Tests étendus** : `src/test-enhanced.ts` pour toutes les nouvelles fonctionnalités
+- **Exports enrichis** : Nouvelles interfaces et types TypeScript
+
+### 📱 Types et interfaces
+- **EnhancedPhoneInfo** : Extension de PhoneInfo avec métadonnées et gestion d'erreurs
+- **CountryMetadata** : Interface complète pour les informations pays
+- **PhoneLookupOptions** : Configuration flexible de la classe PhoneLookup
+- **ValidationError** : Structure d'erreur avec codes et suggestions
+
+---
+
 ## [1.4.0] - 2025-01-31
 
 ### ✨ Ajouté

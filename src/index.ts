@@ -261,3 +261,15 @@ export function isPrefixForOperator(
 ): boolean {
   return prefixes[operator]?.includes(prefix) || false;
 }
+
+// Export de la nouvelle classe PhoneLookup
+export { PhoneLookup } from './core/phone-lookup';
+export type { PhoneLookupOptions, EnhancedPhoneInfo } from './core/phone-lookup';
+
+// Export des métadonnées
+export { getCountryMetadata, getAllCountries, getCountryByCode } from './countries/metadata';
+export type { CountryMetadata } from './countries/metadata';
+
+// Export de la validation avec erreurs
+export { validatePhoneNumber, PhoneValidationError, createValidationError } from './utils/validation-errors';
+export type { ValidationError } from './utils/validation-errors';
