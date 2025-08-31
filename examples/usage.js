@@ -11,19 +11,35 @@ const {
   isPrefixForOperator
 } = require('../dist/index.js');
 
-console.log("🇨🇲 Exemples d'utilisation de CM Phone Lookup\n");
+console.log("🇨🇲🇸🇳🇨🇮 Exemples d'utilisation de CM Phone Lookup (Multi-pays)\n");
 
-// Exemple 1: Détection d'opérateur
-console.log("📱 Exemple 1: Détection d'opérateur");
+// Exemple 1: Détection d'opérateur multi-pays
+console.log("📱 Exemple 1: Détection d'opérateur multi-pays");
 const phone1 = "+237650123456";
 const operator1 = detectOperator(phone1);
-console.log(`Le numéro ${phone1} appartient à l'opérateur: ${operator1}\n`);
+console.log(`Le numéro ${phone1} appartient à l'opérateur: ${operator1}`);
 
-// Exemple 2: Validation de numéro
-console.log("✅ Exemple 2: Validation de numéro");
+const phone1SN = "+221771234567";
+const operator1SN = detectOperator(phone1SN);
+console.log(`Le numéro ${phone1SN} appartient à l'opérateur: ${operator1SN}`);
+
+const phone1CI = "+22501234567";
+const operator1CI = detectOperator(phone1CI);
+console.log(`Le numéro ${phone1CI} appartient à l'opérateur: ${operator1CI}\n`);
+
+// Exemple 2: Validation de numéro multi-pays
+console.log("✅ Exemple 2: Validation de numéro multi-pays");
 const phone2 = "237655123456";
 const isValid2 = isValidNumber(phone2);
-console.log(`Le numéro ${phone2} est ${isValid2 ? 'valide' : 'invalide'}\n`);
+console.log(`Le numéro ${phone2} est ${isValid2 ? 'valide' : 'invalide'}`);
+
+const phone2SN = "221771234567";
+const isValid2SN = isValidNumber(phone2SN);
+console.log(`Le numéro ${phone2SN} est ${isValid2SN ? 'valide' : 'invalide'}`);
+
+const phone2CI = "22501234567";
+const isValid2CI = isValidNumber(phone2CI);
+console.log(`Le numéro ${phone2CI} est ${isValid2CI ? 'valide' : 'invalide'}\n`);
 
 // Exemple 3: Information complète
 console.log("📊 Exemple 3: Information complète");
@@ -56,13 +72,17 @@ console.log("📋 Exemple 7: Opérateurs supportés");
 const operators = getSupportedOperators();
 console.log(`Opérateurs supportés: ${operators.join(', ')}\n`);
 
-// Exemple 8: Traitement en lot
-console.log("🔄 Exemple 8: Traitement en lot");
+// Exemple 8: Traitement en lot multi-pays
+console.log("🔄 Exemple 8: Traitement en lot multi-pays");
 const phoneNumbers = [
   "+237650123456",  // CAMEROON_MTN
   "237655123456",   // CAMEROON_ORANGE
   "+23722212345",   // CAMEROON_CAMTEL
-  "23766123456"     // CAMEROON_NEXTTEL
+  "23766123456",    // CAMEROON_NEXTTEL
+  "+221771234567",  // SENEGAL_ORANGE
+  "221751234567",   // SENEGAL_EXPRESSO
+  "+22501234567",   // IVORY_COAST_ORANGE
+  "22527212345"     // IVORY_COAST_TELECOM
 ];
 
 console.log("Analyse de plusieurs numéros:");

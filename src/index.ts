@@ -1,6 +1,8 @@
 // src/index.ts
+// Point d'entrée principal de la librairie CM Phone Lookup
 
-export type Operator =
+// Types et interfaces
+export type Operator = 
   | 'CAMEROON_MTN'
   | 'CAMEROON_ORANGE'
   | 'CAMEROON_CAMTEL'
@@ -8,6 +10,10 @@ export type Operator =
   | 'SENEGAL_ORANGE'
   | 'SENEGAL_TIGO'
   | 'SENEGAL_EXPRESSO'
+  | 'IVORY_COAST_ORANGE'
+  | 'IVORY_COAST_MTN'
+  | 'IVORY_COAST_MOOV'
+  | 'IVORY_COAST_TELECOM'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -21,91 +27,80 @@ export interface PhoneInfo {
   length: number;
 }
 
-// Préfixes officiels par pays (exacts selon spécification)
+// Imports des modules pays
+import { detectCameroonOperator, validateCameroonNumber, formatCameroonNumber, isCameroonMobile, isCameroonFixed } from './countries/cameroon';
+import { detectSenegalOperator, validateSenegalNumber, formatSenegalNumber, isSenegalMobile } from './countries/senegal';
+import { detectIvoryCoastOperator, validateIvoryCoastNumber, formatIvoryCoastNumber, isIvoryCoastMobile } from './countries/ivory-coast';
+import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
+
+// Imports des opérateurs
+import { CAMEROON_OPERATORS } from './operators/cameroon';
+import { SENEGAL_OPERATORS } from './operators/senegal';
+import { IVORY_COAST_OPERATORS } from './operators/ivory-coast';
+
+// Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
-  CAMEROON_MTN: ['650', '651', '652', '653', '654', '680', '681', '682', '683', '684'],
-  CAMEROON_ORANGE: ['655', '656', '657', '658', '659', '690', '691', '692', '693'],
-  CAMEROON_CAMTEL: ['222', '233', '242', '243', '244', '245', '246'],
-  CAMEROON_NEXTTEL: ['66'],
-  SENEGAL_ORANGE: ['70', '76', '77', '78', '79'],
-  SENEGAL_TIGO: ['76', '77'],
-  SENEGAL_EXPRESSO: ['75', '76', '77', '78'],
+  CAMEROON_MTN: [...CAMEROON_OPERATORS.CAMEROON_MTN],
+  CAMEROON_ORANGE: [...CAMEROON_OPERATORS.CAMEROON_ORANGE],
+  CAMEROON_CAMTEL: [...CAMEROON_OPERATORS.CAMEROON_CAMTEL],
+  CAMEROON_NEXTTEL: [...CAMEROON_OPERATORS.CAMEROON_NEXTTEL],
+  SENEGAL_ORANGE: [...SENEGAL_OPERATORS.SENEGAL_ORANGE],
+  SENEGAL_TIGO: [...SENEGAL_OPERATORS.SENEGAL_TIGO],
+  SENEGAL_EXPRESSO: [...SENEGAL_OPERATORS.SENEGAL_EXPRESSO],
+  IVORY_COAST_ORANGE: [...IVORY_COAST_OPERATORS.IVORY_COAST_ORANGE],
+  IVORY_COAST_MTN: [...IVORY_COAST_OPERATORS.IVORY_COAST_MTN],
+  IVORY_COAST_MOOV: [...IVORY_COAST_OPERATORS.IVORY_COAST_MOOV],
+  IVORY_COAST_TELECOM: [...IVORY_COAST_OPERATORS.IVORY_COAST_TELECOM],
   Unknown: [],
 };
 
 /**
- * Détecte l'opérateur mobile à partir d'un numéro de téléphone camerounais
- * @param phone - Le numéro de téléphone (avec ou sans +237)
+ * Détecte l'opérateur à partir d'un numéro de téléphone
+ * @param phone - Le numéro de téléphone
  * @returns L'opérateur détecté ou "Unknown"
  */
 export function detectOperator(phone: string): Operator {
-  // Nettoyer le numéro
-  const clean = phone.replace(/\D/g, '');
-
-  // Détecter le pays et extraire le numéro local
-  let local = '';
-  let countryCode = '';
-
-  if (clean.startsWith('237')) {
-    // Cameroun
-    local = clean.slice(3);
-    countryCode = '237';
-  } else if (clean.startsWith('221')) {
-    // Sénégal
-    local = clean.slice(3);
-    countryCode = '221';
-  } else {
-    // Par défaut Cameroun
-    local = clean;
-    countryCode = '237';
+  const clean = cleanPhoneNumber(phone);
+  const countryCode = detectCountryCode(clean);
+  
+  if (!countryCode) return 'Unknown';
+  
+  const local = extractLocalNumber(clean, countryCode);
+  
+  // Détecter l'opérateur selon le pays
+  switch (countryCode) {
+    case '237':
+      return detectCameroonOperator(local) as Operator;
+    case '221':
+      return detectSenegalOperator(local) as Operator;
+    case '225':
+      return detectIvoryCoastOperator(local) as Operator;
+    default:
+      return 'Unknown';
   }
-
-  // Détecter l'opérateur basé sur le pays
-  if (countryCode === '221') {
-    // Logique pour le Sénégal
-    for (const [operator, codes] of Object.entries(prefixes)) {
-      if (
-        operator.includes('SENEGAL') &&
-        codes.some(prefix => local.startsWith(prefix))
-      ) {
-        return operator as Operator;
-      }
-    }
-  } else {
-    // Logique pour le Cameroun
-    for (const [operator, codes] of Object.entries(prefixes)) {
-      if (
-        operator.includes('CAMEROON') &&
-        codes.some(prefix => local.startsWith(prefix))
-      ) {
-        return operator as Operator;
-      }
-    }
-  }
-
-  return 'Unknown';
 }
 
 /**
- * Valide si un numéro de téléphone camerounais est valide
+ * Valide si un numéro de téléphone est valide
  * @param phone - Le numéro de téléphone à valider
  * @returns true si le numéro est valide, false sinon
  */
 export function isValidNumber(phone: string): boolean {
-  const clean = phone.replace(/\D/g, '');
-
-  // Validation pour le Cameroun
-  if (clean.startsWith('237') || !clean.startsWith('221')) {
-    // Valide les numéros mobiles (9 chiffres commençant par 2,3,6) et fixes (7 chiffres commençant par 2,4)
-    return /^(\+237|237)?([236][0-9]{8}|[24][0-9]{7})$/.test(clean);
+  const clean = cleanPhoneNumber(phone);
+  const countryCode = detectCountryCode(clean);
+  
+  if (!countryCode) return false;
+  
+  switch (countryCode) {
+    case '237':
+      return validateCameroonNumber(clean);
+    case '221':
+      return validateSenegalNumber(clean);
+    case '225':
+      return validateIvoryCoastNumber(clean);
+    default:
+      return false;
   }
-
-  // Validation pour le Sénégal (numéros mobiles de 9 chiffres)
-  if (clean.startsWith('221')) {
-    return /^(\+221|221)?[0-9]{9}$/.test(clean);
-  }
-
-  return false;
 }
 
 /**
@@ -114,34 +109,30 @@ export function isValidNumber(phone: string): boolean {
  * @returns Un objet PhoneInfo avec toutes les informations
  */
 export function getPhoneInfo(phone: string): PhoneInfo {
-  const clean = phone.replace(/\D/g, '');
+  const clean = cleanPhoneNumber(phone);
+  const countryCode = detectCountryCode(clean);
   const isValid = isValidNumber(phone);
-
-  // Détecter le pays
+  
   let local = '';
-  let countryCode = '+237';
-
-  if (clean.startsWith('237')) {
-    local = clean.slice(3);
-    countryCode = '+237';
-  } else if (clean.startsWith('221')) {
-    local = clean.slice(3);
-    countryCode = '+221';
+  let countryCodeStr = '+237';
+  
+  if (countryCode) {
+    local = extractLocalNumber(clean, countryCode);
+    countryCodeStr = `+${countryCode}`;
   } else {
     local = clean;
-    countryCode = '+237';
   }
-
+  
   const operator = detectOperator(phone);
-
+  
   return {
     operator,
     isValid,
-    countryCode,
+    countryCode: countryCodeStr,
     localNumber: local,
     formattedNumber: formatPhoneNumber(phone),
-    isMobile: isMobileNumber(local),
-    isFixed: isFixedNumber(local),
+    isMobile: isMobileNumber(local, countryCode),
+    isFixed: isFixedNumber(local, countryCode),
     length: local.length,
   };
 }
@@ -152,41 +143,59 @@ export function getPhoneInfo(phone: string): PhoneInfo {
  * @returns Le numéro formaté avec espaces
  */
 export function formatPhoneNumber(phone: string): string {
-  const clean = phone.replace(/\D/g, '');
-
-  // Détecter le pays et formater
-  if (clean.startsWith('237')) {
-    const local = clean.slice(3);
-    if (local.length === 9) {
-      return `+237 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
-    }
-  } else if (clean.startsWith('221')) {
-    const local = clean.slice(3);
-    if (local.length === 9) {
-      return `+221 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
-    }
+  const clean = cleanPhoneNumber(phone);
+  const countryCode = detectCountryCode(clean);
+  
+  if (!countryCode) return phone;
+  
+  switch (countryCode) {
+    case '237':
+      return formatCameroonNumber(clean);
+    case '221':
+      return formatSenegalNumber(clean);
+    case '225':
+      return formatIvoryCoastNumber(clean);
+    default:
+      return phone;
   }
-
-  return phone;
 }
 
 /**
  * Vérifie si un numéro local est un numéro mobile
- * @param local - Le numéro local (sans 237)
+ * @param local - Le numéro local
+ * @param countryCode - Le code pays
  * @returns true si c'est un numéro mobile
  */
-function isMobileNumber(local: string): boolean {
-  // Les numéros mobiles ont 9 chiffres et commencent par 2,3,6
-  return /^[236][0-9]{8}$/.test(local);
+function isMobileNumber(local: string, countryCode: string | null): boolean {
+  if (!countryCode) return false;
+  
+  switch (countryCode) {
+    case '237':
+      return isCameroonMobile(local);
+    case '221':
+      return isSenegalMobile(local);
+    case '225':
+      return isIvoryCoastMobile(local);
+    default:
+      return false;
+  }
 }
 
 /**
  * Vérifie si un numéro local est un numéro fixe
- * @param local - Le numéro local (sans 237)
+ * @param local - Le numéro local
+ * @param countryCode - Le code pays
  * @returns true si c'est un numéro fixe
  */
-function isFixedNumber(local: string): boolean {
-  return /^[24][0-9]{7}$/.test(local);
+function isFixedNumber(local: string, countryCode: string | null): boolean {
+  if (!countryCode) return false;
+  
+  switch (countryCode) {
+    case '237':
+      return isCameroonFixed(local);
+    default:
+      return false; // Seul le Cameroun a des numéros fixes pour l'instant
+  }
 }
 
 /**

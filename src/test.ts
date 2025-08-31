@@ -57,9 +57,18 @@ console.log('Formaté CAMTEL:', formatPhoneNumber('+23722212345'));
 console.log('\n🇸🇳 Tests Sénégal:');
 console.log('SENEGAL_ORANGE:', detectOperator('+221771234567'));
 console.log('SENEGAL_TIGO:', detectOperator('+221761234567'));
-console.log('SENEGAL_EXPRESSO:', detectOperator('+221721234567'));
+console.log('SENEGAL_EXPRESSO:', detectOperator('+221751234567'));
 console.log('Formaté Sénégal:', formatPhoneNumber('+221771234567'));
 console.log('Sénégal valide:', isValidNumber('+221771234567'));
+
+console.log('\n🇨🇮 Tests Côte d\'Ivoire:');
+console.log('IVORY_COAST_ORANGE:', detectOperator('+22501234567'));
+console.log('IVORY_COAST_MTN:', detectOperator('+22505123456'));
+console.log('IVORY_COAST_MOOV:', detectOperator('+22506123456'));
+console.log('IVORY_COAST_TELECOM:', detectOperator('+22527212345'));
+console.log('Formaté Côte d\'Ivoire:', formatPhoneNumber('+22501234567'));
+console.log('Côte d\'Ivoire valide:', isValidNumber('+22501234567'));
+console.log('Côte d\'Ivoire valide (8 chiffres):', isValidNumber('+2250123456'));
 
 // Tests des nouvelles fonctionnalités
 console.log('\n🔍 Tests des nouvelles fonctionnalités:');

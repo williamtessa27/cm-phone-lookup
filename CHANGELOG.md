@@ -8,20 +8,24 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [1.1.0] - 2024-08-31
 
 ### ✨ Ajouté
-- **Support du Sénégal** : Détection des opérateurs sénégalais
-- **Nouveaux opérateurs** : SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO
-- **Détection automatique de pays** : Reconnaissance automatique Cameroun (+237) vs Sénégal (+221)
-- **Validation multi-pays** : Support des formats de numéros sénégalais
-- **Formatage multi-pays** : Formatage automatique pour les numéros sénégalais
+- **Support multi-pays** : Détection des opérateurs sénégalais et ivoiriens
+- **Nouveaux opérateurs** : SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO, IVORY_COAST_ORANGE, IVORY_COAST_MTN, IVORY_COAST_MOOV, IVORY_COAST_TELECOM
+- **Détection automatique de pays** : Reconnaissance automatique Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225)
+- **Validation multi-pays** : Support des formats de numéros sénégalais et ivoiriens
+- **Formatage multi-pays** : Formatage automatique pour les numéros sénégalais et ivoiriens
+- **Architecture modulaire** : Restructuration complète pour une maintenance facile
 
 ### 🔧 Fonctionnalités techniques
-- Détection automatique du pays par code (+237, +221)
+- Détection automatique du pays par code (+237, +221, +225)
 - Validation spécifique par pays
 - Formatage adapté au pays
-- Support des préfixes sénégalais (70, 72, 73, 76, 77, 78, 79)
+- Support des préfixes sénégalais (70, 75, 76, 77, 78, 79)
+- Support des préfixes ivoiriens (01, 05, 06, 07, 08, 09, 25, 27, 49, 50, 51, 52, 55, 56)
+- Logique de priorité pour éviter les conflits de préfixes
 
 ### 🏗️ Opérateurs supportés
 - **Sénégal** : SENEGAL_ORANGE (70, 76, 77, 78, 79), SENEGAL_TIGO (76, 77), SENEGAL_EXPRESSO (75, 76, 77, 78)
+- **Côte d'Ivoire** : IVORY_COAST_ORANGE (01, 05, 07, 25, 27, 49), IVORY_COAST_MTN (05, 07, 08, 09, 50, 51, 52), IVORY_COAST_MOOV (05, 06, 07, 55, 56), IVORY_COAST_TELECOM (27)
 
 ---
 
@@ -95,4 +99,4 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ---
 
-**🇨🇲 Made with ❤️ in Cameroon**
+**🇨🇲🇸🇳🇨🇮 Made with ❤️ in Cameroon, Senegal and Côte d'Ivoire**
