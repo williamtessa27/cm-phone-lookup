@@ -14,6 +14,10 @@ export type Operator =
   | 'IVORY_COAST_MTN'
   | 'IVORY_COAST_MOOV'
   | 'IVORY_COAST_TELECOM'
+  | 'NIGERIA_MTN'
+  | 'NIGERIA_AIRTEL'
+  | 'NIGERIA_GLO'
+  | 'NIGERIA_9MOBILE'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -31,12 +35,14 @@ export interface PhoneInfo {
 import { detectCameroonOperator, validateCameroonNumber, formatCameroonNumber, isCameroonMobile, isCameroonFixed } from './countries/cameroon';
 import { detectSenegalOperator, validateSenegalNumber, formatSenegalNumber, isSenegalMobile } from './countries/senegal';
 import { detectIvoryCoastOperator, validateIvoryCoastNumber, formatIvoryCoastNumber, isIvoryCoastMobile } from './countries/ivory-coast';
+import { detectNigeriaOperator, validateNigeriaNumber, formatNigeriaNumber, isNigeriaMobile } from './countries/nigeria';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
 // Imports des opérateurs
 import { CAMEROON_OPERATORS } from './operators/cameroon';
 import { SENEGAL_OPERATORS } from './operators/senegal';
 import { IVORY_COAST_OPERATORS } from './operators/ivory-coast';
+import { NIGERIA_OPERATORS } from './operators/nigeria';
 
 // Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
@@ -51,6 +57,10 @@ const prefixes: Record<Operator, string[]> = {
   IVORY_COAST_MTN: [...IVORY_COAST_OPERATORS.IVORY_COAST_MTN],
   IVORY_COAST_MOOV: [...IVORY_COAST_OPERATORS.IVORY_COAST_MOOV],
   IVORY_COAST_TELECOM: [...IVORY_COAST_OPERATORS.IVORY_COAST_TELECOM],
+  NIGERIA_MTN: [...NIGERIA_OPERATORS.NIGERIA_MTN],
+  NIGERIA_AIRTEL: [...NIGERIA_OPERATORS.NIGERIA_AIRTEL],
+  NIGERIA_GLO: [...NIGERIA_OPERATORS.NIGERIA_GLO],
+  NIGERIA_9MOBILE: [...NIGERIA_OPERATORS.NIGERIA_9MOBILE],
   Unknown: [],
 };
 
@@ -75,6 +85,8 @@ export function detectOperator(phone: string): Operator {
       return detectSenegalOperator(local) as Operator;
     case '225':
       return detectIvoryCoastOperator(local) as Operator;
+    case '234':
+      return detectNigeriaOperator(local) as Operator;
     default:
       return 'Unknown';
   }
@@ -98,6 +110,8 @@ export function isValidNumber(phone: string): boolean {
       return validateSenegalNumber(clean);
     case '225':
       return validateIvoryCoastNumber(clean);
+    case '234':
+      return validateNigeriaNumber(clean);
     default:
       return false;
   }
@@ -155,6 +169,8 @@ export function formatPhoneNumber(phone: string): string {
       return formatSenegalNumber(clean);
     case '225':
       return formatIvoryCoastNumber(clean);
+    case '234':
+      return formatNigeriaNumber(clean);
     default:
       return phone;
   }
@@ -176,6 +192,8 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isSenegalMobile(local);
     case '225':
       return isIvoryCoastMobile(local);
+    case '234':
+      return isNigeriaMobile(local);
     default:
       return false;
   }

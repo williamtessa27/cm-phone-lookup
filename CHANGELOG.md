@@ -5,6 +5,48 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.3.0] - 2025-01-31
+
+### ✨ Ajouté
+- **Support multi-pays** : Détection des opérateurs nigérians
+- **Nouveaux opérateurs** : NIGERIA_MTN, NIGERIA_AIRTEL, NIGERIA_GLO, NIGERIA_9MOBILE
+- **Détection automatique de pays** : Reconnaissance automatique Nigeria (+234)
+- **Validation multi-pays** : Support des formats de numéros nigérians
+- **Formatage multi-pays** : Formatage automatique pour les numéros nigérians
+- **Architecture modulaire étendue** : Support de 4 pays africains
+
+### 🔧 Fonctionnalités techniques
+- Détection automatique du pays par code (+234)
+- Validation spécifique pour les numéros nigérians (10 chiffres)
+- Formatage adapté au format nigérian (XXXX XXX XXXX)
+- Support des préfixes nigérians (0803, 0806, 0703, 0706, 0813, 0816, 0810, 0814, 0903, 0906, etc.)
+
+### 🏗️ Opérateurs supportés
+- **Nigeria** : NIGERIA_MTN (0803, 0806, 0703, 0706, 0813, 0816, 0810, 0814, 0903, 0906), NIGERIA_AIRTEL (0802, 0808, 0812, 0708, 0701, 0902, 0907), NIGERIA_GLO (0805, 0807, 0815, 0811, 0905), NIGERIA_9MOBILE (0809, 0817, 0818, 0909)
+
+---
+
+## [1.2.0] - 2025-01-31
+
+### ✨ Ajouté
+- **Support multi-pays** : Détection des opérateurs ivoiriens
+- **Nouveaux opérateurs** : IVORY_COAST_ORANGE, IVORY_COAST_MTN, IVORY_COAST_MOOV, IVORY_COAST_TELECOM
+- **Détection automatique de pays** : Reconnaissance automatique Côte d'Ivoire (+225)
+- **Validation multi-pays** : Support des formats de numéros ivoiriens
+- **Formatage multi-pays** : Formatage automatique pour les numéros ivoiriens
+- **Architecture modulaire** : Restructuration complète pour une maintenance facile
+
+### 🔧 Fonctionnalités techniques
+- Détection automatique du pays par code (+225)
+- Validation spécifique pour les numéros ivoiriens (8 chiffres)
+- Formatage adapté au format ivoirien (XX XX XX XX)
+- Support des préfixes ivoiriens avec logique de priorité
+
+### 🏗️ Opérateurs supportés
+- **Côte d'Ivoire** : IVORY_COAST_ORANGE (01, 05, 07, 25, 27, 49), IVORY_COAST_MTN (05, 07, 08, 09, 50, 51, 52), IVORY_COAST_MOOV (05, 06, 07, 55, 56), IVORY_COAST_TELECOM (27)
+
+---
+
 ## [1.1.0] - 2024-08-31
 
 ### ✨ Ajouté

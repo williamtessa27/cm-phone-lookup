@@ -70,6 +70,15 @@ console.log('Formaté Côte d\'Ivoire:', formatPhoneNumber('+22501234567'));
 console.log('Côte d\'Ivoire valide:', isValidNumber('+22501234567'));
 console.log('Côte d\'Ivoire valide (8 chiffres):', isValidNumber('+2250123456'));
 
+console.log('\n🇳🇬 Tests Nigeria:');
+console.log('NIGERIA_MTN:', detectOperator('+2340803123456'));
+console.log('NIGERIA_AIRTEL:', detectOperator('+2340802123456'));
+console.log('NIGERIA_GLO:', detectOperator('+2340805123456'));
+console.log('NIGERIA_9MOBILE:', detectOperator('+2340809123456'));
+console.log('Formaté Nigeria:', formatPhoneNumber('+2340803123456'));
+console.log('Nigeria valide:', isValidNumber('+2340803123456'));
+console.log('Nigeria valide (10 chiffres):', isValidNumber('+2340803123456'));
+
 // Tests des nouvelles fonctionnalités
 console.log('\n🔍 Tests des nouvelles fonctionnalités:');
 console.log('Préfixes CAMEROON_MTN:', getOperatorPrefixes('CAMEROON_MTN'));
