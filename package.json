@@ -1,6 +1,6 @@
 {
   "name": "@williamtessa27/cm-phone-lookup",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Détection d'opérateur mobile au Cameroun (MTN, ORANGE, CAMTEL, NEXTTEL).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
