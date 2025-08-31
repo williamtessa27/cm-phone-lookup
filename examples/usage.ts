@@ -256,23 +256,32 @@ const operatorTypes: Record<Operator, string> = {
   SENEGAL_ORANGE: 'Mobile',
   SENEGAL_TIGO: 'Mobile',
   SENEGAL_EXPRESSO: 'Mobile',
+  SENEGAL_HAYO: 'Mobile',
+  SENEGAL_SIRIUS: 'Mobile',
+  SENEGAL_ORIGINES: 'Mobile',
 
   // Côte d'Ivoire
   IVORY_COAST_ORANGE: 'Mobile',
   IVORY_COAST_MTN: 'Mobile',
   IVORY_COAST_MOOV: 'Mobile',
-  IVORY_COAST_TELECOM: 'Mixte',
 
   // Nigeria
   NIGERIA_MTN: 'Mobile',
   NIGERIA_AIRTEL: 'Mobile',
   NIGERIA_GLO: 'Mobile',
   NIGERIA_9MOBILE: 'Mobile',
+  NIGERIA_NTEL: 'Mobile',
+  NIGERIA_SMILE: 'Mobile',
+  NIGERIA_STARCOMMS: 'Mobile',
+  NIGERIA_MULTILINKS: 'Mobile',
+  NIGERIA_ZOOMMOBILE: 'Mobile',
 
   // Ghana
   GHANA_MTN: 'Mobile',
   GHANA_VODAFONE: 'Mobile',
   GHANA_AIRTELTIGO: 'Mobile',
+  GHANA_GLO: 'Mobile',
+  GHANA_EXPRESSO: 'Mobile',
 
   // Inconnu
   Unknown: 'Inconnu',

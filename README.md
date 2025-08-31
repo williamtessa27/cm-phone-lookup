@@ -206,24 +206,33 @@ console.log(isMtn); // true
 
 | Opérateur | Préfixes | Type | Pays |
 |-----------|----------|------|------|
-| **CAMEROON_MTN** | 650, 651, 652, 653, 654, 680, 681, 682, 683, 684 | Mobile | 🇨🇲 Cameroun |
-| **CAMEROON_ORANGE** | 655, 656, 657, 658, 659, 690, 691, 692, 693 | Mobile | 🇨🇲 Cameroun |
-| **CAMEROON_CAMTEL** | 222, 233, 242, 243, 244, 245, 246 | Fixe/Mobile | 🇨🇲 Cameroun |
-| **CAMEROON_NEXTTEL** | 66 | Mobile | 🇨🇲 Cameroun |
-| **SENEGAL_ORANGE** | 70, 76, 77, 78, 79 | Mobile | 🇸🇳 Sénégal |
-| **SENEGAL_TIGO** | 76, 77 | Mobile | 🇸🇳 Sénégal |
-| **SENEGAL_EXPRESSO** | 75, 76, 77, 78 | Mobile | 🇸🇳 Sénégal |
-| **IVORY_COAST_ORANGE** | 01, 05, 07, 25, 27, 49 | Mobile | 🇨🇮 Côte d'Ivoire |
-| **IVORY_COAST_MTN** | 05, 07, 08, 09, 50, 51, 52 | Mobile | 🇨🇮 Côte d'Ivoire |
-| **IVORY_COAST_MOOV** | 05, 06, 07, 55, 56 | Mobile | 🇨🇮 Côte d'Ivoire |
-| **IVORY_COAST_TELECOM** | 27 | Mixte | 🇨🇮 Côte d'Ivoire |
-| **NIGERIA_MTN** | 0803, 0806, 0703, 0706, 0813, 0816, 0810, 0814, 0903, 0906 | Mobile | 🇳🇬 Nigeria |
-| **NIGERIA_AIRTEL** | 0802, 0808, 0812, 0708, 0701, 0902, 0907 | Mobile | 🇳🇬 Nigeria |
-| **NIGERIA_GLO** | 0805, 0807, 0815, 0811, 0905 | Mobile | 🇳🇬 Nigeria |
-| **NIGERIA_9MOBILE** | 0809, 0817, 0818, 0909 | Mobile | 🇳🇬 Nigeria |
-| **GHANA_MTN** | 24, 54, 55, 59 | Mobile | 🇬🇭 Ghana |
-| **GHANA_VODAFONE** | 20, 50, 57 | Mobile | 🇬🇭 Ghana |
-| **GHANA_AIRTELTIGO** | 26, 56, 27 | Mobile | 🇬🇭 Ghana |
+| **CAMEROON_MTN** | 67, 670-679, 68, 680-689, 650-654 | Mobile | 🇨🇲 Cameroun |
+| **CAMEROON_ORANGE** | 655, 656, 657, 658, 659 | Mobile | 🇨🇲 Cameroun |
+| **CAMEROON_CAMTEL** | 222, 233, 242-246, 620, 621, 6200-6209, 6210-6219 | Fixe/Mobile | 🇨🇲 Cameroun |
+| **CAMEROON_NEXTTEL** | 66, 660-669 | Mobile | 🇨🇲 Cameroun |
+| **SENEGAL_ORANGE** | 77, 78 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_TIGO** | 76 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_EXPRESSO** | 70 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_HAYO** | 72 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_SIRIUS** | 754, 755, 756 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_ORIGINES** | 757 | Mobile | 🇸🇳 Sénégal |
+| **IVORY_COAST_ORANGE** | 07, 27 | Mobile/Fixe | 🇨🇮 Côte d'Ivoire |
+| **IVORY_COAST_MTN** | 05, 25 | Mobile/Fixe | 🇨🇮 Côte d'Ivoire |
+| **IVORY_COAST_MOOV** | 01, 21 | Mobile/Fixe | 🇨🇮 Côte d'Ivoire |
+| **NIGERIA_MTN** | 0703, 0706, 0803, 0806, 0810, 0813, 0814, 0816, 0903, 0906, 0913, 0916, 0704, 07025, 07026 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_AIRTEL** | 0701, 0708, 0802, 0808, 0812, 0901, 0902, 0904, 0907, 0912, 0911 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_GLO** | 0705, 0805, 0807, 0811, 0815, 0905, 0915 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_9MOBILE** | 0809, 0817, 0818, 0908, 0909 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_NTEL** | 0804 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_SMILE** | 0702 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_STARCOMMS** | 07028, 07029, 0819 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_MULTILINKS** | 07027, 0709 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_ZOOMMOBILE** | 0707 | Mobile | 🇳🇬 Nigeria |
+| **GHANA_MTN** | 024, 054, 055, 059, 0256, 0257, 0597, 0598, 0599 | Mobile | 🇬🇭 Ghana |
+| **GHANA_VODAFONE** | 020, 050 | Mobile | 🇬🇭 Ghana |
+| **GHANA_AIRTELTIGO** | 026, 056, 027, 057 | Mobile | 🇬🇭 Ghana |
+| **GHANA_GLO** | 023 | Mobile | 🇬🇭 Ghana |
+| **GHANA_EXPRESSO** | 028 | Mobile | 🇬🇭 Ghana |
 
 ## 🔧 API Reference
 

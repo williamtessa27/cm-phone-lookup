@@ -21,9 +21,9 @@ export const IVORY_COAST_CONFIG: CountryConfig = {
  * Détecte l'opérateur ivoirien avec priorité pour éviter les conflits
  */
 export function detectIvoryCoastOperator(localNumber: string): IvoryCoastOperator | 'Unknown' {
-  // Priorité 1: TELECOM (préfixe unique 27)
+  // Priorité 1: ORANGE (préfixe 27 - fixe)
   if (localNumber.startsWith('27')) {
-    return 'IVORY_COAST_TELECOM';
+    return 'IVORY_COAST_ORANGE';
   }
   
   // Priorité 2: ORANGE (préfixes spécifiques)
