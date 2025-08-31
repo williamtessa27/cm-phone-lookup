@@ -93,9 +93,9 @@ console.log(isMtn); // true
 | **ORANGE** | 655, 656, 657, 658, 659, 690, 691, 692, 693 | Mobile | 🇨🇲 Cameroun |
 | **CAMTEL** | 222, 233, 242, 243, 244, 245, 246 | Fixe/Mobile | 🇨🇲 Cameroun |
 | **NEXTTEL** | 66 | Mobile | 🇨🇲 Cameroun |
-| **SENEGAL_ORANGE** | 77, 78, 79 | Mobile | 🇸🇳 Sénégal |
-| **SENEGAL_TIGO** | 76, 70 | Mobile | 🇸🇳 Sénégal |
-| **SENEGAL_EXPRESSO** | 72, 73 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_ORANGE** | 70, 76, 77, 78, 79 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_TIGO** | 76, 77 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_EXPRESSO** | 75, 76, 77, 78 | Mobile | 🇸🇳 Sénégal |
 
 ## 🔧 API Reference
 

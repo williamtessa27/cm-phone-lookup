@@ -86,6 +86,9 @@ const operatorTypes: Record<Operator, string> = {
   ORANGE: "Mobile", 
   CAMTEL: "Mixte",
   NEXTTEL: "Mobile",
+  SENEGAL_ORANGE: "Mobile",
+  SENEGAL_TIGO: "Mobile",
+  SENEGAL_EXPRESSO: "Mobile",
   Unknown: "Inconnu"
 };
 

@@ -21,7 +21,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - Support des préfixes sénégalais (70, 72, 73, 76, 77, 78, 79)
 
 ### 🏗️ Opérateurs supportés
-- **Sénégal** : SENEGAL_ORANGE (77, 78, 79), SENEGAL_TIGO (76, 70), SENEGAL_EXPRESSO (72, 73)
+- **Sénégal** : SENEGAL_ORANGE (70, 76, 77, 78, 79), SENEGAL_TIGO (76, 77), SENEGAL_EXPRESSO (75, 76, 77, 78)
 
 ---
 

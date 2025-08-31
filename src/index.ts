@@ -27,9 +27,9 @@ const prefixes: Record<Operator, string[]> = {
   ORANGE: ['655', '656', '657', '658', '659', '690', '691', '692', '693'],
   CAMTEL: ['222', '233', '242', '243', '244', '245', '246'],
   NEXTTEL: ['66'],
-  SENEGAL_ORANGE: ['77', '78', '79'],
-  SENEGAL_TIGO: ['76', '70'],
-  SENEGAL_EXPRESSO: ['72', '73'],
+  SENEGAL_ORANGE: ['70', '76', '77', '78', '79'],
+  SENEGAL_TIGO: ['76', '77'],
+  SENEGAL_EXPRESSO: ['75', '76', '77', '78'],
   Unknown: [],
 };
 
