@@ -1,6 +1,14 @@
 // src/index.ts
 
-export type Operator = 'MTN' | 'ORANGE' | 'CAMTEL' | 'NEXTTEL' | 'Unknown';
+export type Operator =
+  | 'MTN'
+  | 'ORANGE'
+  | 'CAMTEL'
+  | 'NEXTTEL'
+  | 'SENEGAL_ORANGE'
+  | 'SENEGAL_TIGO'
+  | 'SENEGAL_EXPRESSO'
+  | 'Unknown';
 
 export interface PhoneInfo {
   operator: Operator;
@@ -19,6 +27,9 @@ const prefixes: Record<Operator, string[]> = {
   ORANGE: ['655', '656', '657', '658', '659', '690', '691', '692', '693'],
   CAMTEL: ['222', '233', '242', '243', '244', '245', '246'],
   NEXTTEL: ['66'],
+  SENEGAL_ORANGE: ['77', '78', '79'],
+  SENEGAL_TIGO: ['76', '70'],
+  SENEGAL_EXPRESSO: ['72', '73'],
   Unknown: [],
 };
 
@@ -31,12 +42,44 @@ export function detectOperator(phone: string): Operator {
   // Nettoyer le numéro
   const clean = phone.replace(/\D/g, '');
 
-  // Enlever le code pays (237)
-  const local = clean.startsWith('237') ? clean.slice(3) : clean;
+  // Détecter le pays et extraire le numéro local
+  let local = '';
+  let countryCode = '';
 
-  for (const [operator, codes] of Object.entries(prefixes)) {
-    if (codes.some(prefix => local.startsWith(prefix))) {
-      return operator as Operator;
+  if (clean.startsWith('237')) {
+    // Cameroun
+    local = clean.slice(3);
+    countryCode = '237';
+  } else if (clean.startsWith('221')) {
+    // Sénégal
+    local = clean.slice(3);
+    countryCode = '221';
+  } else {
+    // Par défaut Cameroun
+    local = clean;
+    countryCode = '237';
+  }
+
+  // Détecter l'opérateur basé sur le pays
+  if (countryCode === '221') {
+    // Logique pour le Sénégal
+    for (const [operator, codes] of Object.entries(prefixes)) {
+      if (
+        operator.includes('SENEGAL') &&
+        codes.some(prefix => local.startsWith(prefix))
+      ) {
+        return operator as Operator;
+      }
+    }
+  } else {
+    // Logique pour le Cameroun
+    for (const [operator, codes] of Object.entries(prefixes)) {
+      if (
+        !operator.includes('SENEGAL') &&
+        codes.some(prefix => local.startsWith(prefix))
+      ) {
+        return operator as Operator;
+      }
     }
   }
 
@@ -50,8 +93,19 @@ export function detectOperator(phone: string): Operator {
  */
 export function isValidNumber(phone: string): boolean {
   const clean = phone.replace(/\D/g, '');
-  // Valide les numéros mobiles (9 chiffres commençant par 2,3,6) et fixes (7 chiffres commençant par 2,4)
-  return /^(\+237|237)?([236][0-9]{8}|[24][0-9]{7})$/.test(clean);
+
+  // Validation pour le Cameroun
+  if (clean.startsWith('237') || !clean.startsWith('221')) {
+    // Valide les numéros mobiles (9 chiffres commençant par 2,3,6) et fixes (7 chiffres commençant par 2,4)
+    return /^(\+237|237)?([236][0-9]{8}|[24][0-9]{7})$/.test(clean);
+  }
+
+  // Validation pour le Sénégal (numéros mobiles de 9 chiffres)
+  if (clean.startsWith('221')) {
+    return /^(\+221|221)?[0-9]{9}$/.test(clean);
+  }
+
+  return false;
 }
 
 /**
@@ -62,13 +116,28 @@ export function isValidNumber(phone: string): boolean {
 export function getPhoneInfo(phone: string): PhoneInfo {
   const clean = phone.replace(/\D/g, '');
   const isValid = isValidNumber(phone);
-  const local = clean.startsWith('237') ? clean.slice(3) : clean;
+
+  // Détecter le pays
+  let local = '';
+  let countryCode = '+237';
+
+  if (clean.startsWith('237')) {
+    local = clean.slice(3);
+    countryCode = '+237';
+  } else if (clean.startsWith('221')) {
+    local = clean.slice(3);
+    countryCode = '+221';
+  } else {
+    local = clean;
+    countryCode = '+237';
+  }
+
   const operator = detectOperator(phone);
 
   return {
     operator,
     isValid,
-    countryCode: '+237',
+    countryCode,
     localNumber: local,
     formattedNumber: formatPhoneNumber(phone),
     isMobile: isMobileNumber(local),
@@ -84,11 +153,20 @@ export function getPhoneInfo(phone: string): PhoneInfo {
  */
 export function formatPhoneNumber(phone: string): string {
   const clean = phone.replace(/\D/g, '');
-  const local = clean.startsWith('237') ? clean.slice(3) : clean;
 
-  if (local.length === 9) {
-    return `+237 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
+  // Détecter le pays et formater
+  if (clean.startsWith('237')) {
+    const local = clean.slice(3);
+    if (local.length === 9) {
+      return `+237 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
+    }
+  } else if (clean.startsWith('221')) {
+    const local = clean.slice(3);
+    if (local.length === 9) {
+      return `+221 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
+    }
   }
+
   return phone;
 }
 

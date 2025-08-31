@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-Une librairie **open-source** pour détecter l'opérateur mobile au Cameroun 🇨🇲 (MTN, ORANGE, CAMTEL, NEXTTEL) à partir d'un numéro de téléphone.  
+Une librairie **open-source** pour détecter l'opérateur mobile au Cameroun 🇨🇲 et au Sénégal 🇸🇳 (MTN, ORANGE, CAMTEL, NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -26,8 +26,13 @@ pnpm add @williamtessa27/cm-phone-lookup
 ```typescript
 import { detectOperator } from '@williamtessa27/cm-phone-lookup';
 
-const operator = detectOperator('+237650123456');
-console.log(operator); // "MTN"
+// Cameroun
+const operatorCM = detectOperator('+237650123456');
+console.log(operatorCM); // "MTN"
+
+// Sénégal
+const operatorSN = detectOperator('+221771234567');
+console.log(operatorSN); // "SENEGAL_ORANGE"
 ```
 
 ### Validation de numéro
@@ -82,12 +87,15 @@ console.log(isMtn); // true
 
 ## 🏗️ Opérateurs supportés
 
-| Opérateur | Préfixes | Type |
-|-----------|----------|------|
-| **MTN** | 650, 651, 652, 653, 654, 680, 681, 682, 683, 684 | Mobile |
-| **ORANGE** | 655, 656, 657, 658, 659, 690, 691, 692, 693 | Mobile |
-| **CAMTEL** | 222, 233, 242, 243, 244, 245, 246 | Fixe/Mobile |
-| **NEXTTEL** | 66 | Mobile |
+| Opérateur | Préfixes | Type | Pays |
+|-----------|----------|------|------|
+| **MTN** | 650, 651, 652, 653, 654, 680, 681, 682, 683, 684 | Mobile | 🇨🇲 Cameroun |
+| **ORANGE** | 655, 656, 657, 658, 659, 690, 691, 692, 693 | Mobile | 🇨🇲 Cameroun |
+| **CAMTEL** | 222, 233, 242, 243, 244, 245, 246 | Fixe/Mobile | 🇨🇲 Cameroun |
+| **NEXTTEL** | 66 | Mobile | 🇨🇲 Cameroun |
+| **SENEGAL_ORANGE** | 77, 78, 79 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_TIGO** | 76, 70 | Mobile | 🇸🇳 Sénégal |
+| **SENEGAL_EXPRESSO** | 72, 73 | Mobile | 🇸🇳 Sénégal |
 
 ## 🔧 API Reference
 

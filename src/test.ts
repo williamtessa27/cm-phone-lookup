@@ -54,6 +54,13 @@ console.log('Formaté MTN:', formatPhoneNumber('+237650123456'));
 console.log('Formaté ORANGE:', formatPhoneNumber('237655123456'));
 console.log('Formaté CAMTEL:', formatPhoneNumber('+23722212345'));
 
+console.log('\n🇸🇳 Tests Sénégal:');
+console.log('SENEGAL_ORANGE:', detectOperator('+221771234567'));
+console.log('SENEGAL_TIGO:', detectOperator('+221761234567'));
+console.log('SENEGAL_EXPRESSO:', detectOperator('+221721234567'));
+console.log('Formaté Sénégal:', formatPhoneNumber('+221771234567'));
+console.log('Sénégal valide:', isValidNumber('+221771234567'));
+
 // Tests des nouvelles fonctionnalités
 console.log('\n🔍 Tests des nouvelles fonctionnalités:');
 console.log('Préfixes MTN:', getOperatorPrefixes('MTN'));

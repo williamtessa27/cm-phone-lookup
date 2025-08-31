@@ -5,6 +5,26 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.1.0] - 2024-08-31
+
+### ✨ Ajouté
+- **Support du Sénégal** : Détection des opérateurs sénégalais
+- **Nouveaux opérateurs** : SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO
+- **Détection automatique de pays** : Reconnaissance automatique Cameroun (+237) vs Sénégal (+221)
+- **Validation multi-pays** : Support des formats de numéros sénégalais
+- **Formatage multi-pays** : Formatage automatique pour les numéros sénégalais
+
+### 🔧 Fonctionnalités techniques
+- Détection automatique du pays par code (+237, +221)
+- Validation spécifique par pays
+- Formatage adapté au pays
+- Support des préfixes sénégalais (70, 72, 73, 76, 77, 78, 79)
+
+### 🏗️ Opérateurs supportés
+- **Sénégal** : SENEGAL_ORANGE (77, 78, 79), SENEGAL_TIGO (76, 70), SENEGAL_EXPRESSO (72, 73)
+
+---
+
 ## [1.0.0] - 2024-08-31
 
 ### ✨ Ajouté
