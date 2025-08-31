@@ -29,7 +29,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### ✨ Ajouté
 - **Fonctionnalité principale** : Détection automatique des opérateurs télécoms camerounais
-- **Support complet** pour MTN, ORANGE, CAMTEL et NEXTTEL
+- **Support complet** pour CAMEROON_MTN, CAMEROON_ORANGE, CAMEROON_CAMTEL et CAMEROON_NEXTTEL
 - **Validation intelligente** des numéros de téléphone camerounais
 - **Formatage automatique** des numéros avec espaces
 - **Informations détaillées** sur chaque numéro (opérateur, validité, type, etc.)
@@ -49,10 +49,10 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - `isPrefixForOperator(prefix, operator)` : Vérification de préfixe
 
 ### 🏗️ Opérateurs supportés
-- **MTN** : 650, 651, 652, 653, 654, 680, 681, 682, 683, 684
-- **ORANGE** : 655, 656, 657, 658, 659, 690, 691, 692, 693
-- **CAMTEL** : 222, 233, 242, 243, 244, 245, 246
-- **NEXTTEL** : 66
+- **CAMEROON_MTN** : 650, 651, 652, 653, 654, 680, 681, 682, 683, 684
+- **CAMEROON_ORANGE** : 655, 656, 657, 658, 659, 690, 691, 692, 693
+- **CAMEROON_CAMTEL** : 222, 233, 242, 243, 244, 245, 246
+- **CAMEROON_NEXTTEL** : 66
 
 ### 📱 Types et interfaces
 - `Operator` : Union type des opérateurs supportés

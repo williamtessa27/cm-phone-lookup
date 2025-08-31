@@ -1,10 +1,10 @@
 // src/index.ts
 
 export type Operator =
-  | 'MTN'
-  | 'ORANGE'
-  | 'CAMTEL'
-  | 'NEXTTEL'
+  | 'CAMEROON_MTN'
+  | 'CAMEROON_ORANGE'
+  | 'CAMEROON_CAMTEL'
+  | 'CAMEROON_NEXTTEL'
   | 'SENEGAL_ORANGE'
   | 'SENEGAL_TIGO'
   | 'SENEGAL_EXPRESSO'
@@ -21,12 +21,12 @@ export interface PhoneInfo {
   length: number;
 }
 
-// Préfixes officiels Cameroun (exacts selon spécification)
+// Préfixes officiels par pays (exacts selon spécification)
 const prefixes: Record<Operator, string[]> = {
-  MTN: ['650', '651', '652', '653', '654', '680', '681', '682', '683', '684'],
-  ORANGE: ['655', '656', '657', '658', '659', '690', '691', '692', '693'],
-  CAMTEL: ['222', '233', '242', '243', '244', '245', '246'],
-  NEXTTEL: ['66'],
+  CAMEROON_MTN: ['650', '651', '652', '653', '654', '680', '681', '682', '683', '684'],
+  CAMEROON_ORANGE: ['655', '656', '657', '658', '659', '690', '691', '692', '693'],
+  CAMEROON_CAMTEL: ['222', '233', '242', '243', '244', '245', '246'],
+  CAMEROON_NEXTTEL: ['66'],
   SENEGAL_ORANGE: ['70', '76', '77', '78', '79'],
   SENEGAL_TIGO: ['76', '77'],
   SENEGAL_EXPRESSO: ['75', '76', '77', '78'],
@@ -75,7 +75,7 @@ export function detectOperator(phone: string): Operator {
     // Logique pour le Cameroun
     for (const [operator, codes] of Object.entries(prefixes)) {
       if (
-        !operator.includes('SENEGAL') &&
+        operator.includes('CAMEROON') &&
         codes.some(prefix => local.startsWith(prefix))
       ) {
         return operator as Operator;

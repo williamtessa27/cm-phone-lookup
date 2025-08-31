@@ -50,14 +50,14 @@ console.log(`Numéro formaté: ${formatted4}\n`);
 
 // Exemple 5: Obtenir les préfixes d'un opérateur
 console.log("🔍 Exemple 5: Préfixes d'opérateur");
-const mtnPrefixes: string[] = getOperatorPrefixes('MTN');
-console.log(`Préfixes MTN: ${mtnPrefixes.join(', ')}\n`);
+const mtnPrefixes: string[] = getOperatorPrefixes('CAMEROON_MTN');
+console.log(`Préfixes CAMEROON_MTN: ${mtnPrefixes.join(', ')}\n`);
 
 // Exemple 6: Vérifier si un préfixe appartient à un opérateur
 console.log("🔍 Exemple 6: Vérification de préfixe");
 const prefix: string = "650";
-const isMtn: boolean = isPrefixForOperator(prefix, 'MTN');
-console.log(`Le préfixe ${prefix} ${isMtn ? 'appartient' : "n'appartient pas"} à MTN\n`);
+const isMtn: boolean = isPrefixForOperator(prefix, 'CAMEROON_MTN');
+console.log(`Le préfixe ${prefix} ${isMtn ? 'appartient' : "n'appartient pas"} à CAMEROON_MTN\n`);
 
 // Exemple 7: Liste des opérateurs supportés
 console.log("📋 Exemple 7: Opérateurs supportés");
@@ -67,10 +67,10 @@ console.log(`Opérateurs supportés: ${operators.join(', ')}\n`);
 // Exemple 8: Traitement en lot avec typage strict
 console.log("🔄 Exemple 8: Traitement en lot avec typage strict");
 const phoneNumbers: string[] = [
-  "+237650123456",
-  "237655123456", 
-  "+23722212345",
-  "23766123456"
+  "+237650123456",  // CAMEROON_MTN
+  "237655123456",   // CAMEROON_ORANGE
+  "+23722212345",   // CAMEROON_CAMTEL
+  "23766123456"     // CAMEROON_NEXTTEL
 ];
 
 console.log("Analyse de plusieurs numéros:");
@@ -82,10 +82,10 @@ phoneNumbers.forEach((phone: string) => {
 // Exemple 9: Utilisation avancée avec types
 console.log("\n🔬 Exemple 9: Utilisation avancée avec types");
 const operatorTypes: Record<Operator, string> = {
-  MTN: "Mobile",
-  ORANGE: "Mobile", 
-  CAMTEL: "Mixte",
-  NEXTTEL: "Mobile",
+  CAMEROON_MTN: "Mobile",
+  CAMEROON_ORANGE: "Mobile", 
+  CAMEROON_CAMTEL: "Mixte",
+  CAMEROON_NEXTTEL: "Mobile",
   SENEGAL_ORANGE: "Mobile",
   SENEGAL_TIGO: "Mobile",
   SENEGAL_EXPRESSO: "Mobile",

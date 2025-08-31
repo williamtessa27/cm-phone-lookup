@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-Une librairie **open-source** pour détecter l'opérateur mobile au Cameroun 🇨🇲 et au Sénégal 🇸🇳 (MTN, ORANGE, CAMTEL, NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO) à partir d'un numéro de téléphone.  
+Une librairie **open-source** pour détecter l'opérateur mobile au Cameroun 🇨🇲 et au Sénégal 🇸🇳 (CAMEROON_MTN, CAMEROON_ORANGE, CAMEROON_CAMTEL, CAMEROON_NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -28,7 +28,7 @@ import { detectOperator } from '@williamtessa27/cm-phone-lookup';
 
 // Cameroun
 const operatorCM = detectOperator('+237650123456');
-console.log(operatorCM); // "MTN"
+console.log(operatorCM); // "CAMEROON_MTN"
 
 // Sénégal
 const operatorSN = detectOperator('+221771234567');
@@ -50,7 +50,7 @@ import { getPhoneInfo } from '@williamtessa27/cm-phone-lookup';
 const info = getPhoneInfo('+237650123456');
 console.log(info);
 // {
-//   operator: "MTN",
+//   operator: "CAMEROON_MTN",
 //   isValid: true,
 //   countryCode: "+237",
 //   localNumber: "650123456",
@@ -73,15 +73,15 @@ console.log(formatted); // "+237 650 123 456"
 ```typescript
 import { getOperatorPrefixes } from '@williamtessa27/cm-phone-lookup';
 
-const mtnPrefixes = getOperatorPrefixes('MTN');
-console.log(mtnPrefixes); // ["650", "651", "652", "653", "654", "680", "681", "682", "683", "684", "685", "686", "687", "688", "689"]
+const mtnPrefixes = getOperatorPrefixes('CAMEROON_MTN');
+console.log(mtnPrefixes); // ["650", "651", "652", "653", "654", "680", "681", "682", "683", "684"]
 ```
 
 ### Vérifier si un préfixe appartient à un opérateur
 ```typescript
 import { isPrefixForOperator } from '@williamtessa27/cm-phone-lookup';
 
-const isMtn = isPrefixForOperator('650', 'MTN');
+const isMtn = isPrefixForOperator('650', 'CAMEROON_MTN');
 console.log(isMtn); // true
 ```
 
@@ -89,10 +89,10 @@ console.log(isMtn); // true
 
 | Opérateur | Préfixes | Type | Pays |
 |-----------|----------|------|------|
-| **MTN** | 650, 651, 652, 653, 654, 680, 681, 682, 683, 684 | Mobile | 🇨🇲 Cameroun |
-| **ORANGE** | 655, 656, 657, 658, 659, 690, 691, 692, 693 | Mobile | 🇨🇲 Cameroun |
-| **CAMTEL** | 222, 233, 242, 243, 244, 245, 246 | Fixe/Mobile | 🇨🇲 Cameroun |
-| **NEXTTEL** | 66 | Mobile | 🇨🇲 Cameroun |
+| **CAMEROON_MTN** | 650, 651, 652, 653, 654, 680, 681, 682, 683, 684 | Mobile | 🇨🇲 Cameroun |
+| **CAMEROON_ORANGE** | 655, 656, 657, 658, 659, 690, 691, 692, 693 | Mobile | 🇨🇲 Cameroun |
+| **CAMEROON_CAMTEL** | 222, 233, 242, 243, 244, 245, 246 | Fixe/Mobile | 🇨🇲 Cameroun |
+| **CAMEROON_NEXTTEL** | 66 | Mobile | 🇨🇲 Cameroun |
 | **SENEGAL_ORANGE** | 70, 76, 77, 78, 79 | Mobile | 🇸🇳 Sénégal |
 | **SENEGAL_TIGO** | 76, 77 | Mobile | 🇸🇳 Sénégal |
 | **SENEGAL_EXPRESSO** | 75, 76, 77, 78 | Mobile | 🇸🇳 Sénégal |
@@ -164,7 +164,7 @@ Vérifie si un préfixe appartient à un opérateur spécifique.
 
 ### `Operator`
 ```typescript
-type Operator = "MTN" | "ORANGE" | "CAMTEL" | "NEXTTEL" | "Unknown";
+type Operator = "CAMEROON_MTN" | "CAMEROON_ORANGE" | "CAMEROON_CAMTEL" | "CAMEROON_NEXTTEL" | "SENEGAL_ORANGE" | "SENEGAL_TIGO" | "SENEGAL_EXPRESSO" | "Unknown";
 ```
 
 ### `PhoneInfo`
@@ -215,10 +215,11 @@ npm run build
 
 ## 📋 Fonctionnalités
 
-- ✅ **Détection automatique** des opérateurs camerounais
-- ✅ **Validation complète** des numéros de téléphone
+- ✅ **Détection automatique** des opérateurs camerounais et sénégalais
+- ✅ **Support multi-pays** : Cameroun (+237) et Sénégal (+221)
+- ✅ **Validation complète** des numéros de téléphone par pays
 - ✅ **Support TypeScript** avec types complets
-- ✅ **Formatage automatique** des numéros
+- ✅ **Formatage automatique** des numéros adapté au pays
 - ✅ **Informations détaillées** sur chaque numéro
 - ✅ **Gestion des préfixes** pour chaque opérateur
 - ✅ **Tests complets** pour toutes les fonctionnalités
@@ -227,11 +228,12 @@ npm run build
 
 ## 🌍 Cas d'usage
 
-- **Applications web** nécessitant la validation de numéros camerounais
-- **Formulaires** avec vérification automatique d'opérateur
-- **Systèmes de SMS** avec routage par opérateur
-- **Analytics** sur l'utilisation des opérateurs
-- **Validation** de numéros dans les bases de données
+- **Applications web** nécessitant la validation de numéros camerounais et sénégalais
+- **Formulaires** avec vérification automatique d'opérateur par pays
+- **Systèmes de SMS** avec routage par opérateur et par pays
+- **Analytics** sur l'utilisation des opérateurs par pays
+- **Validation** de numéros dans les bases de données multi-pays
+- **Applications internationales** nécessitant le support de plusieurs pays africains
 
 ## 🤝 Contribution
 
@@ -249,10 +251,10 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus d
 
 ## 🙏 Remerciements
 
-- Tous les opérateurs télécoms camerounais
-- La communauté développeur camerounaise
+- Tous les opérateurs télécoms camerounais et sénégalais
+- La communauté développeur camerounaise et sénégalaise
 - Tous les contributeurs open-source
 
 ---
 
-**Made with ❤️ in Cameroon 🇨🇲**
+**Made with ❤️ in Cameroon 🇨🇲 and Senegal 🇸🇳**
