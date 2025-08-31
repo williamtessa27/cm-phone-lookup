@@ -1,7 +1,7 @@
 // src/countries/types.ts
 // Types partagés pour tous les pays
 
-export type CountryCode = '237' | '221' | '225';
+export type CountryCode = '237' | '221' | '225' | '234';
 
 export interface PhoneInfo {
   operator: string;

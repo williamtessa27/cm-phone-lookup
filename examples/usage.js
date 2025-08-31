@@ -11,7 +11,7 @@ const {
   isPrefixForOperator
 } = require('../dist/index.js');
 
-console.log("🇨🇲🇸🇳🇨🇮 Exemples d'utilisation de CM Phone Lookup (Multi-pays)\n");
+console.log("🇨🇲🇸🇳🇨🇮🇳🇬 Exemples d'utilisation de CM Phone Lookup (Multi-pays)\n");
 
 // Exemple 1: Détection d'opérateur multi-pays
 console.log("📱 Exemple 1: Détection d'opérateur multi-pays");
@@ -25,7 +25,11 @@ console.log(`Le numéro ${phone1SN} appartient à l'opérateur: ${operator1SN}`)
 
 const phone1CI = "+22501234567";
 const operator1CI = detectOperator(phone1CI);
-console.log(`Le numéro ${phone1CI} appartient à l'opérateur: ${operator1CI}\n`);
+console.log(`Le numéro ${phone1CI} appartient à l'opérateur: ${operator1CI}`);
+
+const phone1NG = "+2340803123456";
+const operator1NG = detectOperator(phone1NG);
+console.log(`Le numéro ${phone1NG} appartient à l'opérateur: ${operator1NG}\n`);
 
 // Exemple 2: Validation de numéro multi-pays
 console.log("✅ Exemple 2: Validation de numéro multi-pays");
@@ -39,7 +43,11 @@ console.log(`Le numéro ${phone2SN} est ${isValid2SN ? 'valide' : 'invalide'}`);
 
 const phone2CI = "22501234567";
 const isValid2CI = isValidNumber(phone2CI);
-console.log(`Le numéro ${phone2CI} est ${isValid2CI ? 'valide' : 'invalide'}\n`);
+console.log(`Le numéro ${phone2CI} est ${isValid2CI ? 'valide' : 'invalide'}`);
+
+const phone2NG = "2340803123456";
+const isValid2NG = isValidNumber(phone2NG);
+console.log(`Le numéro ${phone2NG} est ${isValid2NG ? 'valide' : 'invalide'}\n`);
 
 // Exemple 3: Information complète
 console.log("📊 Exemple 3: Information complète");
@@ -82,7 +90,9 @@ const phoneNumbers = [
   "+221771234567",  // SENEGAL_ORANGE
   "221751234567",   // SENEGAL_EXPRESSO
   "+22501234567",   // IVORY_COAST_ORANGE
-  "22527212345"     // IVORY_COAST_TELECOM
+  "22527212345",    // IVORY_COAST_TELECOM
+  "+2340803123456", // NIGERIA_MTN
+  "2340802123456"   // NIGERIA_AIRTEL
 ];
 
 console.log("Analyse de plusieurs numéros:");

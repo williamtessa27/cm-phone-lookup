@@ -17,6 +17,7 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   if (cleanNumber.startsWith('237')) return '237';
   if (cleanNumber.startsWith('221')) return '221';
   if (cleanNumber.startsWith('225')) return '225';
+  if (cleanNumber.startsWith('234')) return '234';
   return null;
 }
 

@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-Une librairie **open-source** pour détecter l'opérateur mobile multi-pays : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮 (CAMEROON_MTN, CAMEROON_ORANGE, CAMEROON_CAMTEL, CAMEROON_NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO, IVORY_COAST_ORANGE, IVORY_COAST_MTN, IVORY_COAST_MOOV, IVORY_COAST_TELECOM) à partir d'un numéro de téléphone.  
+Une librairie **open-source** pour détecter l'opérateur mobile multi-pays : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬 (CAMEROON_MTN, CAMEROON_ORANGE, CAMEROON_CAMTEL, CAMEROON_NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO, IVORY_COAST_ORANGE, IVORY_COAST_MTN, IVORY_COAST_MOOV, IVORY_COAST_TELECOM, NIGERIA_MTN, NIGERIA_AIRTEL, NIGERIA_GLO, NIGERIA_9MOBILE) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -37,6 +37,10 @@ console.log(operatorSN); // "SENEGAL_ORANGE"
 // Côte d'Ivoire
 const operatorCI = detectOperator('+22501234567');
 console.log(operatorCI); // "IVORY_COAST_ORANGE"
+
+// Nigeria
+const operatorNG = detectOperator('+2340803123456');
+console.log(operatorNG); // "NIGERIA_MTN"
 ```
 
 ### Validation de numéro
@@ -104,6 +108,10 @@ console.log(isMtn); // true
 | **IVORY_COAST_MTN** | 05, 07, 08, 09, 50, 51, 52 | Mobile | 🇨🇮 Côte d'Ivoire |
 | **IVORY_COAST_MOOV** | 05, 06, 07, 55, 56 | Mobile | 🇨🇮 Côte d'Ivoire |
 | **IVORY_COAST_TELECOM** | 27 | Mixte | 🇨🇮 Côte d'Ivoire |
+| **NIGERIA_MTN** | 0803, 0806, 0703, 0706, 0813, 0816, 0810, 0814, 0903, 0906 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_AIRTEL** | 0802, 0808, 0812, 0708, 0701, 0902, 0907 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_GLO** | 0805, 0807, 0815, 0811, 0905 | Mobile | 🇳🇬 Nigeria |
+| **NIGERIA_9MOBILE** | 0809, 0817, 0818, 0909 | Mobile | 🇳🇬 Nigeria |
 
 ## 🔧 API Reference
 
@@ -172,7 +180,7 @@ Vérifie si un préfixe appartient à un opérateur spécifique.
 
 ### `Operator`
 ```typescript
-type Operator = "CAMEROON_MTN" | "CAMEROON_ORANGE" | "CAMEROON_CAMTEL" | "CAMEROON_NEXTTEL" | "SENEGAL_ORANGE" | "SENEGAL_TIGO" | "SENEGAL_EXPRESSO" | "IVORY_COAST_ORANGE" | "IVORY_COAST_MTN" | "IVORY_COAST_MOOV" | "IVORY_COAST_TELECOM" | "Unknown";
+type Operator = "CAMEROON_MTN" | "CAMEROON_ORANGE" | "CAMEROON_CAMTEL" | "CAMEROON_NEXTTEL" | "SENEGAL_ORANGE" | "SENEGAL_TIGO" | "SENEGAL_EXPRESSO" | "IVORY_COAST_ORANGE" | "IVORY_COAST_MTN" | "IVORY_COAST_MOOV" | "IVORY_COAST_TELECOM" | "NIGERIA_MTN" | "NIGERIA_AIRTEL" | "NIGERIA_GLO" | "NIGERIA_9MOBILE" | "Unknown";
 ```
 
 ### `PhoneInfo`
@@ -224,7 +232,7 @@ npm run build
 ## 📋 Fonctionnalités
 
 - ✅ **Détection automatique** des opérateurs camerounais et sénégalais
-- ✅ **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225)
+- ✅ **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225), Nigeria (+234)
 - ✅ **Validation complète** des numéros de téléphone par pays
 - ✅ **Support TypeScript** avec types complets
 - ✅ **Formatage automatique** des numéros adapté au pays
@@ -259,10 +267,10 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus d
 
 ## 🙏 Remerciements
 
-- Tous les opérateurs télécoms camerounais, sénégalais et ivoiriens
-- La communauté développeur camerounaise, sénégalaise et ivoirienne
+- Tous les opérateurs télécoms camerounais, sénégalais, ivoiriens et nigérians
+- La communauté développeur camerounaise, sénégalaise, ivoirienne et nigériane
 - Tous les contributeurs open-source
 
 ---
 
-**Made with ❤️ in Cameroon 🇨🇲, Senegal 🇸🇳 and Côte d'Ivoire 🇨🇮**
+**Made with ❤️ in Cameroon 🇨🇲, Senegal 🇸🇳, Côte d'Ivoire 🇨🇮 and Nigeria 🇳🇬**
