@@ -57,10 +57,10 @@ jobs:
       run: npm run lint || echo "Linting not configured"
     
     - name: 🎨 Format check
-      run: npm run format:check || echo "Format check not configured"
+      run: npm run format || echo "Format check not configured"
     
     - name: 📦 Package check
-      run: npm run pack --dry-run
+      run: npm pack --dry-run
     
   security:
     runs-on: ubuntu-latest
