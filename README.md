@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-Une librairie **open-source** pour détecter l'opérateur mobile multi-pays : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬 (CAMEROON_MTN, CAMEROON_ORANGE, CAMEROON_CAMTEL, CAMEROON_NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO, IVORY_COAST_ORANGE, IVORY_COAST_MTN, IVORY_COAST_MOOV, IVORY_COAST_TELECOM, NIGERIA_MTN, NIGERIA_AIRTEL, NIGERIA_GLO, NIGERIA_9MOBILE) à partir d'un numéro de téléphone.  
+Une librairie **open-source** pour détecter l'opérateur mobile multi-pays : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭 (CAMEROON_MTN, CAMEROON_ORANGE, CAMEROON_CAMTEL, CAMEROON_NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO, IVORY_COAST_ORANGE, IVORY_COAST_MTN, IVORY_COAST_MOOV, IVORY_COAST_TELECOM, NIGERIA_MTN, NIGERIA_AIRTEL, NIGERIA_GLO, NIGERIA_9MOBILE, GHANA_MTN, GHANA_VODAFONE, GHANA_AIRTELTIGO) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -41,6 +41,10 @@ console.log(operatorCI); // "IVORY_COAST_ORANGE"
 // Nigeria
 const operatorNG = detectOperator('+2340803123456');
 console.log(operatorNG); // "NIGERIA_MTN"
+
+// Ghana
+const operatorGH = detectOperator('+233241234567');
+console.log(operatorGH); // "GHANA_MTN"
 ```
 
 ### Validation de numéro
@@ -112,6 +116,9 @@ console.log(isMtn); // true
 | **NIGERIA_AIRTEL** | 0802, 0808, 0812, 0708, 0701, 0902, 0907 | Mobile | 🇳🇬 Nigeria |
 | **NIGERIA_GLO** | 0805, 0807, 0815, 0811, 0905 | Mobile | 🇳🇬 Nigeria |
 | **NIGERIA_9MOBILE** | 0809, 0817, 0818, 0909 | Mobile | 🇳🇬 Nigeria |
+| **GHANA_MTN** | 24, 54, 55, 59 | Mobile | 🇬🇭 Ghana |
+| **GHANA_VODAFONE** | 20, 50, 57 | Mobile | 🇬🇭 Ghana |
+| **GHANA_AIRTELTIGO** | 26, 56, 27 | Mobile | 🇬🇭 Ghana |
 
 ## 🔧 API Reference
 
@@ -180,7 +187,7 @@ Vérifie si un préfixe appartient à un opérateur spécifique.
 
 ### `Operator`
 ```typescript
-type Operator = "CAMEROON_MTN" | "CAMEROON_ORANGE" | "CAMEROON_CAMTEL" | "CAMEROON_NEXTTEL" | "SENEGAL_ORANGE" | "SENEGAL_TIGO" | "SENEGAL_EXPRESSO" | "IVORY_COAST_ORANGE" | "IVORY_COAST_MTN" | "IVORY_COAST_MOOV" | "IVORY_COAST_TELECOM" | "NIGERIA_MTN" | "NIGERIA_AIRTEL" | "NIGERIA_GLO" | "NIGERIA_9MOBILE" | "Unknown";
+type Operator = "CAMEROON_MTN" | "CAMEROON_ORANGE" | "CAMEROON_CAMTEL" | "CAMEROON_NEXTTEL" | "SENEGAL_ORANGE" | "SENEGAL_TIGO" | "SENEGAL_EXPRESSO" | "IVORY_COAST_ORANGE" | "IVORY_COAST_MTN" | "IVORY_COAST_MOOV" | "IVORY_COAST_TELECOM" | "NIGERIA_MTN" | "NIGERIA_AIRTEL" | "NIGERIA_GLO" | "NIGERIA_9MOBILE" | "GHANA_MTN" | "GHANA_VODAFONE" | "GHANA_AIRTELTIGO" | "Unknown";
 ```
 
 ### `PhoneInfo`
@@ -232,7 +239,7 @@ npm run build
 ## 📋 Fonctionnalités
 
 - ✅ **Détection automatique** des opérateurs camerounais et sénégalais
-- ✅ **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225), Nigeria (+234)
+- ✅ **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225), Nigeria (+234), Ghana (+233)
 - ✅ **Validation complète** des numéros de téléphone par pays
 - ✅ **Support TypeScript** avec types complets
 - ✅ **Formatage automatique** des numéros adapté au pays
@@ -267,10 +274,10 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus d
 
 ## 🙏 Remerciements
 
-- Tous les opérateurs télécoms camerounais, sénégalais, ivoiriens et nigérians
-- La communauté développeur camerounaise, sénégalaise, ivoirienne et nigériane
+- Tous les opérateurs télécoms camerounais, sénégalais, ivoiriens, nigérians et ghanéens
+- La communauté développeur camerounaise, sénégalaise, ivoirienne, nigériane et ghanéenne
 - Tous les contributeurs open-source
 
 ---
 
-**Made with ❤️ in Cameroon 🇨🇲, Senegal 🇸🇳, Côte d'Ivoire 🇨🇮 and Nigeria 🇳🇬**
+**Made with ❤️ in Cameroon 🇨🇲, Senegal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬 and Ghana 🇬🇭**

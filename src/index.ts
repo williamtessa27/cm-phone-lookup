@@ -18,6 +18,9 @@ export type Operator =
   | 'NIGERIA_AIRTEL'
   | 'NIGERIA_GLO'
   | 'NIGERIA_9MOBILE'
+  | 'GHANA_MTN'
+  | 'GHANA_VODAFONE'
+  | 'GHANA_AIRTELTIGO'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -36,6 +39,7 @@ import { detectCameroonOperator, validateCameroonNumber, formatCameroonNumber, i
 import { detectSenegalOperator, validateSenegalNumber, formatSenegalNumber, isSenegalMobile } from './countries/senegal';
 import { detectIvoryCoastOperator, validateIvoryCoastNumber, formatIvoryCoastNumber, isIvoryCoastMobile } from './countries/ivory-coast';
 import { detectNigeriaOperator, validateNigeriaNumber, formatNigeriaNumber, isNigeriaMobile } from './countries/nigeria';
+import { detectGhanaOperator, validateGhanaNumber, formatGhanaNumber, isGhanaMobile } from './countries/ghana';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
 // Imports des opérateurs
@@ -43,6 +47,7 @@ import { CAMEROON_OPERATORS } from './operators/cameroon';
 import { SENEGAL_OPERATORS } from './operators/senegal';
 import { IVORY_COAST_OPERATORS } from './operators/ivory-coast';
 import { NIGERIA_OPERATORS } from './operators/nigeria';
+import { GHANA_OPERATORS } from './operators/ghana';
 
 // Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
@@ -61,6 +66,9 @@ const prefixes: Record<Operator, string[]> = {
   NIGERIA_AIRTEL: [...NIGERIA_OPERATORS.NIGERIA_AIRTEL],
   NIGERIA_GLO: [...NIGERIA_OPERATORS.NIGERIA_GLO],
   NIGERIA_9MOBILE: [...NIGERIA_OPERATORS.NIGERIA_9MOBILE],
+  GHANA_MTN: [...GHANA_OPERATORS.GHANA_MTN],
+  GHANA_VODAFONE: [...GHANA_OPERATORS.GHANA_VODAFONE],
+  GHANA_AIRTELTIGO: [...GHANA_OPERATORS.GHANA_AIRTELTIGO],
   Unknown: [],
 };
 
@@ -87,6 +95,8 @@ export function detectOperator(phone: string): Operator {
       return detectIvoryCoastOperator(local) as Operator;
     case '234':
       return detectNigeriaOperator(local) as Operator;
+    case '233':
+      return detectGhanaOperator(local) as Operator;
     default:
       return 'Unknown';
   }
@@ -112,6 +122,8 @@ export function isValidNumber(phone: string): boolean {
       return validateIvoryCoastNumber(clean);
     case '234':
       return validateNigeriaNumber(clean);
+    case '233':
+      return validateGhanaNumber(clean);
     default:
       return false;
   }
@@ -171,6 +183,8 @@ export function formatPhoneNumber(phone: string): string {
       return formatIvoryCoastNumber(clean);
     case '234':
       return formatNigeriaNumber(clean);
+    case '233':
+      return formatGhanaNumber(clean);
     default:
       return phone;
   }
@@ -194,6 +208,8 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isIvoryCoastMobile(local);
     case '234':
       return isNigeriaMobile(local);
+    case '233':
+      return isGhanaMobile(local);
     default:
       return false;
   }
