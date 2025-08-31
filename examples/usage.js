@@ -28,7 +28,7 @@ try {
   console.log(`   📱 Opérateur: ${result.operator}`);
   console.log(`   ✅ Valide: ${result.isValid}`);
   console.log(`   🎨 Formaté: ${result.formattedNumber}`);
-  console.log(`   🌍 Langue: ${result.country?.language}`);
+  console.log(`   🌍 Langue: ${Array.isArray(result.country?.language) ? result.country?.language.join(' + ') : result.country?.language}`);
   console.log(`   💰 Devise: ${result.country?.currency}`);
   console.log(`   🕐 Fuseau: ${result.country?.timezone}`);
   console.log(`   🏛️ Capitale: ${result.country?.capital}`);
@@ -94,7 +94,7 @@ try {
 // 🆕 NOUVEAU : Exemple 5: Métadonnées des Pays
 console.log("🌍 Exemple 5: Métadonnées des Pays");
 try {
-  const countries = ['237', '221', '225', '234', '233'];
+  const countries = getAllCountries();
   
   console.log('✅ Métadonnées des pays:');
   countries.forEach(code => {
@@ -105,7 +105,7 @@ try {
       console.log(`      👥 Population: ${metadata.population}`);
       console.log(`      💰 Devise: ${metadata.currency}`);
       console.log(`      🕐 Fuseau: ${metadata.timezone}`);
-      console.log(`      🗣️ Langue: ${metadata.language === 'fr' ? 'Français' : 'Anglais'}`);
+      console.log(`      🗣️ Langue: ${Array.isArray(metadata.language) ? metadata.language.join(' + ') : metadata.language === 'fr' ? 'Français' : 'Anglais'}`);
     }
   });
   console.log();

@@ -5,7 +5,7 @@ export interface CountryMetadata {
   name: string;
   nameLocal: string;
   flag: string;
-  language: string;
+  language: string | string[]; // Support pour langues multiples (Cameroun bilingue)
   currency: string;
   timezone: string;
   population?: string;
@@ -17,7 +17,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     name: 'Cameroon',
     nameLocal: 'Cameroun',
     flag: '🇨🇲',
-    language: 'fr',
+    language: ['fr', 'en'], // 🇨🇲 Cameroun : Bilingue officiel (Français + Anglais)
     currency: 'XAF',
     timezone: 'UTC+1',
     population: '27.2M',
@@ -27,7 +27,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     name: 'Senegal',
     nameLocal: 'Sénégal',
     flag: '🇸🇳',
-    language: 'fr',
+    language: 'fr', // 🇸🇳 Sénégal : Français uniquement
     currency: 'XOF',
     timezone: 'UTC+0',
     population: '17.2M',
@@ -37,7 +37,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     name: 'Ivory Coast',
     nameLocal: 'Côte d\'Ivoire',
     flag: '🇨🇮',
-    language: 'fr',
+    language: 'fr', // 🇨🇮 Côte d'Ivoire : Français uniquement
     currency: 'XOF',
     timezone: 'UTC+0',
     population: '27.5M',
@@ -47,7 +47,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     name: 'Nigeria',
     nameLocal: 'Nigeria',
     flag: '🇳🇬',
-    language: 'en',
+    language: 'en', // 🇳🇬 Nigeria : Anglais uniquement
     currency: 'NGN',
     timezone: 'UTC+1',
     population: '223.8M',
@@ -57,7 +57,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     name: 'Ghana',
     nameLocal: 'Ghana',
     flag: '🇬🇭',
-    language: 'en',
+    language: 'en', // 🇬🇭 Ghana : Anglais uniquement
     currency: 'GHS',
     timezone: 'UTC+0',
     population: '32.8M',

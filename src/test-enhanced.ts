@@ -1,7 +1,14 @@
 // src/test-enhanced.ts
 // Tests complets pour les nouvelles fonctionnalités améliorées
 
-import { PhoneLookup, getCountryMetadata, validatePhoneNumber } from './index';
+import { 
+  PhoneLookup, 
+  getCountryMetadata, 
+  getAllCountries,
+  validatePhoneNumber,
+  type EnhancedPhoneInfo,
+  type CountryMetadata
+} from './index';
 
 console.log('🚀 Tests des nouvelles fonctionnalités améliorées de CM Phone Lookup\n');
 
@@ -15,7 +22,7 @@ try {
   console.log(`   📱 Opérateur: ${result.operator}`);
   console.log(`   ✅ Valide: ${result.isValid}`);
   console.log(`   🎨 Formaté: ${result.formattedNumber}`);
-  console.log(`   🌍 Langue: ${result.country?.language}`);
+  console.log(`   🌍 Langue: ${Array.isArray(result.country?.language) ? result.country?.language.join(' + ') : result.country?.language}`);
   console.log(`   💰 Devise: ${result.country?.currency}`);
   console.log(`   🕐 Fuseau: ${result.country?.timezone}`);
   console.log(`   🏛️ Capitale: ${result.country?.capital}`);
@@ -81,7 +88,7 @@ try {
 // Test 5: Métadonnées des pays
 console.log('🌍 Test 5: Métadonnées des pays');
 try {
-  const countries = ['237', '221', '225', '234', '233'];
+  const countries = getAllCountries();
   
   console.log('✅ Métadonnées des pays:');
   countries.forEach(code => {
@@ -92,7 +99,7 @@ try {
       console.log(`      👥 Population: ${metadata.population}`);
       console.log(`      💰 Devise: ${metadata.currency}`);
       console.log(`      🕐 Fuseau: ${metadata.timezone}`);
-      console.log(`      🗣️ Langue: ${metadata.language === 'fr' ? 'Français' : 'Anglais'}`);
+      console.log(`      🗣️ Langue: ${Array.isArray(metadata.language) ? metadata.language.join(' + ') : metadata.language === 'fr' ? 'Français' : 'Anglais'}`);
     }
   });
   console.log();
