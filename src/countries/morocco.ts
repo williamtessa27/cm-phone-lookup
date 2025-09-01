@@ -8,7 +8,7 @@ export const MOROCCO_CONFIG: CountryConfig = {
   countryCode: '212',
   operators: MOROCCO_OPERATORS,
   validation: {
-    mobile: /^(0[56789])[0-9]{7}$/,
+    mobile: /^(6|7)[0-9]{8}$/,
     fixed: /^(0[1234])[0-9]{7}$/,
     totalLength: 9,
   },
@@ -33,26 +33,36 @@ export function detectMoroccoOperator(localNumber: string): MoroccoOperator | 'U
 /**
  * Valide un numéro marocain
  */
-export function validateMoroccoNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('212')) return false;
+export function validateMoroccoNumber(phoneNumber: string): boolean {
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
-  return MOROCCO_CONFIG.validation.mobile.test(local) || 
-         (MOROCCO_CONFIG.validation.fixed && MOROCCO_CONFIG.validation.fixed.test(local)) || 
-         false;
+  const countryCode = detectCountryCode(phoneNumber);
+  if (countryCode !== '212') return false;
+  
+  const localNumber = extractLocalNumber(phoneNumber, '212');
+  if (!localNumber) return false;
+  
+  // Vérifier si c'est un préfixe d'opérateur valide
+  const operator = detectMoroccoOperator(localNumber);
+  if (operator === 'Unknown') return false;
+  
+  return MOROCCO_CONFIG.validation.mobile.test(localNumber) || 
+         (MOROCCO_CONFIG.validation.fixed ? MOROCCO_CONFIG.validation.fixed.test(localNumber) : false);
 }
 
 /**
  * Formate un numéro marocain
  */
-export function formatMoroccoNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('212')) return cleanNumber;
+export function formatMoroccoNumber(phoneNumber: string): string {
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
-  if (local.length === 9) {
-    return `+212 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
-  }
-  return cleanNumber;
+  const countryCode = detectCountryCode(phoneNumber);
+  if (countryCode !== '212') return phoneNumber;
+  
+  const localNumber = extractLocalNumber(phoneNumber, '212');
+  if (!localNumber || localNumber.length !== 9) return phoneNumber;
+  
+  return `+212 ${localNumber.slice(0, 3)} ${localNumber.slice(3, 6)} ${localNumber.slice(6)}`;
 }
 
 /**

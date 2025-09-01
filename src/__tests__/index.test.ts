@@ -90,6 +90,36 @@ describe('CM Phone Lookup - Fonctions principales', () => {
       expect(isValidNumber('+2341234567890')).toBe(false); // Préfixe invalide
     });
 
+    test('valide correctement les numéros ivoiriens', () => {
+      expect(isValidNumber('+22507123456')).toBe(true);
+      expect(isValidNumber('+22505123456')).toBe(true);
+      expect(isValidNumber('+22501123456')).toBe(true);
+    });
+
+    test('valide correctement les numéros marocains', () => {
+      expect(isValidNumber('+212612345678')).toBe(true);
+      expect(isValidNumber('+212661234567')).toBe(true);
+      expect(isValidNumber('+212701234567')).toBe(true);
+    });
+
+    test('valide correctement les numéros sud-africains', () => {
+      expect(isValidNumber('+27821234567')).toBe(true);
+      expect(isValidNumber('+27831234567')).toBe(true);
+      expect(isValidNumber('+27791234567')).toBe(true);
+    });
+
+    test('valide correctement les numéros ghanéens', () => {
+      expect(isValidNumber('+233241234567')).toBe(true);
+      expect(isValidNumber('+233501234567')).toBe(true);
+      expect(isValidNumber('+233261234567')).toBe(true);
+    });
+
+    test('valide correctement les numéros kenyans', () => {
+      expect(isValidNumber('+254700123456')).toBe(true);
+      expect(isValidNumber('+254722123456')).toBe(true);
+      expect(isValidNumber('+254733123456')).toBe(true);
+    });
+
     test('rejette les numéros invalides', () => {
       expect(isValidNumber('')).toBe(false);
       expect(isValidNumber('123')).toBe(false);
@@ -123,6 +153,51 @@ describe('CM Phone Lookup - Fonctions principales', () => {
       expect(info.length).toBe(9);
     });
 
+    test('retourne les informations complètes pour un numéro ivoirien', () => {
+      const info = getPhoneInfo('+22507123456');
+      expect(info.isValid).toBe(true);
+      expect(info.operator).toBe('IVORY_COAST_ORANGE');
+      expect(info.countryCode).toBe('+225');
+      expect(info.localNumber).toBe('07123456');
+      expect(info.formattedNumber).toBe('+225 07 12 34 56');
+    });
+
+    test('retourne les informations complètes pour un numéro marocain', () => {
+      const info = getPhoneInfo('+212612345678');
+      expect(info.isValid).toBe(true);
+      expect(info.operator).toBe('MOROCCO_MAROC_TELECOM');
+      expect(info.countryCode).toBe('+212');
+      expect(info.localNumber).toBe('612345678');
+      expect(info.formattedNumber).toBe('+212 612 345 678');
+    });
+
+    test('retourne les informations complètes pour un numéro sud-africain', () => {
+      const info = getPhoneInfo('+27821234567');
+      expect(info.isValid).toBe(true);
+      expect(info.operator).toBe('SOUTH_AFRICA_VODACOM');
+      expect(info.countryCode).toBe('+27');
+      expect(info.localNumber).toBe('821234567');
+      expect(info.formattedNumber).toBe('+27 821 234 567');
+    });
+
+    test('retourne les informations complètes pour un numéro ghanéen', () => {
+      const info = getPhoneInfo('+233241234567');
+      expect(info.isValid).toBe(true);
+      expect(info.operator).toBe('GHANA_MTN');
+      expect(info.countryCode).toBe('+233');
+      expect(info.localNumber).toBe('241234567');
+      expect(info.formattedNumber).toBe('+233 241 234 567');
+    });
+
+    test('retourne les informations complètes pour un numéro kenyan', () => {
+      const info = getPhoneInfo('+254700123456');
+      expect(info.isValid).toBe(true);
+      expect(info.operator).toBe('KENYA_SAFARICOM');
+      expect(info.countryCode).toBe('+254');
+      expect(info.localNumber).toBe('700123456');
+      expect(info.formattedNumber).toBe('+254 700 123 456');
+    });
+
     test('gère correctement un numéro invalide', () => {
       const info = getPhoneInfo('123456');
       
@@ -143,6 +218,31 @@ describe('CM Phone Lookup - Fonctions principales', () => {
 
     test('formate correctement les numéros nigérians', () => {
       expect(formatPhoneNumber('+2348031234567')).toBe('+234 803 123 4567');
+    });
+
+    test('formate correctement les numéros ivoiriens', () => {
+      expect(formatPhoneNumber('+22507123456')).toBe('+225 07 12 34 56');
+      expect(formatPhoneNumber('22507123456')).toBe('+225 07 12 34 56');
+    });
+
+    test('formate correctement les numéros marocains', () => {
+      expect(formatPhoneNumber('+212612345678')).toBe('+212 612 345 678');
+      expect(formatPhoneNumber('212612345678')).toBe('+212 612 345 678');
+    });
+
+    test('formate correctement les numéros sud-africains', () => {
+      expect(formatPhoneNumber('+27821234567')).toBe('+27 821 234 567');
+      expect(formatPhoneNumber('27821234567')).toBe('+27 821 234 567');
+    });
+
+    test('formate correctement les numéros ghanéens', () => {
+      expect(formatPhoneNumber('+233241234567')).toBe('+233 241 234 567');
+      expect(formatPhoneNumber('233241234567')).toBe('+233 241 234 567');
+    });
+
+    test('formate correctement les numéros kenyans', () => {
+      expect(formatPhoneNumber('+254700123456')).toBe('+254 700 123 456');
+      expect(formatPhoneNumber('254700123456')).toBe('+254 700 123 456');
     });
 
     test('retourne le numéro original si non reconnu', () => {

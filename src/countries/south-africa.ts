@@ -8,7 +8,7 @@ export const SOUTH_AFRICA_CONFIG: CountryConfig = {
   countryCode: '27',
   operators: SOUTH_AFRICA_OPERATORS,
   validation: {
-    mobile: /^(0[678][0-9]|06[0-9][0-9]|07[01][0-9]|08[0-9][0-9])[0-9]{6}$/,
+    mobile: /^(8[0-9]|7[0-9])[0-9]{7}$/,
     fixed: /^(0[12][0-9])[0-9]{7}$/,
     totalLength: 9,
   },
@@ -33,26 +33,36 @@ export function detectSouthAfricaOperator(localNumber: string): SouthAfricaOpera
 /**
  * Valide un numéro sud-africain
  */
-export function validateSouthAfricaNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('27')) return false;
+export function validateSouthAfricaNumber(phoneNumber: string): boolean {
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(2);
-  return SOUTH_AFRICA_CONFIG.validation.mobile.test(local) || 
-         (SOUTH_AFRICA_CONFIG.validation.fixed && SOUTH_AFRICA_CONFIG.validation.fixed.test(local)) || 
-         false;
+  const countryCode = detectCountryCode(phoneNumber);
+  if (countryCode !== '27') return false;
+  
+  const localNumber = extractLocalNumber(phoneNumber, '27');
+  if (!localNumber) return false;
+  
+  // Vérifier si c'est un préfixe d'opérateur valide
+  const operator = detectSouthAfricaOperator(localNumber);
+  if (operator === 'Unknown') return false;
+  
+  return SOUTH_AFRICA_CONFIG.validation.mobile.test(localNumber) || 
+         (SOUTH_AFRICA_CONFIG.validation.fixed ? SOUTH_AFRICA_CONFIG.validation.fixed.test(localNumber) : false);
 }
 
 /**
  * Formate un numéro sud-africain
  */
-export function formatSouthAfricaNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('27')) return cleanNumber;
+export function formatSouthAfricaNumber(phoneNumber: string): string {
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(2);
-  if (local.length === 9) {
-    return `+27 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
-  }
-  return cleanNumber;
+  const countryCode = detectCountryCode(phoneNumber);
+  if (countryCode !== '27') return phoneNumber;
+  
+  const localNumber = extractLocalNumber(phoneNumber, '27');
+  if (!localNumber || localNumber.length !== 9) return phoneNumber;
+  
+  return `+27 ${localNumber.slice(0, 3)} ${localNumber.slice(3, 6)} ${localNumber.slice(6)}`;
 }
 
 /**
