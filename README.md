@@ -4,8 +4,10 @@
 [![npm downloads](https://img.shields.io/npm/dm/@williamtessa27/cm-phone-lookup.svg)](https://www.npmjs.com/package/@williamtessa27/cm-phone-lookup)
 [![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+![npm](https://img.shields.io/npm/dw/@williamtessa27/cm-phone-lookup)
 
-Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭 (CAMEROON_MTN, CAMEROON_ORANGE, CAMEROON_CAMTEL, CAMEROON_NEXTTEL, SENEGAL_ORANGE, SENEGAL_TIGO, SENEGAL_EXPRESSO, IVORY_COAST_ORANGE, IVORY_COAST_MTN, IVORY_COAST_MOOV, IVORY_COAST_TELECOM, NIGERIA_MTN, NIGERIA_AIRTEL, NIGERIA_GLO, NIGERIA_9MOBILE, GHANA_MTN, GHANA_VODAFONE, GHANA_AIRTELTIGO) à partir d'un numéro de téléphone.  
+
+Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **8 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦 avec plus de **40 opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, etc.) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -150,6 +152,18 @@ console.log(operatorNG); // "NIGERIA_MTN"
 // Ghana
 const operatorGH = detectOperator('+233241234567');
 console.log(operatorGH); // "GHANA_MTN"
+
+// Kenya
+const operatorKE = detectOperator('+254700123456');
+console.log(operatorKE); // "KENYA_SAFARICOM"
+
+// Afrique du Sud
+const operatorZA = detectOperator('+27721234567');
+console.log(operatorZA); // "SOUTH_AFRICA_VODACOM"
+
+// Maroc
+const operatorMA = detectOperator('+212612345678');
+console.log(operatorMA); // "MOROCCO_MAROC_TELECOM"
 ```
 
 ### Validation de numéro
@@ -233,6 +247,19 @@ console.log(isMtn); // true
 | **GHANA_AIRTELTIGO** | 026, 056, 027, 057 | Mobile | 🇬🇭 Ghana |
 | **GHANA_GLO** | 023 | Mobile | 🇬🇭 Ghana |
 | **GHANA_EXPRESSO** | 028 | Mobile | 🇬🇭 Ghana |
+| **KENYA_SAFARICOM** | 70, 71, 72, 74, 757-759, 768-769, 79, 110-115 | Mobile | 🇰🇪 Kenya |
+| **KENYA_AIRTEL** | 730-739, 750-756, 785-789, 100-102 | Mobile | 🇰🇪 Kenya |
+| **KENYA_TELKOM** | 770-779 | Mobile | 🇰🇪 Kenya |
+| **KENYA_FAIBA** | 747 | Mobile | 🇰🇪 Kenya |
+| **KENYA_EQUITEL** | 763-765 | Mobile | 🇰🇪 Kenya |
+| **SOUTH_AFRICA_VODACOM** | 72, 82, 606-609, 636-637, 646-649, 660-665, 711-716, 79, 818 | Mobile | 🇿🇦 South Africa |
+| **SOUTH_AFRICA_MTN** | 73, 83, 78, 710, 603-605, 630-635, 655-657, 810 | Mobile | 🇿🇦 South Africa |
+| **SOUTH_AFRICA_CELL_C** | 74, 84, 610-613, 615-619, 641-645, 650-653 | Mobile | 🇿🇦 South Africa |
+| **SOUTH_AFRICA_TELKOM** | 614, 658-659, 811-815, 817 | Mobile | 🇿🇦 South Africa |
+| **SOUTH_AFRICA_VIRGIN_MOBILE** | 741 | Mobile | 🇿🇦 South Africa |
+| **MOROCCO_MAROC_TELECOM** | 5, 6, 7, 8, 9 | Mobile/Fixe | 🇲🇦 Morocco |
+| **MOROCCO_ORANGE_MAROC** | 5, 6, 7, 8, 9 | Mobile/Fixe | 🇲🇦 Morocco |
+| **MOROCCO_INWI** | 5, 6, 7, 8, 9 | Mobile/Fixe | 🇲🇦 Morocco |
 
 ## 🔧 API Reference
 

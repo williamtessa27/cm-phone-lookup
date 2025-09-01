@@ -3,42 +3,42 @@
 
 export const NIGERIA_OPERATORS = {
   NIGERIA_MTN: [
-    // Préfixes principaux MTN
-    '0703', '0706', '0803', '0806', '0810', '0813', '0814', '0816', '0903', '0906', '0913', '0916',
-    // Séries héritées de Visafone (acquis par MTN)
-    '0704', '07025', '07026'
+    // Préfixes principaux MTN - sans le 0 initial
+    '703', '706', '803', '806', '810', '813', '814', '816', '903', '906', '913', '916',
+    // Séries héritées de Visafone (acquis par MTN) - sans le 0 initial
+    '704', '7025', '7026'
   ],
   NIGERIA_GLO: [
-    // Glo (Globacom)
-    '0705', '0805', '0807', '0811', '0815', '0905', '0915'
+    // Glo (Globacom) - sans le 0 initial
+    '705', '805', '807', '811', '815', '905', '915'
   ],
   NIGERIA_AIRTEL: [
-    // Airtel Nigeria
-    '0701', '0708', '0802', '0808', '0812', '0901', '0902', '0904', '0907', '0912', '0911'
+    // Airtel Nigeria - sans le 0 initial
+    '701', '708', '802', '808', '812', '901', '902', '904', '907', '912', '911'
   ],
   NIGERIA_9MOBILE: [
-    // 9mobile (ex-Etisalat Nigeria)
-    '0809', '0817', '0818', '0908', '0909'
+    // 9mobile (ex-Etisalat Nigeria) - sans le 0 initial
+    '809', '817', '818', '908', '909'
   ],
   NIGERIA_NTEL: [
-    // Ntel
-    '0804'
+    // Ntel - sans le 0 initial
+    '804'
   ],
   NIGERIA_SMILE: [
-    // Smile Communications
-    '0702'
+    // Smile Communications - sans le 0 initial
+    '702'
   ],
   NIGERIA_STARCOMMS: [
-    // Starcomms
-    '07028', '07029', '0819'
+    // Starcomms - sans le 0 initial
+    '7028', '7029', '819'
   ],
   NIGERIA_MULTILINKS: [
-    // Multi-Links
-    '07027', '0709'
+    // Multi-Links - sans le 0 initial
+    '7027', '709'
   ],
   NIGERIA_ZOOMMOBILE: [
-    // ZoomMobile (anciennement Reltel)
-    '0707'
+    // ZoomMobile (anciennement Reltel) - sans le 0 initial
+    '707'
   ],
 } as const;
 

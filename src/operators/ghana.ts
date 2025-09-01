@@ -3,26 +3,26 @@
 
 export const GHANA_OPERATORS = {
   GHANA_MTN: [
-    // Codes mobiles principaux
-    '024', '054', '055', '059',
-    // Nouveaux codes ajoutés en 2021
-    '0256', '0257', '0597', '0598', '0599'
+    // Codes mobiles principaux - sans le 0 initial
+    '24', '54', '55', '59',
+    // Nouveaux codes ajoutés en 2021 - sans le 0 initial
+    '256', '257', '597', '598', '599'
   ],
   GHANA_VODAFONE: [
-    // Vodafone Ghana
-    '020', '050'
+    // Vodafone Ghana - sans le 0 initial
+    '20', '50'
   ],
   GHANA_AIRTELTIGO: [
-    // AirtelTigo (fusion d'Airtel et Tigo)
-    '026', '056', '027', '057'
+    // AirtelTigo (fusion d'Airtel et Tigo) - sans le 0 initial
+    '26', '56', '27', '57'
   ],
   GHANA_GLO: [
-    // Glo Ghana
-    '023'
+    // Glo Ghana - sans le 0 initial
+    '23'
   ],
   GHANA_EXPRESSO: [
-    // Expresso Ghana (anciennement Kasapa Telecom)
-    '028'
+    // Expresso Ghana (anciennement Kasapa Telecom) - sans le 0 initial
+    '28'
   ],
 } as const;
 

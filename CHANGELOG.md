@@ -7,6 +7,14 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+### ✨ Ajouté
+- **Support Kenya** 🇰🇪 : Safaricom, Airtel, Telkom, Faiba, Equitel avec validation et formatage
+- **Support Afrique du Sud** 🇿🇦 : Vodacom, MTN, Cell C, Telkom, Virgin Mobile avec validation et formatage  
+- **Support Maroc** 🇲🇦 : Maroc Telecom, Orange Maroc, Inwi avec validation et formatage
+- **Nouveaux opérateurs** : 15+ nouveaux opérateurs ajoutés pour l'Afrique de l'Est, du Sud et du Nord
+- **Couverture continentale étendue** : La librairie couvre maintenant 8 pays africains majeurs
+- **Préfixes officiels** : Intégration des préfixes les plus récents (Kenya 011x, Afrique du Sud 06xx)
+
 ### 🔧 Corrigé
 - **Correction majeure des préfixes d'opérateurs** pour tous les pays africains supportés
 - **Cameroun** : Ajout des séries 67 (670-679), 68 (680-689), 620-621 (Blue), 66 (660-669)

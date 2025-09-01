@@ -158,7 +158,7 @@ export class PhoneLookup {
    * Obtient les statistiques globales
    */
   static getStats() {
-    const countries = ['237', '221', '225', '234', '233'];
+    const countries = ['237', '221', '225', '234', '233', '254', '27', '212'];
     const countryStats = countries.map(code => {
       const metadata = getCountryMetadata(code);
       return {
@@ -182,10 +182,13 @@ export class PhoneLookup {
   private static getOperatorCount(countryCode: string): number {
     const operators = {
       '237': 4, // Cameroon
-      '221': 3, // Senegal
-      '225': 4, // Ivory Coast
-      '234': 4, // Nigeria
-      '233': 3  // Ghana
+      '221': 6, // Senegal  
+      '225': 3, // Ivory Coast
+      '234': 9, // Nigeria
+      '233': 5, // Ghana
+      '254': 5, // Kenya
+      '27': 5,  // South Africa
+      '212': 3  // Morocco
     };
     return operators[countryCode as keyof typeof operators] || 0;
   }

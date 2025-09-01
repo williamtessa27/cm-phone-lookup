@@ -21,21 +21,11 @@ export const SENEGAL_CONFIG: CountryConfig = {
  * Détecte l'opérateur sénégalais
  */
 export function detectSenegalOperator(localNumber: string): SenegalOperator | 'Unknown' {
-  // Priorité pour éviter les conflits
-  if (localNumber.startsWith('70') || localNumber.startsWith('79')) {
-    return 'SENEGAL_ORANGE';
+  for (const [operator, prefixes] of Object.entries(SENEGAL_OPERATORS)) {
+    if (prefixes.some(prefix => localNumber.startsWith(prefix))) {
+      return operator as SenegalOperator;
+    }
   }
-  if (localNumber.startsWith('75')) {
-    return 'SENEGAL_EXPRESSO';
-  }
-  if (localNumber.startsWith('76') || localNumber.startsWith('77')) {
-    // Priorité à ORANGE pour les préfixes partagés
-    return 'SENEGAL_ORANGE';
-  }
-  if (localNumber.startsWith('78')) {
-    return 'SENEGAL_EXPRESSO';
-  }
-  
   return 'Unknown';
 }
 

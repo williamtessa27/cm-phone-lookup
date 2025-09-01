@@ -30,6 +30,19 @@ export type Operator =
   | 'GHANA_AIRTELTIGO'
   | 'GHANA_GLO'
   | 'GHANA_EXPRESSO'
+  | 'KENYA_SAFARICOM'
+  | 'KENYA_AIRTEL'
+  | 'KENYA_TELKOM'
+  | 'KENYA_FAIBA'
+  | 'KENYA_EQUITEL'
+  | 'SOUTH_AFRICA_VODACOM'
+  | 'SOUTH_AFRICA_MTN'
+  | 'SOUTH_AFRICA_CELL_C'
+  | 'SOUTH_AFRICA_TELKOM'
+  | 'SOUTH_AFRICA_VIRGIN_MOBILE'
+  | 'MOROCCO_MAROC_TELECOM'
+  | 'MOROCCO_ORANGE_MAROC'
+  | 'MOROCCO_INWI'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -49,6 +62,9 @@ import { detectSenegalOperator, validateSenegalNumber, formatSenegalNumber, isSe
 import { detectIvoryCoastOperator, validateIvoryCoastNumber, formatIvoryCoastNumber, isIvoryCoastMobile } from './countries/ivory-coast';
 import { detectNigeriaOperator, validateNigeriaNumber, formatNigeriaNumber, isNigeriaMobile } from './countries/nigeria';
 import { detectGhanaOperator, validateGhanaNumber, formatGhanaNumber, isGhanaMobile } from './countries/ghana';
+import { detectKenyaOperator, validateKenyaNumber, formatKenyaNumber, isKenyaMobile, isKenyaFixed } from './countries/kenya';
+import { detectSouthAfricaOperator, validateSouthAfricaNumber, formatSouthAfricaNumber, isSouthAfricaMobile, isSouthAfricaFixed } from './countries/south-africa';
+import { detectMoroccoOperator, validateMoroccoNumber, formatMoroccoNumber, isMoroccoMobile, isMoroccoFixed } from './countries/morocco';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
 // Imports des opérateurs
@@ -57,6 +73,9 @@ import { SENEGAL_OPERATORS } from './operators/senegal';
 import { IVORY_COAST_OPERATORS } from './operators/ivory-coast';
 import { NIGERIA_OPERATORS } from './operators/nigeria';
 import { GHANA_OPERATORS } from './operators/ghana';
+import { KENYA_OPERATORS } from './operators/kenya';
+import { SOUTH_AFRICA_OPERATORS } from './operators/south-africa';
+import { MOROCCO_OPERATORS } from './operators/morocco';
 
 // Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
@@ -87,6 +106,19 @@ const prefixes: Record<Operator, string[]> = {
   GHANA_AIRTELTIGO: [...GHANA_OPERATORS.GHANA_AIRTELTIGO],
   GHANA_GLO: [...GHANA_OPERATORS.GHANA_GLO],
   GHANA_EXPRESSO: [...GHANA_OPERATORS.GHANA_EXPRESSO],
+  KENYA_SAFARICOM: [...KENYA_OPERATORS.KENYA_SAFARICOM],
+  KENYA_AIRTEL: [...KENYA_OPERATORS.KENYA_AIRTEL],
+  KENYA_TELKOM: [...KENYA_OPERATORS.KENYA_TELKOM],
+  KENYA_FAIBA: [...KENYA_OPERATORS.KENYA_FAIBA],
+  KENYA_EQUITEL: [...KENYA_OPERATORS.KENYA_EQUITEL],
+  SOUTH_AFRICA_VODACOM: [...SOUTH_AFRICA_OPERATORS.SOUTH_AFRICA_VODACOM],
+  SOUTH_AFRICA_MTN: [...SOUTH_AFRICA_OPERATORS.SOUTH_AFRICA_MTN],
+  SOUTH_AFRICA_CELL_C: [...SOUTH_AFRICA_OPERATORS.SOUTH_AFRICA_CELL_C],
+  SOUTH_AFRICA_TELKOM: [...SOUTH_AFRICA_OPERATORS.SOUTH_AFRICA_TELKOM],
+  SOUTH_AFRICA_VIRGIN_MOBILE: [...SOUTH_AFRICA_OPERATORS.SOUTH_AFRICA_VIRGIN_MOBILE],
+  MOROCCO_MAROC_TELECOM: [...MOROCCO_OPERATORS.MOROCCO_MAROC_TELECOM],
+  MOROCCO_ORANGE_MAROC: [...MOROCCO_OPERATORS.MOROCCO_ORANGE_MAROC],
+  MOROCCO_INWI: [...MOROCCO_OPERATORS.MOROCCO_INWI],
   Unknown: [],
 };
 
@@ -115,6 +147,12 @@ export function detectOperator(phone: string): Operator {
       return detectNigeriaOperator(local) as Operator;
     case '233':
       return detectGhanaOperator(local) as Operator;
+    case '254':
+      return detectKenyaOperator(local) as Operator;
+    case '27':
+      return detectSouthAfricaOperator(local) as Operator;
+    case '212':
+      return detectMoroccoOperator(local) as Operator;
     default:
       return 'Unknown';
   }
@@ -142,6 +180,12 @@ export function isValidNumber(phone: string): boolean {
       return validateNigeriaNumber(clean);
     case '233':
       return validateGhanaNumber(clean);
+    case '254':
+      return validateKenyaNumber(clean);
+    case '27':
+      return validateSouthAfricaNumber(clean);
+    case '212':
+      return validateMoroccoNumber(clean);
     default:
       return false;
   }
@@ -203,6 +247,12 @@ export function formatPhoneNumber(phone: string): string {
       return formatNigeriaNumber(clean);
     case '233':
       return formatGhanaNumber(clean);
+    case '254':
+      return formatKenyaNumber(clean);
+    case '27':
+      return formatSouthAfricaNumber(clean);
+    case '212':
+      return formatMoroccoNumber(clean);
     default:
       return phone;
   }
@@ -228,6 +278,12 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isNigeriaMobile(local);
     case '233':
       return isGhanaMobile(local);
+    case '254':
+      return isKenyaMobile(local);
+    case '27':
+      return isSouthAfricaMobile(local);
+    case '212':
+      return isMoroccoMobile(local);
     default:
       return false;
   }
@@ -245,8 +301,14 @@ function isFixedNumber(local: string, countryCode: string | null): boolean {
   switch (countryCode) {
     case '237':
       return isCameroonFixed(local);
+    case '254':
+      return isKenyaFixed(local);
+    case '27':
+      return isSouthAfricaFixed(local);
+    case '212':
+      return isMoroccoFixed(local);
     default:
-      return false; // Seul le Cameroun a des numéros fixes pour l'instant
+      return false; // Seuls certains pays ont des numéros fixes pour l'instant
   }
 }
 

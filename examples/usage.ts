@@ -283,6 +283,25 @@ const operatorTypes: Record<Operator, string> = {
   GHANA_GLO: 'Mobile',
   GHANA_EXPRESSO: 'Mobile',
 
+  // Kenya
+  KENYA_SAFARICOM: 'Mobile',
+  KENYA_AIRTEL: 'Mobile',
+  KENYA_TELKOM: 'Mobile',
+  KENYA_FAIBA: 'Mobile',
+  KENYA_EQUITEL: 'Mobile',
+
+  // Afrique du Sud
+  SOUTH_AFRICA_VODACOM: 'Mobile',
+  SOUTH_AFRICA_MTN: 'Mobile',
+  SOUTH_AFRICA_CELL_C: 'Mobile',
+  SOUTH_AFRICA_TELKOM: 'Mobile',
+  SOUTH_AFRICA_VIRGIN_MOBILE: 'Mobile',
+
+  // Maroc
+  MOROCCO_MAROC_TELECOM: 'Mobile',
+  MOROCCO_ORANGE_MAROC: 'Mobile',
+  MOROCCO_INWI: 'Mobile',
+
   // Inconnu
   Unknown: 'Inconnu',
 };

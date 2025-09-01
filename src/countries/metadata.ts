@@ -62,6 +62,36 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     timezone: 'UTC+0',
     population: '32.8M',
     capital: 'Accra'
+  },
+  '254': {
+    name: 'Kenya',
+    nameLocal: 'Kenya',
+    flag: '🇰🇪',
+    language: ['en', 'sw'], // 🇰🇪 Kenya : Anglais + Swahili
+    currency: 'KES',
+    timezone: 'UTC+3',
+    population: '53.8M',
+    capital: 'Nairobi'
+  },
+  '27': {
+    name: 'South Africa',
+    nameLocal: 'Suid-Afrika',
+    flag: '🇿🇦',
+    language: ['en', 'af', 'zu'], // 🇿🇦 South Africa : Anglais + Afrikaans + Zulu
+    currency: 'ZAR',
+    timezone: 'UTC+2',
+    population: '60.4M',
+    capital: 'Pretoria'
+  },
+  '212': {
+    name: 'Morocco',
+    nameLocal: 'المغرب',
+    flag: '🇲🇦',
+    language: ['ar', 'fr'], // 🇲🇦 Morocco : Arabe + Français
+    currency: 'MAD',
+    timezone: 'UTC+0',
+    population: '37.1M',
+    capital: 'Rabat'
   }
 };
 

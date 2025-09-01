@@ -18,35 +18,14 @@ export const IVORY_COAST_CONFIG: CountryConfig = {
 };
 
 /**
- * Détecte l'opérateur ivoirien avec priorité pour éviter les conflits
+ * Détecte l'opérateur ivoirien
  */
 export function detectIvoryCoastOperator(localNumber: string): IvoryCoastOperator | 'Unknown' {
-  // Priorité 1: ORANGE (préfixe 27 - fixe)
-  if (localNumber.startsWith('27')) {
-    return 'IVORY_COAST_ORANGE';
+  for (const [operator, prefixes] of Object.entries(IVORY_COAST_OPERATORS)) {
+    if (prefixes.some(prefix => localNumber.startsWith(prefix))) {
+      return operator as IvoryCoastOperator;
+    }
   }
-  
-  // Priorité 2: ORANGE (préfixes spécifiques)
-  if (localNumber.startsWith('01') || localNumber.startsWith('49')) {
-    return 'IVORY_COAST_ORANGE';
-  }
-  
-  // Priorité 3: MTN (préfixes spécifiques)
-  if (localNumber.startsWith('08') || localNumber.startsWith('09') || 
-      localNumber.startsWith('50') || localNumber.startsWith('51') || localNumber.startsWith('52')) {
-    return 'IVORY_COAST_MTN';
-  }
-  
-  // Priorité 4: MOOV (préfixes spécifiques)
-  if (localNumber.startsWith('06') || localNumber.startsWith('55') || localNumber.startsWith('56')) {
-    return 'IVORY_COAST_MOOV';
-  }
-  
-  // Priorité 5: Préfixes partagés (05, 07, 25) - priorité à ORANGE
-  if (localNumber.startsWith('05') || localNumber.startsWith('07') || localNumber.startsWith('25')) {
-    return 'IVORY_COAST_ORANGE';
-  }
-  
   return 'Unknown';
 }
 
