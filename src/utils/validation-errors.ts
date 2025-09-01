@@ -48,7 +48,7 @@ export function validatePhoneNumber(phone: string): { isValid: boolean; errors: 
   // Vérification du numéro vide
   if (!phone || phone.trim() === '') {
     errors.push(createValidationError(
-      'EMPTY_PHONE',
+      'EMPTY_PHONE_NUMBER',
       VALIDATION_ERRORS.EMPTY_PHONE,
       'phone',
       phone
@@ -56,13 +56,31 @@ export function validatePhoneNumber(phone: string): { isValid: boolean; errors: 
     return { isValid: false, errors };
   }
 
+  // Import des fonctions utilitaires
+  const { cleanPhoneNumber, detectCountryCode, extractLocalNumber } = require('./validation');
+  
   // Nettoyage du numéro
-  const clean = phone.replace(/\D/g, '');
+  const clean = cleanPhoneNumber(phone);
+  const countryCode = detectCountryCode(clean);
+  
+  // Vérification du code pays
+  if (!countryCode) {
+    errors.push(createValidationError(
+      'INVALID_COUNTRY_CODE',
+      VALIDATION_ERRORS.INVALID_COUNTRY_CODE,
+      'countryCode',
+      phone,
+      'Utilisez le format +237XXXXXXXXX pour le Cameroun'
+    ));
+    return { isValid: false, errors };
+  }
+
+  const localNumber = extractLocalNumber(clean, countryCode);
   
   // Vérification de la longueur minimale
-  if (clean.length < 8) {
+  if (localNumber.length < 8) {
     errors.push(createValidationError(
-      'TOO_SHORT',
+      'INVALID_LENGTH',
       VALIDATION_ERRORS.TOO_SHORT,
       'phone',
       phone,
@@ -70,62 +88,51 @@ export function validatePhoneNumber(phone: string): { isValid: boolean; errors: 
     ));
   }
 
-  // Vérification du code pays
-  const countryCode = clean.substring(0, 3);
-  const supportedCodes = ['237', '221', '225', '234', '233'];
-  
-  if (!supportedCodes.includes(countryCode)) {
-    errors.push(createValidationError(
-      'INVALID_COUNTRY_CODE',
-      VALIDATION_ERRORS.INVALID_COUNTRY_CODE,
-      'countryCode',
-      countryCode,
-      `Codes supportés: ${supportedCodes.map(c => '+' + c).join(', ')}`
-    ));
-  }
-
-  // Vérification de la longueur selon le pays
-  if (countryCode === '237' && clean.length !== 12) {
+  // Vérification de la longueur selon le pays (basée sur le numéro local)
+  if (countryCode === '237' && localNumber.length !== 9) {
     errors.push(createValidationError(
       'INVALID_LENGTH',
-      'Numéro camerounais doit avoir 12 chiffres (9 chiffres locaux)',
+      'Numéro camerounais doit avoir 9 chiffres locaux',
       'length',
-      clean.length.toString(),
+      localNumber.length.toString(),
       'Format attendu: +237XXXXXXXXX'
     ));
-  } else if (countryCode === '221' && clean.length !== 12) {
+  } else if (countryCode === '221' && localNumber.length !== 9) {
     errors.push(createValidationError(
       'INVALID_LENGTH',
-      'Numéro sénégalais doit avoir 12 chiffres (9 chiffres locaux)',
+      'Numéro sénégalais doit avoir 9 chiffres locaux',
       'length',
-      clean.length.toString(),
+      localNumber.length.toString(),
       'Format attendu: +221XXXXXXXXX'
     ));
-  } else if (countryCode === '225' && clean.length !== 11) {
+  } else if (countryCode === '225' && localNumber.length !== 8) {
     errors.push(createValidationError(
       'INVALID_LENGTH',
-      'Numéro ivoirien doit avoir 11 chiffres (8 chiffres locaux)',
+      'Numéro ivoirien doit avoir 8 chiffres locaux',
       'length',
-      clean.length.toString(),
+      localNumber.length.toString(),
       'Format attendu: +225XXXXXXXX'
     ));
-  } else if (countryCode === '234' && clean.length !== 13) {
+  } else if (countryCode === '234' && localNumber.length !== 10) {
     errors.push(createValidationError(
       'INVALID_LENGTH',
-      'Numéro nigérian doit avoir 13 chiffres (10 chiffres locaux)',
+      'Numéro nigérian doit avoir 10 chiffres locaux',
       'length',
-      clean.length.toString(),
+      localNumber.length.toString(),
       'Format attendu: +234XXXXXXXXXX'
     ));
-  } else if (countryCode === '233' && clean.length !== 12) {
+  } else if (countryCode === '233' && localNumber.length !== 9) {
     errors.push(createValidationError(
       'INVALID_LENGTH',
-      'Numéro ghanéen doit avoir 12 chiffres (9 chiffres locaux)',
+      'Numéro ghanéen doit avoir 9 chiffres locaux',
       'length',
-      clean.length.toString(),
+      localNumber.length.toString(),
       'Format attendu: +233XXXXXXXXX'
     ));
   }
+
+  // Pour l'instant, on évite la validation des préfixes pour éviter la dépendance circulaire
+  // Cette validation sera faite par isValidNumber() dans l'index principal
 
   return {
     isValid: errors.length === 0,

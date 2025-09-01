@@ -33,19 +33,32 @@ export function detectIvoryCoastOperator(localNumber: string): IvoryCoastOperato
  * Valide un numéro ivoirien
  */
 export function validateIvoryCoastNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('225')) return false;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
-  return IVORY_COAST_CONFIG.validation.mobile.test(local);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '225') return false;
+  
+  const local = extractLocalNumber(cleanNumber, '225');
+  
+  // Vérifier le format ET les préfixes d'opérateur
+  const formatValid = IVORY_COAST_CONFIG.validation.mobile.test(local);
+  if (!formatValid) return false;
+  
+  // Vérifier si le préfixe correspond à un opérateur connu
+  const operator = detectIvoryCoastOperator(local);
+  return operator !== 'Unknown';
 }
 
 /**
  * Formate un numéro ivoirien
  */
 export function formatIvoryCoastNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('225')) return cleanNumber;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '225') return cleanNumber;
+  
+  const local = extractLocalNumber(cleanNumber, '225');
   if (local.length === 8) {
     return `+225 ${local.slice(0, 2)} ${local.slice(2, 4)} ${local.slice(4, 6)} ${local.slice(6)}`;
   }

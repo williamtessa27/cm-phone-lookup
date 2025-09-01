@@ -33,21 +33,34 @@ export function detectSenegalOperator(localNumber: string): SenegalOperator | 'U
  * Valide un numéro sénégalais
  */
 export function validateSenegalNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('221')) return false;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
-  return SENEGAL_CONFIG.validation.mobile.test(local);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '221') return false;
+  
+  const local = extractLocalNumber(cleanNumber, '221');
+  
+  // Vérifier le format ET les préfixes d'opérateur
+  const formatValid = SENEGAL_CONFIG.validation.mobile.test(local);
+  if (!formatValid) return false;
+  
+  // Vérifier si le préfixe correspond à un opérateur connu
+  const operator = detectSenegalOperator(local);
+  return operator !== 'Unknown';
 }
 
 /**
  * Formate un numéro sénégalais
  */
 export function formatSenegalNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('221')) return cleanNumber;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '221') return cleanNumber;
+  
+  const local = extractLocalNumber(cleanNumber, '221');
   if (local.length === 9) {
-    return `+221 ${local.slice(0, 2)} ${local.slice(2, 5)} ${local.slice(5, 8)} ${local.slice(8)}`;
+    return `+221 ${local.slice(0, 2)} ${local.slice(2, 5)} ${local.slice(5, 7)} ${local.slice(7)}`;
   }
   return cleanNumber;
 }

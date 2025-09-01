@@ -34,9 +34,12 @@ export function detectCameroonOperator(localNumber: string): CameroonOperator | 
  * Valide un numéro camerounais
  */
 export function validateCameroonNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('237')) return false;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '237') return false;
+  
+  const local = extractLocalNumber(cleanNumber, '237');
   return CAMEROON_CONFIG.validation.mobile.test(local) || 
          (CAMEROON_CONFIG.validation.fixed && CAMEROON_CONFIG.validation.fixed.test(local)) || 
          false;
@@ -46,9 +49,12 @@ export function validateCameroonNumber(cleanNumber: string): boolean {
  * Formate un numéro camerounais
  */
 export function formatCameroonNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('237')) return cleanNumber;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '237') return cleanNumber;
+  
+  const local = extractLocalNumber(cleanNumber, '237');
   if (local.length === 9) {
     return `+237 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
   }

@@ -1,10 +1,13 @@
 # 📱 @williamtessa27/cm-phone-lookup
 
-[![npm version](https://img.shields.io/npm/v/@williamtessa27/cm-phone-lookup.svg)](https://www.npmjs.com/package/@williamtessa27/cm-phone-lookup)
-[![npm downloads](https://img.shields.io/npm/dm/@williamtessa27/cm-phone-lookup.svg)](https://www.npmjs.com/package/@williamtessa27/cm-phone-lookup)
-[![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg)](./LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-![npm](https://img.shields.io/npm/dw/@williamtessa27/cm-phone-lookup)
+[![npm version](https://img.shields.io/npm/v/@williamtessa27/cm-phone-lookup.svg?style=flat-square)](https://www.npmjs.com/package/@williamtessa27/cm-phone-lookup)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/williamtessa27/cm-phone-lookup/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/williamtessa27/cm-phone-lookup/actions/workflows/ci.yml)
+[![codecov](https://img.shields.io/codecov/c/github/williamtessa27/cm-phone-lookup?style=flat-square)](https://codecov.io/gh/williamtessa27/cm-phone-lookup)
+[![npm downloads](https://img.shields.io/npm/dm/@williamtessa27/cm-phone-lookup.svg?style=flat-square)](https://www.npmjs.com/package/@williamtessa27/cm-phone-lookup)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg?style=flat-square)](./LICENSE)
+
+
 
 
 Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **8 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦 avec plus de **40 opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, etc.) à partir d'un numéro de téléphone.  

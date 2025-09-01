@@ -3,20 +3,16 @@
 
 export const MOROCCO_OPERATORS = {
   MOROCCO_MAROC_TELECOM: [
-    // Maroc Telecom - Lignes fixes et mobiles
-    // Les numéros commencent par différents codes selon les zones
-    // Format: 9 chiffres au total
-    '5', '6', '7', '8', '9' // Codes principaux pour mobile (sans le 0 initial)
+    // Maroc Telecom - Principaux préfixes
+    '61', '66', '67', '68', '69' // Préfixes spécifiques Maroc Telecom
   ],
   MOROCCO_ORANGE_MAROC: [
-    // Orange Maroc - NGN (Next Generation Network)
-    // Codes commençant par O dans les plans nationaux
-    '5', '6', '7', '8', '9' // Codes principaux pour mobile (sans le 0 initial)
+    // Orange Maroc - Préfixes spécifiques
+    '62', '64', '65' // Préfixes spécifiques Orange
   ],
   MOROCCO_INWI: [
-    // Inwi - Fixe GSM
-    // Codes commençant par X ou W selon les sources
-    '5', '6', '7', '8', '9' // Codes principaux pour mobile (sans le 0 initial)
+    // Inwi - Préfixes spécifiques
+    '60', '63', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79' // Préfixes Inwi
   ],
 } as const;
 

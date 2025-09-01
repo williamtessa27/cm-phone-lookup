@@ -34,21 +34,34 @@ export function detectKenyaOperator(localNumber: string): KenyaOperator | 'Unkno
  * Valide un numéro kenyan
  */
 export function validateKenyaNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('254')) return false;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
-  return KENYA_CONFIG.validation.mobile.test(local) || 
-         (KENYA_CONFIG.validation.fixed && KENYA_CONFIG.validation.fixed.test(local)) || 
-         false;
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '254') return false;
+  
+  const local = extractLocalNumber(cleanNumber, '254');
+  
+  // Vérifier le format ET les préfixes d'opérateur
+  const formatValid = KENYA_CONFIG.validation.mobile.test(local) || 
+                     (KENYA_CONFIG.validation.fixed && KENYA_CONFIG.validation.fixed.test(local)) || 
+                     false;
+  if (!formatValid) return false;
+  
+  // Vérifier si le préfixe correspond à un opérateur connu
+  const operator = detectKenyaOperator(local);
+  return operator !== 'Unknown';
 }
 
 /**
  * Formate un numéro kenyan
  */
 export function formatKenyaNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('254')) return cleanNumber;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '254') return cleanNumber;
+  
+  const local = extractLocalNumber(cleanNumber, '254');
   if (local.length === 9) {
     return `+254 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
   }

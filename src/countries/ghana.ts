@@ -33,19 +33,32 @@ export function detectGhanaOperator(localNumber: string): GhanaOperator | 'Unkno
  * Valide un numéro ghanéen
  */
 export function validateGhanaNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('233')) return false;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
-  return GHANA_CONFIG.validation.mobile.test(local);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '233') return false;
+  
+  const local = extractLocalNumber(cleanNumber, '233');
+  
+  // Vérifier le format ET les préfixes d'opérateur
+  const formatValid = GHANA_CONFIG.validation.mobile.test(local);
+  if (!formatValid) return false;
+  
+  // Vérifier si le préfixe correspond à un opérateur connu
+  const operator = detectGhanaOperator(local);
+  return operator !== 'Unknown';
 }
 
 /**
  * Formate un numéro ghanéen
  */
 export function formatGhanaNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('233')) return cleanNumber;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '233') return cleanNumber;
+  
+  const local = extractLocalNumber(cleanNumber, '233');
   if (local.length === 9) {
     return `+233 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
   }

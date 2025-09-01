@@ -33,21 +33,34 @@ export function detectNigeriaOperator(localNumber: string): NigeriaOperator | 'U
  * Valide un numéro nigérian
  */
 export function validateNigeriaNumber(cleanNumber: string): boolean {
-  if (!cleanNumber.startsWith('234')) return false;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
-  return NIGERIA_CONFIG.validation.mobile.test(local);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '234') return false;
+  
+  const local = extractLocalNumber(cleanNumber, '234');
+  
+  // Vérifier le format ET les préfixes d'opérateur
+  const formatValid = NIGERIA_CONFIG.validation.mobile.test(local);
+  if (!formatValid) return false;
+  
+  // Vérifier si le préfixe correspond à un opérateur connu
+  const operator = detectNigeriaOperator(local);
+  return operator !== 'Unknown';
 }
 
 /**
  * Formate un numéro nigérian
  */
 export function formatNigeriaNumber(cleanNumber: string): string {
-  if (!cleanNumber.startsWith('234')) return cleanNumber;
+  const { detectCountryCode, extractLocalNumber } = require('../utils/validation');
   
-  const local = cleanNumber.slice(3);
+  const countryCode = detectCountryCode(cleanNumber);
+  if (countryCode !== '234') return cleanNumber;
+  
+  const local = extractLocalNumber(cleanNumber, '234');
   if (local.length === 10) {
-    return `+234 ${local.slice(0, 4)} ${local.slice(4, 7)} ${local.slice(7)}`;
+    return `+234 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`;
   }
   return cleanNumber;
 }

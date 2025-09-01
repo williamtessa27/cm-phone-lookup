@@ -7,21 +7,39 @@ import { CountryCode } from '../countries/types';
  * Nettoie un numéro de téléphone
  */
 export function cleanPhoneNumber(phone: string): string {
-  return phone.replace(/\D/g, '');
+  if (!phone) return '';
+  
+  // Supprimer tous les espaces, tirets, parenthèses, points
+  let cleaned = phone.replace(/[\s\-\(\)\.]/g, '');
+  
+  // Préserver le + en début s'il existe
+  if (cleaned.startsWith('+')) {
+    return '+' + cleaned.slice(1).replace(/\D/g, '');
+  }
+  
+  // Sinon, supprimer tous les caractères non-numériques
+  return cleaned.replace(/\D/g, '');
 }
 
 /**
  * Détecte le code pays d'un numéro
  */
 export function detectCountryCode(cleanNumber: string): CountryCode | null {
-  if (cleanNumber.startsWith('237')) return '237';
-  if (cleanNumber.startsWith('221')) return '221';
-  if (cleanNumber.startsWith('225')) return '225';
-  if (cleanNumber.startsWith('234')) return '234';
-  if (cleanNumber.startsWith('233')) return '233';
-  if (cleanNumber.startsWith('254')) return '254';
-  if (cleanNumber.startsWith('27')) return '27';
-  if (cleanNumber.startsWith('212')) return '212';
+  if (!cleanNumber) return null;
+  
+  // Supprimer le + s'il existe pour l'analyse
+  const number = cleanNumber.startsWith('+') ? cleanNumber.slice(1) : cleanNumber;
+  
+  // Codes pays supportés (ordre important pour éviter les conflits)
+  if (number.startsWith('237')) return '237'; // Cameroun
+  if (number.startsWith('221')) return '221'; // Sénégal  
+  if (number.startsWith('225')) return '225'; // Côte d'Ivoire
+  if (number.startsWith('234')) return '234'; // Nigeria
+  if (number.startsWith('233')) return '233'; // Ghana
+  if (number.startsWith('254')) return '254'; // Kenya
+  if (number.startsWith('212')) return '212'; // Maroc
+  if (number.startsWith('27')) return '27';   // Afrique du Sud (à la fin car plus court)
+  
   return null;
 }
 
@@ -29,19 +47,30 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
  * Extrait le numéro local d'un numéro complet
  */
 export function extractLocalNumber(cleanNumber: string, countryCode: CountryCode): string {
+  if (!cleanNumber || !countryCode) return cleanNumber;
+  
+  // Supprimer le + s'il existe
+  let number = cleanNumber.startsWith('+') ? cleanNumber.slice(1) : cleanNumber;
+  
+  // Vérifier si le numéro commence par le code pays
+  if (!number.startsWith(countryCode)) {
+    return number; // Retourner le numéro sans + si pas de code pays trouvé
+  }
+  
+  // Extraire le numéro local selon la longueur du code pays
   switch (countryCode) {
-    case '27': // Afrique du Sud
-      return cleanNumber.slice(2);
-    case '237': // Cameroun
-    case '221': // Sénégal
-    case '225': // Côte d'Ivoire
-    case '234': // Nigeria
-    case '233': // Ghana
-    case '254': // Kenya
-    case '212': // Maroc
-      return cleanNumber.slice(3);
+    case '27': // Afrique du Sud (2 chiffres)
+      return number.slice(2);
+    case '237': // Cameroun (3 chiffres)
+    case '221': // Sénégal (3 chiffres)
+    case '225': // Côte d'Ivoire (3 chiffres)
+    case '234': // Nigeria (3 chiffres)
+    case '233': // Ghana (3 chiffres)
+    case '254': // Kenya (3 chiffres)
+    case '212': // Maroc (3 chiffres)
+      return number.slice(3);
     default:
-      return cleanNumber.slice(3);
+      return number.slice(3);
   }
 }
 
