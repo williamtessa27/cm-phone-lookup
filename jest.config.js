@@ -3,10 +3,14 @@ module.exports = {
     testEnvironment: 'node',
     collectCoverage: true,
     coverageDirectory: 'coverage',
-    coverageReporters: ['text', 'lcov', 'html'],
+    coverageReporters: ['text', 'lcov'],
     
     // Fix pour compatibilité Node.js versions multiples
     maxWorkers: process.env.CI ? 1 : '50%',
+    
+    // Configuration simplifiée pour éviter les erreurs de modules
+    setupFilesAfterEnv: [],
+    clearMocks: true,
     
     // Configuration des fichiers de test
     testMatch: [
