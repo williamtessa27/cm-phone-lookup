@@ -2,7 +2,7 @@
 // Logique spécifique au Kenya
 
 import { KENYA_OPERATORS, KenyaOperator } from '../operators/kenya';
-import { CountryConfig, PhoneInfo } from './types';
+import { CountryConfig } from './types';
 
 export const KENYA_CONFIG: CountryConfig = {
   countryCode: '254',

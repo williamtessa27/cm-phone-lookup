@@ -2,7 +2,7 @@
 // Logique spécifique au Cameroun
 
 import { CAMEROON_OPERATORS, CameroonOperator } from '../operators/cameroon';
-import { CountryConfig, PhoneInfo } from './types';
+import { CountryConfig } from './types';
 
 export const CAMEROON_CONFIG: CountryConfig = {
   countryCode: '237',

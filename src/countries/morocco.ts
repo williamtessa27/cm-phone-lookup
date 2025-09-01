@@ -2,7 +2,7 @@
 // Logique spécifique au Maroc
 
 import { MOROCCO_OPERATORS, MoroccoOperator } from '../operators/morocco';
-import { CountryConfig, PhoneInfo } from './types';
+import { CountryConfig } from './types';
 
 export const MOROCCO_CONFIG: CountryConfig = {
   countryCode: '212',

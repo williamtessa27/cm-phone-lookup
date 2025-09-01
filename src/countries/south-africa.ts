@@ -2,7 +2,7 @@
 // Logique spécifique à l'Afrique du Sud
 
 import { SOUTH_AFRICA_OPERATORS, SouthAfricaOperator } from '../operators/south-africa';
-import { CountryConfig, PhoneInfo } from './types';
+import { CountryConfig } from './types';
 
 export const SOUTH_AFRICA_CONFIG: CountryConfig = {
   countryCode: '27',

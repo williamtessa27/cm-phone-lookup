@@ -10,7 +10,7 @@ export function cleanPhoneNumber(phone: string): string {
   if (!phone) return '';
   
   // Supprimer tous les espaces, tirets, parenthèses, points
-  let cleaned = phone.replace(/[\s\-\(\)\.]/g, '');
+  const cleaned = phone.replace(/[\s\-().]/g, '');
   
   // Préserver le + en début s'il existe
   if (cleaned.startsWith('+')) {
@@ -50,7 +50,7 @@ export function extractLocalNumber(cleanNumber: string, countryCode: CountryCode
   if (!cleanNumber || !countryCode) return cleanNumber;
   
   // Supprimer le + s'il existe
-  let number = cleanNumber.startsWith('+') ? cleanNumber.slice(1) : cleanNumber;
+  const number = cleanNumber.startsWith('+') ? cleanNumber.slice(1) : cleanNumber;
   
   // Vérifier si le numéro commence par le code pays
   if (!number.startsWith(countryCode)) {

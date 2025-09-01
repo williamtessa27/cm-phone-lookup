@@ -4,20 +4,27 @@ module.exports = {
     'eslint:recommended',
   ],
   plugins: ['@typescript-eslint'],
-  env: {
-    node: true,
-    es2020: true,
-  },
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
   },
-  rules: {
-    '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-explicit-any': 'warn',
-    'prefer-const': 'error',
-    'no-var': 'error',
+  env: {
+    node: true,
+    es6: true,
+    jest: true, // 👈 IMPORTANT : Active l'environnement Jest
   },
-  ignorePatterns: ['dist/', 'node_modules/'],
+  rules: {
+    'no-unused-vars': 'off', // Désactivé pour TypeScript
+    'prefer-const': 'error',
+    'no-useless-escape': 'error',
+  },
+  overrides: [
+    {
+      // Configuration spécifique pour les fichiers de test
+      files: ['**/__tests__/**/*.ts', '**/*.test.ts', '**/*.spec.ts'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
 };
