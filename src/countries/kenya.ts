@@ -8,7 +8,7 @@ export const KENYA_CONFIG: CountryConfig = {
   countryCode: '254',
   operators: KENYA_OPERATORS,
   validation: {
-    mobile: /^(0[17][0-9]|01[01][0-9])[0-9]{6}$/,
+    mobile: /^(0[17][0-9][0-9]|01[01][0-9])[0-9]{6}$/,
     fixed: /^(0[24][0-9])[0-9]{6}$/,
     totalLength: 9,
   },
@@ -41,13 +41,16 @@ export function validateKenyaNumber(cleanNumber: string): boolean {
   
   const local = extractLocalNumber(cleanNumber, '254');
   
+  // Ajouter le 0 initial pour la validation regex (format kenyan attendu)
+  const localWithZero = '0' + local;
+  
   // Vérifier le format ET les préfixes d'opérateur
-  const formatValid = KENYA_CONFIG.validation.mobile.test(local) || 
-                     (KENYA_CONFIG.validation.fixed && KENYA_CONFIG.validation.fixed.test(local)) || 
+  const formatValid = KENYA_CONFIG.validation.mobile.test(localWithZero) || 
+                     (KENYA_CONFIG.validation.fixed && KENYA_CONFIG.validation.fixed.test(localWithZero)) || 
                      false;
   if (!formatValid) return false;
   
-  // Vérifier si le préfixe correspond à un opérateur connu
+  // Vérifier si le préfixe correspond à un opérateur connu (sans le 0)
   const operator = detectKenyaOperator(local);
   return operator !== 'Unknown';
 }
