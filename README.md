@@ -6,6 +6,10 @@
 [![npm downloads](https://img.shields.io/npm/dm/@williamtessa27/cm-phone-lookup.svg?style=flat-square)](https://www.npmjs.com/package/@williamtessa27/cm-phone-lookup)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![license](https://img.shields.io/npm/l/@williamtessa27/cm-phone-lookup.svg?style=flat-square)](./LICENSE)
+![Made in Africa](https://img.shields.io/badge/Made%20in-Africa-green?style=flat-square&logo=github)
+[![Coverage](https://codecov.io/gh/williamtessa27/cm-phone-lookup/branch/main/graph/badge.svg?token=YOUR_TOKEN)](https://codecov.io/gh/williamtessa27/cm-phone-lookup)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/williamtessa27/cm-phone-lookup/issues)
+
 
 
 
