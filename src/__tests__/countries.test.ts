@@ -101,6 +101,20 @@ describe('Métadonnées des pays', () => {
       expect(metadata?.capital).toBe('Rabat');
     });
 
+    test('retourne les métadonnées de l\'Éthiopie', () => {
+      const metadata = getCountryMetadata('251');
+      
+      expect(metadata).toBeDefined();
+      expect(metadata?.name).toBe('Ethiopia');
+      expect(metadata?.nameLocal).toBe('ኢትዮጵያ');
+      expect(metadata?.flag).toBe('🇪🇹');
+      expect(metadata?.language).toEqual(['am', 'en']); // Amharique + Anglais
+      expect(metadata?.currency).toBe('ETB');
+      expect(metadata?.timezone).toBe('UTC+3');
+      expect(metadata?.capital).toBe('Addis Ababa');
+      expect(metadata?.population).toBe('120.3M');
+    });
+
     test('retourne null pour un code pays non supporté', () => {
       const metadata = getCountryMetadata('999');
       expect(metadata).toBeNull();
@@ -125,7 +139,8 @@ describe('Métadonnées des pays', () => {
       expect(countries).toContain('254'); // Kenya
       expect(countries).toContain('27');  // Afrique du Sud
       expect(countries).toContain('212'); // Maroc
-      expect(countries).toHaveLength(8);
+      expect(countries).toContain('251'); // Éthiopie
+      expect(countries).toHaveLength(9);
     });
 
     test('retourne les codes dans un ordre cohérent', () => {
@@ -165,7 +180,7 @@ describe('Métadonnées des pays', () => {
         return Array.isArray(metadata?.language);
       });
       
-      expect(bilingualCountries).toHaveLength(4); // Cameroun, Kenya, Afrique du Sud, Maroc
+      expect(bilingualCountries).toHaveLength(5); // Cameroun, Kenya, Afrique du Sud, Maroc, Éthiopie
       expect(bilingualCountries).toContain('237'); // Cameroun
       
       const cameroon = getCountryMetadata('237');
@@ -198,7 +213,7 @@ describe('Métadonnées des pays', () => {
       const englishCountries = languages.filter(lang => 
         lang === 'en' || (Array.isArray(lang) && lang.includes('en'))
       ).length;
-      expect(englishCountries).toBe(5); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud
+      expect(englishCountries).toBe(6); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie
       
       // Arabe : Maroc
       const arabicCountries = languages.filter(lang => 
@@ -226,7 +241,7 @@ describe('Métadonnées des pays', () => {
         
         // Vérifications de format
         expect(metadata?.name).toMatch(/^[A-Za-z\s]+$/);
-        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦$/); // Drapeaux des pays supportés
+        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹$/); // Drapeaux des pays supportés
         expect(metadata?.currency).toMatch(/^[A-Z]{3}$/); // Code ISO 4217
       });
     });

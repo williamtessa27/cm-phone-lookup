@@ -111,9 +111,9 @@ describe('PhoneLookup - Classe avec API unifiée', () => {
     test('getStats() retourne les statistiques globales', () => {
       const stats = PhoneLookup.getStats();
       
-      expect(stats.totalCountries).toBe(8);
+      expect(stats.totalCountries).toBe(9);
       expect(stats.totalOperators).toBeGreaterThan(30);
-      expect(stats.countries).toHaveLength(8);
+      expect(stats.countries).toHaveLength(9);
       
       const cameroon = stats.countries.find(c => c.code === '+237');
       expect(cameroon).toBeDefined();
@@ -242,6 +242,69 @@ describe('PhoneLookup - Classe avec API unifiée', () => {
         expect(analysis.country).toBeDefined();
         expect(analysis.operator).not.toBe('Unknown');
         expect(analysis.formattedNumber).toContain('+');
+      });
+    });
+  });
+
+  describe('Support de l\'Éthiopie', () => {
+    test('détecte Ethio Telecom correctement', () => {
+      const ethioNumbers = [
+        '+251911234567',   // Ethio Telecom 91x
+        '+251921234567',   // Ethio Telecom 92x
+        '+251931234567',   // Ethio Telecom 93x
+        '+251991234567'    // Ethio Telecom 99x
+      ];
+
+      ethioNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('ETHIOPIA_ETHIO_TELECOM');
+        expect(lookup.getFormatted()).toMatch(/\+251 \d{2} \d{3} \d{4}/);
+      });
+    });
+
+    test('détecte Safaricom Ethiopia correctement', () => {
+      const safaricomNumbers = [
+        '+251701234567',   // Safaricom 70x
+        '+251711234567',   // Safaricom 71x
+        '+251791234567'    // Safaricom 79x
+      ];
+
+      safaricomNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('ETHIOPIA_SAFARICOM');
+        expect(lookup.getFormatted()).toMatch(/\+251 \d{2} \d{3} \d{4}/);
+      });
+    });
+
+    test('métadonnées éthiopiennes complètes', () => {
+      const lookup = new PhoneLookup('+251911234567');
+      const info = lookup.analyze();
+
+      expect(info.country?.name).toBe('Ethiopia');
+      expect(info.country?.nameLocal).toBe('ኢትዮጵያ');
+      expect(info.country?.flag).toBe('🇪🇹');
+      expect(info.country?.currency).toBe('ETB');
+      expect(info.country?.timezone).toBe('UTC+3');
+      expect(info.country?.capital).toBe('Addis Ababa');
+      expect(info.country?.language).toEqual(['am', 'en']);
+      expect(info.isMobile).toBe(true);
+      expect(info.isFixed).toBe(false);
+    });
+
+    test('rejette les numéros éthiopiens invalides', () => {
+      const invalidNumbers = [
+        '+25112345678',   // Trop court (8 chiffres au lieu de 9)
+        '+251123456789',  // Préfixe invalide (12)
+        '+251801234567',  // Préfixe non attribué (80)
+        '+251601234567'   // Préfixe non attribué (60)
+      ];
+
+      invalidNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(false);
+        expect(lookup.getOperator()).toBe('Unknown');
       });
     });
   });

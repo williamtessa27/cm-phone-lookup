@@ -92,6 +92,16 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     timezone: 'UTC+0',
     population: '37.1M',
     capital: 'Rabat'
+  },
+  '251': {
+    name: 'Ethiopia',
+    nameLocal: 'ኢትዮጵያ',
+    flag: '🇪🇹',
+    language: ['am', 'en'], // 🇪🇹 Ethiopia : Amharique + Anglais
+    currency: 'ETB',
+    timezone: 'UTC+3',
+    population: '120.3M',
+    capital: 'Addis Ababa'
   }
 };
 

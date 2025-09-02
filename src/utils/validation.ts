@@ -37,6 +37,7 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   if (number.startsWith('234')) return '234'; // Nigeria
   if (number.startsWith('233')) return '233'; // Ghana
   if (number.startsWith('254')) return '254'; // Kenya
+  if (number.startsWith('251')) return '251'; // Éthiopie
   if (number.startsWith('212')) return '212'; // Maroc
   if (number.startsWith('27')) return '27';   // Afrique du Sud (à la fin car plus court)
   
@@ -67,6 +68,7 @@ export function extractLocalNumber(cleanNumber: string, countryCode: CountryCode
     case '234': // Nigeria (3 chiffres)
     case '233': // Ghana (3 chiffres)
     case '254': // Kenya (3 chiffres)
+    case '251': // Éthiopie (3 chiffres)
     case '212': // Maroc (3 chiffres)
       return number.slice(3);
     default:

@@ -43,6 +43,8 @@ export type Operator =
   | 'MOROCCO_MAROC_TELECOM'
   | 'MOROCCO_ORANGE_MAROC'
   | 'MOROCCO_INWI'
+  | 'ETHIOPIA_ETHIO_TELECOM'
+  | 'ETHIOPIA_SAFARICOM'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -65,6 +67,7 @@ import { detectGhanaOperator, validateGhanaNumber, formatGhanaNumber, isGhanaMob
 import { detectKenyaOperator, validateKenyaNumber, formatKenyaNumber, isKenyaMobile, isKenyaFixed } from './countries/kenya';
 import { detectSouthAfricaOperator, validateSouthAfricaNumber, formatSouthAfricaNumber, isSouthAfricaMobile, isSouthAfricaFixed } from './countries/south-africa';
 import { detectMoroccoOperator, validateMoroccoNumber, formatMoroccoNumber, isMoroccoMobile, isMoroccoFixed } from './countries/morocco';
+import { detectEthiopiaOperator, validateEthiopiaNumber, formatEthiopiaNumber, isEthiopiaMobile, isEthiopiaFixed } from './countries/ethiopia';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
 // Imports des opérateurs
@@ -76,6 +79,7 @@ import { GHANA_OPERATORS } from './operators/ghana';
 import { KENYA_OPERATORS } from './operators/kenya';
 import { SOUTH_AFRICA_OPERATORS } from './operators/south-africa';
 import { MOROCCO_OPERATORS } from './operators/morocco';
+import { ETHIOPIA_OPERATORS } from './operators/ethiopia';
 
 // Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
@@ -119,6 +123,8 @@ const prefixes: Record<Operator, string[]> = {
   MOROCCO_MAROC_TELECOM: [...MOROCCO_OPERATORS.MOROCCO_MAROC_TELECOM],
   MOROCCO_ORANGE_MAROC: [...MOROCCO_OPERATORS.MOROCCO_ORANGE_MAROC],
   MOROCCO_INWI: [...MOROCCO_OPERATORS.MOROCCO_INWI],
+  ETHIOPIA_ETHIO_TELECOM: [...ETHIOPIA_OPERATORS.ETHIOPIA_ETHIO_TELECOM],
+  ETHIOPIA_SAFARICOM: [...ETHIOPIA_OPERATORS.ETHIOPIA_SAFARICOM],
   Unknown: [],
 };
 
@@ -153,6 +159,8 @@ export function detectOperator(phone: string): Operator {
       return detectSouthAfricaOperator(local) as Operator;
     case '212':
       return detectMoroccoOperator(local) as Operator;
+    case '251':
+      return detectEthiopiaOperator(local) as Operator;
     default:
       return 'Unknown';
   }
@@ -186,6 +194,8 @@ export function isValidNumber(phone: string): boolean {
       return validateSouthAfricaNumber(clean);
     case '212':
       return validateMoroccoNumber(clean);
+    case '251':
+      return validateEthiopiaNumber(clean);
     default:
       return false;
   }
@@ -253,6 +263,8 @@ export function formatPhoneNumber(phone: string): string {
       return formatSouthAfricaNumber(clean);
     case '212':
       return formatMoroccoNumber(clean);
+    case '251':
+      return formatEthiopiaNumber(clean);
     default:
       return phone;
   }
@@ -284,6 +296,8 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isSouthAfricaMobile(local);
     case '212':
       return isMoroccoMobile(local);
+    case '251':
+      return isEthiopiaMobile(local);
     default:
       return false;
   }
@@ -307,6 +321,8 @@ function isFixedNumber(local: string, countryCode: string | null): boolean {
       return isSouthAfricaFixed(local);
     case '212':
       return isMoroccoFixed(local);
+    case '251':
+      return isEthiopiaFixed(local);
     default:
       return false; // Seuls certains pays ont des numéros fixes pour l'instant
   }

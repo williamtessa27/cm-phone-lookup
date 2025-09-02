@@ -8,12 +8,16 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### ✨ Ajouté
+- **Support Éthiopie** 🇪🇹 : Ethio Telecom (opérateur d'État historique) et Safaricom Ethiopia (nouvel entrant 2021-2022)
+- **Validation éthiopienne** : Support du format national 9 chiffres (+251 XX XXX XXXX)
+- **Métadonnées éthiopiennes** : Informations complètes (Addis Ababa, ETB, UTC+3, langues amharique/anglais)
+- **Tests complets** : Couverture de test étendue pour tous les opérateurs éthiopiens
 - **Support Kenya** 🇰🇪 : Safaricom, Airtel, Telkom, Faiba, Equitel avec validation et formatage
 - **Support Afrique du Sud** 🇿🇦 : Vodacom, MTN, Cell C, Telkom, Virgin Mobile avec validation et formatage  
 - **Support Maroc** 🇲🇦 : Maroc Telecom, Orange Maroc, Inwi avec validation et formatage
-- **Nouveaux opérateurs** : 15+ nouveaux opérateurs ajoutés pour l'Afrique de l'Est, du Sud et du Nord
-- **Couverture continentale étendue** : La librairie couvre maintenant 8 pays africains majeurs
-- **Préfixes officiels** : Intégration des préfixes les plus récents (Kenya 011x, Afrique du Sud 06xx)
+- **Nouveaux opérateurs** : 17+ nouveaux opérateurs ajoutés pour l'Afrique de l'Est, du Sud et du Nord
+- **Couverture continentale étendue** : La librairie couvre maintenant 9 pays africains majeurs
+- **Préfixes officiels** : Intégration des préfixes les plus récents (Kenya 011x, Afrique du Sud 06xx, Éthiopie 07x)
 
 ### 🔧 Corrigé
 - **Correction majeure des préfixes d'opérateurs** pour tous les pays africains supportés
