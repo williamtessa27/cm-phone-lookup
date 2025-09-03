@@ -40,6 +40,7 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   if (number.startsWith('251')) return '251'; // Éthiopie
   if (number.startsWith('212')) return '212'; // Maroc
   if (number.startsWith('27')) return '27';   // Afrique du Sud (à la fin car plus court)
+  if (number.startsWith('20')) return '20';   // Égypte (à la fin car plus court)
   
   return null;
 }
@@ -61,6 +62,7 @@ export function extractLocalNumber(cleanNumber: string, countryCode: CountryCode
   // Extraire le numéro local selon la longueur du code pays
   switch (countryCode) {
     case '27': // Afrique du Sud (2 chiffres)
+    case '20': // Égypte (2 chiffres)
       return number.slice(2);
     case '237': // Cameroun (3 chiffres)
     case '221': // Sénégal (3 chiffres)

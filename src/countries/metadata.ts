@@ -102,6 +102,16 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     timezone: 'UTC+3',
     population: '120.3M',
     capital: 'Addis Ababa'
+  },
+  '20': {
+    name: 'Egypt',
+    nameLocal: 'مصر',
+    flag: '🇪🇬',
+    language: ['ar', 'en'], // 🇪🇬 Egypt : Arabe + Anglais
+    currency: 'EGP',
+    timezone: 'UTC+2',
+    population: '104.3M',
+    capital: 'Cairo'
   }
 };
 

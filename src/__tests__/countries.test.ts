@@ -115,6 +115,20 @@ describe('Métadonnées des pays', () => {
       expect(metadata?.population).toBe('120.3M');
     });
 
+    test('retourne les métadonnées de l\'Égypte', () => {
+      const metadata = getCountryMetadata('20');
+      
+      expect(metadata).toBeDefined();
+      expect(metadata?.name).toBe('Egypt');
+      expect(metadata?.nameLocal).toBe('مصر');
+      expect(metadata?.flag).toBe('🇪🇬');
+      expect(metadata?.language).toEqual(['ar', 'en']); // Arabe + Anglais
+      expect(metadata?.currency).toBe('EGP');
+      expect(metadata?.timezone).toBe('UTC+2');
+      expect(metadata?.capital).toBe('Cairo');
+      expect(metadata?.population).toBe('104.3M');
+    });
+
     test('retourne null pour un code pays non supporté', () => {
       const metadata = getCountryMetadata('999');
       expect(metadata).toBeNull();
@@ -140,7 +154,8 @@ describe('Métadonnées des pays', () => {
       expect(countries).toContain('27');  // Afrique du Sud
       expect(countries).toContain('212'); // Maroc
       expect(countries).toContain('251'); // Éthiopie
-      expect(countries).toHaveLength(9);
+      expect(countries).toContain('20');  // Égypte
+      expect(countries).toHaveLength(10);
     });
 
     test('retourne les codes dans un ordre cohérent', () => {
@@ -180,7 +195,7 @@ describe('Métadonnées des pays', () => {
         return Array.isArray(metadata?.language);
       });
       
-      expect(bilingualCountries).toHaveLength(5); // Cameroun, Kenya, Afrique du Sud, Maroc, Éthiopie
+      expect(bilingualCountries).toHaveLength(6); // Cameroun, Kenya, Afrique du Sud, Maroc, Éthiopie, Égypte
       expect(bilingualCountries).toContain('237'); // Cameroun
       
       const cameroon = getCountryMetadata('237');
@@ -213,13 +228,13 @@ describe('Métadonnées des pays', () => {
       const englishCountries = languages.filter(lang => 
         lang === 'en' || (Array.isArray(lang) && lang.includes('en'))
       ).length;
-      expect(englishCountries).toBe(6); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie
+      expect(englishCountries).toBe(7); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie, Égypte
       
-      // Arabe : Maroc
+      // Arabe : Maroc, Égypte
       const arabicCountries = languages.filter(lang => 
         lang === 'ar' || (Array.isArray(lang) && lang.includes('ar'))
       ).length;
-      expect(arabicCountries).toBe(1);
+      expect(arabicCountries).toBe(2);
     });
   });
 
@@ -241,7 +256,7 @@ describe('Métadonnées des pays', () => {
         
         // Vérifications de format
         expect(metadata?.name).toMatch(/^[A-Za-z\s]+$/);
-        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹$/); // Drapeaux des pays supportés
+        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹|🇪🇬$/); // Drapeaux des pays supportés
         expect(metadata?.currency).toMatch(/^[A-Z]{3}$/); // Code ISO 4217
       });
     });

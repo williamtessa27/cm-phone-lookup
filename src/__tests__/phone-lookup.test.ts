@@ -111,9 +111,9 @@ describe('PhoneLookup - Classe avec API unifiée', () => {
     test('getStats() retourne les statistiques globales', () => {
       const stats = PhoneLookup.getStats();
       
-      expect(stats.totalCountries).toBe(9);
+      expect(stats.totalCountries).toBe(10);
       expect(stats.totalOperators).toBeGreaterThan(30);
-      expect(stats.countries).toHaveLength(9);
+      expect(stats.countries).toHaveLength(10);
       
       const cameroon = stats.countries.find(c => c.code === '+237');
       expect(cameroon).toBeDefined();
@@ -299,6 +299,94 @@ describe('PhoneLookup - Classe avec API unifiée', () => {
         '+251123456789',  // Préfixe invalide (12)
         '+251801234567',  // Préfixe non attribué (80)
         '+251601234567'   // Préfixe non attribué (60)
+      ];
+
+      invalidNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(false);
+        expect(lookup.getOperator()).toBe('Unknown');
+      });
+    });
+  });
+
+  describe('Support de l\'Égypte', () => {
+    test('détecte Vodafone Egypt correctement', () => {
+      const vodafoneNumbers = [
+        '+201012345678',   // Vodafone 10x
+        '+201087654321',   // Vodafone 10x
+      ];
+
+      vodafoneNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('EGYPT_VODAFONE');
+        expect(lookup.getFormatted()).toMatch(/\+20 \d{2} \d{4} \d{4}/);
+      });
+    });
+
+    test('détecte Etisalat/e& Egypt correctement', () => {
+      const etisalatNumbers = [
+        '+201112345678',   // Etisalat 11x
+        '+201187654321',   // Etisalat 11x
+      ];
+
+      etisalatNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('EGYPT_ETISALAT');
+        expect(lookup.getFormatted()).toMatch(/\+20 \d{2} \d{4} \d{4}/);
+      });
+    });
+
+    test('détecte Orange Egypt correctement', () => {
+      const orangeNumbers = [
+        '+201212345678',   // Orange 12x
+        '+201287654321',   // Orange 12x
+      ];
+
+      orangeNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('EGYPT_ORANGE');
+        expect(lookup.getFormatted()).toMatch(/\+20 \d{2} \d{4} \d{4}/);
+      });
+    });
+
+    test('détecte WE Egypt correctement', () => {
+      const weNumbers = [
+        '+201512345678',   // WE 15x
+        '+201587654321',   // WE 15x
+      ];
+
+      weNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('EGYPT_WE');
+        expect(lookup.getFormatted()).toMatch(/\+20 \d{2} \d{4} \d{4}/);
+      });
+    });
+
+    test('métadonnées égyptiennes complètes', () => {
+      const lookup = new PhoneLookup('+201012345678');
+      const info = lookup.analyze();
+
+      expect(info.country?.name).toBe('Egypt');
+      expect(info.country?.nameLocal).toBe('مصر');
+      expect(info.country?.flag).toBe('🇪🇬');
+      expect(info.country?.currency).toBe('EGP');
+      expect(info.country?.timezone).toBe('UTC+2');
+      expect(info.country?.capital).toBe('Cairo');
+      expect(info.country?.language).toEqual(['ar', 'en']);
+      expect(info.isMobile).toBe(true);
+      expect(info.isFixed).toBe(false);
+    });
+
+    test('rejette les numéros égyptiens invalides', () => {
+      const invalidNumbers = [
+        '+20191234567',   // Trop court (9 chiffres au lieu de 10) et préfixe invalide
+        '+201312345678',  // Préfixe invalide (13)
+        '+201412345678',  // Préfixe invalide (14)
+        '+201812345678'   // Préfixe invalide (18)
       ];
 
       invalidNumbers.forEach(phone => {
