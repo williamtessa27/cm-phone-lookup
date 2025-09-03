@@ -14,7 +14,7 @@
 
 
 
-Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **9 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹 avec plus de **42 opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, etc.) à partir d'un numéro de téléphone.  
+Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **10 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬 avec plus de **46 opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, etc.) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -152,6 +152,10 @@ console.log(operatorSN); // "SENEGAL_ORANGE"
 const operatorET = detectOperator('+25191123456');
 console.log(operatorET); // "ETHIOPIA_ETHIO_TELECOM"
 
+// Égypte
+const operatorEG = detectOperator('+201012345678');
+console.log(operatorEG); // "EGYPT_VODAFONE"
+
 // Côte d'Ivoire
 const operatorCI = detectOperator('+22501234567');
 console.log(operatorCI); // "IVORY_COAST_ORANGE"
@@ -273,6 +277,10 @@ console.log(isMtn); // true
 | **MOROCCO_INWI** | 5, 6, 7, 8, 9 | Mobile/Fixe | 🇲🇦 Morocco |
 | **ETHIOPIA_ETHIO_TELECOM** | 90-99 | Mobile | 🇪🇹 Ethiopia |
 | **ETHIOPIA_SAFARICOM** | 70-79 | Mobile | 🇪🇹 Ethiopia |
+| **EGYPT_VODAFONE** | 10 | Mobile | 🇪🇬 Egypt |
+| **EGYPT_ETISALAT** | 11 | Mobile | 🇪🇬 Egypt |
+| **EGYPT_ORANGE** | 12 | Mobile | 🇪🇬 Egypt |
+| **EGYPT_WE** | 15 | Mobile | 🇪🇬 Egypt |
 
 ## 🔧 API Reference
 

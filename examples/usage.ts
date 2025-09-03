@@ -306,6 +306,12 @@ const operatorTypes: Record<Operator, string> = {
   ETHIOPIA_ETHIO_TELECOM: 'Mobile',
   ETHIOPIA_SAFARICOM: 'Mobile',
 
+  // Égypte
+  EGYPT_VODAFONE: 'Mobile',
+  EGYPT_ETISALAT: 'Mobile',
+  EGYPT_ORANGE: 'Mobile',
+  EGYPT_WE: 'Mobile',
+
   // Inconnu
   Unknown: 'Inconnu',
 };
