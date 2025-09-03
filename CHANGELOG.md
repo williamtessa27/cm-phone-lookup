@@ -8,6 +8,10 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### ✨ Ajouté
+- **Support Tanzanie** 🇹🇿 : Halotel (Viettel), Tigo Tanzania, Smile Tanzania, Airtel Tanzania, TTCL, Vodacom Tanzania, Zantel
+- **Validation tanzanienne** : Support du format national 9 chiffres (+255 XXX XXX XXX)
+- **Métadonnées tanzaniennes** : Informations complètes (Dodoma, TZS, UTC+3, langues swahili/anglais)
+- **Tests complets** : Couverture de test étendue pour tous les 7 opérateurs tanzaniens
 - **Support Égypte** 🇪🇬 : Vodafone Egypt, Etisalat/e& Egypt, Orange Egypt, WE (Telecom Egypt MVNO)
 - **Validation égyptienne** : Support du format national 10 chiffres (+20 XX XXXX XXXX)
 - **Métadonnées égyptiennes** : Informations complètes (Cairo, EGP, UTC+2, langues arabe/anglais)
@@ -20,7 +24,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Support Afrique du Sud** 🇿🇦 : Vodacom, MTN, Cell C, Telkom, Virgin Mobile avec validation et formatage  
 - **Support Maroc** 🇲🇦 : Maroc Telecom, Orange Maroc, Inwi avec validation et formatage
 - **Nouveaux opérateurs** : 21+ nouveaux opérateurs ajoutés pour l'Afrique de l'Est, du Sud et du Nord
-- **Couverture continentale étendue** : La librairie couvre maintenant 10 pays africains majeurs
+- **Couverture continentale étendue** : La librairie couvre maintenant 11 pays africains majeurs
 - **Préfixes officiels** : Intégration des préfixes les plus récents (Kenya 011x, Afrique du Sud 06xx, Éthiopie 07x, Égypte 1x)
 
 ### 🔧 Corrigé

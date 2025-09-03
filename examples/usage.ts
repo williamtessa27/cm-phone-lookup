@@ -312,6 +312,16 @@ const operatorTypes: Record<Operator, string> = {
   EGYPT_ORANGE: 'Mobile',
   EGYPT_WE: 'Mobile',
 
+  // Tanzanie
+  TANZANIA_HALOTEL: 'Mobile',
+  TANZANIA_HONORA: 'Mobile',
+  TANZANIA_TIGO: 'Mobile',
+  TANZANIA_SMILE: 'Mobile',
+  TANZANIA_AIRTEL: 'Mobile',
+  TANZANIA_TTCL: 'Mixte',
+  TANZANIA_VODACOM: 'Mobile',
+  TANZANIA_ZANTEL: 'Mobile',
+
   // Inconnu
   Unknown: 'Inconnu',
 };

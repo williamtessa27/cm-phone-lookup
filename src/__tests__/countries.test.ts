@@ -129,6 +129,20 @@ describe('Métadonnées des pays', () => {
       expect(metadata?.population).toBe('104.3M');
     });
 
+    test('retourne les métadonnées de la Tanzanie', () => {
+      const metadata = getCountryMetadata('255');
+      
+      expect(metadata).toBeDefined();
+      expect(metadata?.name).toBe('Tanzania');
+      expect(metadata?.nameLocal).toBe('Tanzania');
+      expect(metadata?.flag).toBe('🇹🇿');
+      expect(metadata?.language).toEqual(['sw', 'en']); // Swahili + Anglais
+      expect(metadata?.currency).toBe('TZS');
+      expect(metadata?.timezone).toBe('UTC+3');
+      expect(metadata?.capital).toBe('Dodoma');
+      expect(metadata?.population).toBe('61.7M');
+    });
+
     test('retourne null pour un code pays non supporté', () => {
       const metadata = getCountryMetadata('999');
       expect(metadata).toBeNull();
@@ -155,7 +169,8 @@ describe('Métadonnées des pays', () => {
       expect(countries).toContain('212'); // Maroc
       expect(countries).toContain('251'); // Éthiopie
       expect(countries).toContain('20');  // Égypte
-      expect(countries).toHaveLength(10);
+      expect(countries).toContain('255'); // Tanzanie
+      expect(countries).toHaveLength(11);
     });
 
     test('retourne les codes dans un ordre cohérent', () => {
@@ -195,7 +210,7 @@ describe('Métadonnées des pays', () => {
         return Array.isArray(metadata?.language);
       });
       
-      expect(bilingualCountries).toHaveLength(6); // Cameroun, Kenya, Afrique du Sud, Maroc, Éthiopie, Égypte
+      expect(bilingualCountries).toHaveLength(7); // Cameroun, Kenya, Afrique du Sud, Maroc, Éthiopie, Égypte, Tanzanie
       expect(bilingualCountries).toContain('237'); // Cameroun
       
       const cameroon = getCountryMetadata('237');
@@ -228,7 +243,7 @@ describe('Métadonnées des pays', () => {
       const englishCountries = languages.filter(lang => 
         lang === 'en' || (Array.isArray(lang) && lang.includes('en'))
       ).length;
-      expect(englishCountries).toBe(7); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie, Égypte
+      expect(englishCountries).toBe(8); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie, Égypte, Tanzanie
       
       // Arabe : Maroc, Égypte
       const arabicCountries = languages.filter(lang => 
@@ -256,7 +271,7 @@ describe('Métadonnées des pays', () => {
         
         // Vérifications de format
         expect(metadata?.name).toMatch(/^[A-Za-z\s]+$/);
-        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹|🇪🇬$/); // Drapeaux des pays supportés
+        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹|🇪🇬|🇹🇿$/); // Drapeaux des pays supportés
         expect(metadata?.currency).toMatch(/^[A-Z]{3}$/); // Code ISO 4217
       });
     });

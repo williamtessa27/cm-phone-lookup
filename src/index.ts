@@ -49,6 +49,14 @@ export type Operator =
   | 'EGYPT_ETISALAT'
   | 'EGYPT_ORANGE'
   | 'EGYPT_WE'
+  | 'TANZANIA_HALOTEL'
+  | 'TANZANIA_HONORA'
+  | 'TANZANIA_TIGO'
+  | 'TANZANIA_SMILE'
+  | 'TANZANIA_AIRTEL'
+  | 'TANZANIA_TTCL'
+  | 'TANZANIA_VODACOM'
+  | 'TANZANIA_ZANTEL'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -73,6 +81,7 @@ import { detectSouthAfricaOperator, validateSouthAfricaNumber, formatSouthAfrica
 import { detectMoroccoOperator, validateMoroccoNumber, formatMoroccoNumber, isMoroccoMobile, isMoroccoFixed } from './countries/morocco';
 import { detectEthiopiaOperator, validateEthiopiaNumber, formatEthiopiaNumber, isEthiopiaMobile, isEthiopiaFixed } from './countries/ethiopia';
 import { detectEgyptOperator, validateEgyptNumber, formatEgyptNumber, isEgyptMobile, isEgyptFixed } from './countries/egypt';
+import { detectTanzaniaOperator, validateTanzaniaNumber, formatTanzaniaNumber, isTanzaniaMobile, isTanzaniaFixed } from './countries/tanzania';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
 // Imports des opérateurs
@@ -86,6 +95,7 @@ import { SOUTH_AFRICA_OPERATORS } from './operators/south-africa';
 import { MOROCCO_OPERATORS } from './operators/morocco';
 import { ETHIOPIA_OPERATORS } from './operators/ethiopia';
 import { EGYPT_OPERATORS } from './operators/egypt';
+import { TANZANIA_OPERATORS } from './operators/tanzania';
 
 // Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
@@ -135,6 +145,14 @@ const prefixes: Record<Operator, string[]> = {
   EGYPT_ETISALAT: [...EGYPT_OPERATORS.EGYPT_ETISALAT],
   EGYPT_ORANGE: [...EGYPT_OPERATORS.EGYPT_ORANGE],
   EGYPT_WE: [...EGYPT_OPERATORS.EGYPT_WE],
+  TANZANIA_HALOTEL: [...TANZANIA_OPERATORS.TANZANIA_HALOTEL],
+  TANZANIA_HONORA: [...TANZANIA_OPERATORS.TANZANIA_HONORA],
+  TANZANIA_TIGO: [...TANZANIA_OPERATORS.TANZANIA_TIGO],
+  TANZANIA_SMILE: [...TANZANIA_OPERATORS.TANZANIA_SMILE],
+  TANZANIA_AIRTEL: [...TANZANIA_OPERATORS.TANZANIA_AIRTEL],
+  TANZANIA_TTCL: [...TANZANIA_OPERATORS.TANZANIA_TTCL],
+  TANZANIA_VODACOM: [...TANZANIA_OPERATORS.TANZANIA_VODACOM],
+  TANZANIA_ZANTEL: [...TANZANIA_OPERATORS.TANZANIA_ZANTEL],
   Unknown: [],
 };
 
@@ -173,6 +191,8 @@ export function detectOperator(phone: string): Operator {
       return detectEthiopiaOperator(local) as Operator;
     case '20':
       return detectEgyptOperator(local) as Operator;
+    case '255':
+      return detectTanzaniaOperator(local) as Operator;
     default:
       return 'Unknown';
   }
@@ -210,6 +230,8 @@ export function isValidNumber(phone: string): boolean {
       return validateEthiopiaNumber(clean);
     case '20':
       return validateEgyptNumber(clean);
+    case '255':
+      return validateTanzaniaNumber(clean);
     default:
       return false;
   }
@@ -281,6 +303,8 @@ export function formatPhoneNumber(phone: string): string {
       return formatEthiopiaNumber(clean);
     case '20':
       return formatEgyptNumber(clean);
+    case '255':
+      return formatTanzaniaNumber(clean);
     default:
       return phone;
   }
@@ -316,6 +340,8 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isEthiopiaMobile(local);
     case '20':
       return isEgyptMobile(local);
+    case '255':
+      return isTanzaniaMobile(local);
     default:
       return false;
   }
@@ -343,6 +369,8 @@ function isFixedNumber(local: string, countryCode: string | null): boolean {
       return isEthiopiaFixed(local);
     case '20':
       return isEgyptFixed(local);
+    case '255':
+      return isTanzaniaFixed(local);
     default:
       return false; // Seuls certains pays ont des numéros fixes pour l'instant
   }

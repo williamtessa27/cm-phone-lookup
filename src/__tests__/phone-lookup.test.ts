@@ -111,9 +111,9 @@ describe('PhoneLookup - Classe avec API unifiée', () => {
     test('getStats() retourne les statistiques globales', () => {
       const stats = PhoneLookup.getStats();
       
-      expect(stats.totalCountries).toBe(10);
+      expect(stats.totalCountries).toBe(11);
       expect(stats.totalOperators).toBeGreaterThan(30);
-      expect(stats.countries).toHaveLength(10);
+      expect(stats.countries).toHaveLength(11);
       
       const cameroon = stats.countries.find(c => c.code === '+237');
       expect(cameroon).toBeDefined();
@@ -387,6 +387,152 @@ describe('PhoneLookup - Classe avec API unifiée', () => {
         '+201312345678',  // Préfixe invalide (13)
         '+201412345678',  // Préfixe invalide (14)
         '+201812345678'   // Préfixe invalide (18)
+      ];
+
+      invalidNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(false);
+        expect(lookup.getOperator()).toBe('Unknown');
+      });
+    });
+  });
+
+  describe('Support de la Tanzanie', () => {
+    test('détecte Halotel (Viettel) correctement', () => {
+      const halotelNumbers = [
+        '+255611234567',   // Halotel 61x
+        '+255621234567',   // Halotel 62x
+      ];
+
+      halotelNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_HALOTEL');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('détecte Honora Tanzania correctement', () => {
+      const honoraNumbers = [
+        '+255651234567',   // Honora 65x
+        '+255671234567',   // Honora 67x  
+      ];
+
+      honoraNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_HONORA');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('détecte Tigo Tanzania correctement', () => {
+      const tigoNumbers = [
+        '+255711234567',   // Tigo 71x
+      ];
+
+      tigoNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_TIGO');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('détecte Smile Tanzania correctement', () => {
+      const smileNumbers = [
+        '+255661234567',   // Smile 66x
+        '+255669876543',   // Smile 66x
+      ];
+
+      smileNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_SMILE');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('détecte Airtel Tanzania correctement', () => {
+      const airtelNumbers = [
+        '+255681234567',   // Airtel 68x
+        '+255691234567',   // Airtel 69x
+        '+255781234567',   // Airtel 78x
+      ];
+
+      airtelNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_AIRTEL');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('détecte TTCL correctement', () => {
+      const ttclNumbers = [
+        '+255731234567',   // TTCL 73x
+        '+255739876543',   // TTCL 73x
+      ];
+
+      ttclNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_TTCL');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('détecte Vodacom Tanzania correctement', () => {
+      const vodacomNumbers = [
+        '+255741234567',   // Vodacom 74x
+        '+255751234567',   // Vodacom 75x
+        '+255761234567',   // Vodacom 76x
+        '+255791234567',   // Vodacom 79x
+      ];
+
+      vodacomNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_VODACOM');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('détecte Zantel correctement', () => {
+      const zantelNumbers = [
+        '+255771234567',   // Zantel 77x
+        '+255779876543',   // Zantel 77x
+      ];
+
+      zantelNumbers.forEach(phone => {
+        const lookup = new PhoneLookup(phone);
+        expect(lookup.isValid()).toBe(true);
+        expect(lookup.getOperator()).toBe('TANZANIA_ZANTEL');
+        expect(lookup.getFormatted()).toMatch(/\+255 \d{3} \d{3} \d{3}/);
+      });
+    });
+
+    test('métadonnées tanzaniennes complètes', () => {
+      const lookup = new PhoneLookup('+255741234567');
+      const info = lookup.analyze();
+
+      expect(info.country?.name).toBe('Tanzania');
+      expect(info.country?.nameLocal).toBe('Tanzania');
+      expect(info.country?.flag).toBe('🇹🇿');
+      expect(info.country?.currency).toBe('TZS');
+      expect(info.country?.timezone).toBe('UTC+3');
+      expect(info.country?.capital).toBe('Dodoma');
+      expect(info.country?.language).toEqual(['sw', 'en']);
+      expect(info.isMobile).toBe(true);
+      expect(info.isFixed).toBe(false);
+    });
+
+    test('rejette les numéros tanzaniens invalides', () => {
+      const invalidNumbers = [
+        '+255601234567',  // Préfixe invalide (60)
+        '+255641234567',  // Préfixe invalide (64)
+        '+255701234567',  // Préfixe invalide (70)
+        '+255721234567'   // Préfixe invalide (72)
       ];
 
       invalidNumbers.forEach(phone => {

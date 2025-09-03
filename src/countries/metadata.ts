@@ -112,6 +112,16 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     timezone: 'UTC+2',
     population: '104.3M',
     capital: 'Cairo'
+  },
+  '255': {
+    name: 'Tanzania',
+    nameLocal: 'Tanzania',
+    flag: '🇹🇿',
+    language: ['sw', 'en'], // 🇹🇿 Tanzania : Swahili + Anglais
+    currency: 'TZS',
+    timezone: 'UTC+3',
+    population: '61.7M',
+    capital: 'Dodoma'
   }
 };
 

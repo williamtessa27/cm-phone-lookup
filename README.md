@@ -14,7 +14,7 @@
 
 
 
-Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **10 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬 avec plus de **46 opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, etc.) à partir d'un numéro de téléphone.  
+Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **11 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿 avec plus de **53 opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, etc.) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -156,6 +156,10 @@ console.log(operatorET); // "ETHIOPIA_ETHIO_TELECOM"
 const operatorEG = detectOperator('+201012345678');
 console.log(operatorEG); // "EGYPT_VODAFONE"
 
+// Tanzanie
+const operatorTZ = detectOperator('+255741234567');
+console.log(operatorTZ); // "TANZANIA_VODACOM"
+
 // Côte d'Ivoire
 const operatorCI = detectOperator('+22501234567');
 console.log(operatorCI); // "IVORY_COAST_ORANGE"
@@ -281,6 +285,13 @@ console.log(isMtn); // true
 | **EGYPT_ETISALAT** | 11 | Mobile | 🇪🇬 Egypt |
 | **EGYPT_ORANGE** | 12 | Mobile | 🇪🇬 Egypt |
 | **EGYPT_WE** | 15 | Mobile | 🇪🇬 Egypt |
+| **TANZANIA_HALOTEL** | 62 | Mobile | 🇹🇿 Tanzania |
+| **TANZANIA_TIGO** | 65, 67, 71 | Mobile | 🇹🇿 Tanzania |
+| **TANZANIA_SMILE** | 66 | Mobile | 🇹🇿 Tanzania |
+| **TANZANIA_AIRTEL** | 68, 69, 78 | Mobile | 🇹🇿 Tanzania |
+| **TANZANIA_TTCL** | 73 | Mixte | 🇹🇿 Tanzania |
+| **TANZANIA_VODACOM** | 74, 75, 76 | Mobile | 🇹🇿 Tanzania |
+| **TANZANIA_ZANTEL** | 77 | Mobile | 🇹🇿 Tanzania |
 
 ## 🔧 API Reference
 
