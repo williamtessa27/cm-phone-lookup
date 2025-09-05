@@ -57,6 +57,18 @@ export type Operator =
   | 'TANZANIA_TTCL'
   | 'TANZANIA_VODACOM'
   | 'TANZANIA_ZANTEL'
+  | 'DRC_VODACOM'
+  | 'DRC_ORANGE'
+  | 'DRC_AIRTEL'
+  | 'DRC_AFRICELL'
+  | 'UGANDA_AIRTEL'
+  | 'UGANDA_MTN'
+  | 'UGANDA_LYCAMOBILE'
+  | 'UGANDA_UTEL'
+  | 'UGANDA_AFRICELL'
+  | 'ALGERIA_MOBILIS'
+  | 'ALGERIA_DJEZZY'
+  | 'ALGERIA_OOREDOO'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -82,6 +94,9 @@ import { detectMoroccoOperator, validateMoroccoNumber, formatMoroccoNumber, isMo
 import { detectEthiopiaOperator, validateEthiopiaNumber, formatEthiopiaNumber, isEthiopiaMobile, isEthiopiaFixed } from './countries/ethiopia';
 import { detectEgyptOperator, validateEgyptNumber, formatEgyptNumber, isEgyptMobile, isEgyptFixed } from './countries/egypt';
 import { detectTanzaniaOperator, validateTanzaniaNumber, formatTanzaniaNumber, isTanzaniaMobile, isTanzaniaFixed } from './countries/tanzania';
+import { detectDRCOperator, validateDRCNumber, formatDRCNumber, isDRCMobile } from './countries/drc';
+import { detectUgandaOperator, validateUgandaNumber, formatUgandaNumber, isUgandaMobile } from './countries/uganda';
+import { detectAlgeriaOperator, validateAlgeriaNumber, formatAlgeriaNumber, isAlgeriaMobile } from './countries/algeria';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
 // Imports des opérateurs
@@ -96,6 +111,9 @@ import { MOROCCO_OPERATORS } from './operators/morocco';
 import { ETHIOPIA_OPERATORS } from './operators/ethiopia';
 import { EGYPT_OPERATORS } from './operators/egypt';
 import { TANZANIA_OPERATORS } from './operators/tanzania';
+import { DRC_OPERATORS } from './operators/drc';
+import { UGANDA_OPERATORS } from './operators/uganda';
+import { ALGERIA_OPERATORS } from './operators/algeria';
 
 // Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
@@ -153,6 +171,18 @@ const prefixes: Record<Operator, string[]> = {
   TANZANIA_TTCL: [...TANZANIA_OPERATORS.TANZANIA_TTCL],
   TANZANIA_VODACOM: [...TANZANIA_OPERATORS.TANZANIA_VODACOM],
   TANZANIA_ZANTEL: [...TANZANIA_OPERATORS.TANZANIA_ZANTEL],
+  DRC_VODACOM: [...DRC_OPERATORS.DRC_VODACOM],
+  DRC_ORANGE: [...DRC_OPERATORS.DRC_ORANGE],
+  DRC_AIRTEL: [...DRC_OPERATORS.DRC_AIRTEL],
+  DRC_AFRICELL: [...DRC_OPERATORS.DRC_AFRICELL],
+  UGANDA_AIRTEL: [...UGANDA_OPERATORS.UGANDA_AIRTEL],
+  UGANDA_MTN: [...UGANDA_OPERATORS.UGANDA_MTN],
+  UGANDA_LYCAMOBILE: [...UGANDA_OPERATORS.UGANDA_LYCAMOBILE],
+  UGANDA_UTEL: [...UGANDA_OPERATORS.UGANDA_UTEL],
+  UGANDA_AFRICELL: [...UGANDA_OPERATORS.UGANDA_AFRICELL],
+  ALGERIA_MOBILIS: [...ALGERIA_OPERATORS.ALGERIA_MOBILIS],
+  ALGERIA_DJEZZY: [...ALGERIA_OPERATORS.ALGERIA_DJEZZY],
+  ALGERIA_OOREDOO: [...ALGERIA_OPERATORS.ALGERIA_OOREDOO],
   Unknown: [],
 };
 
@@ -193,6 +223,12 @@ export function detectOperator(phone: string): Operator {
       return detectEgyptOperator(local) as Operator;
     case '255':
       return detectTanzaniaOperator(local) as Operator;
+    case '243':
+      return detectDRCOperator(local) as Operator;
+    case '256':
+      return detectUgandaOperator(local) as Operator;
+    case '213':
+      return detectAlgeriaOperator(local) as Operator;
     default:
       return 'Unknown';
   }
@@ -232,6 +268,12 @@ export function isValidNumber(phone: string): boolean {
       return validateEgyptNumber(clean);
     case '255':
       return validateTanzaniaNumber(clean);
+    case '243':
+      return validateDRCNumber(clean);
+    case '256':
+      return validateUgandaNumber(clean);
+    case '213':
+      return validateAlgeriaNumber(clean);
     default:
       return false;
   }
@@ -305,6 +347,12 @@ export function formatPhoneNumber(phone: string): string {
       return formatEgyptNumber(clean);
     case '255':
       return formatTanzaniaNumber(clean);
+    case '243':
+      return formatDRCNumber(clean);
+    case '256':
+      return formatUgandaNumber(clean);
+    case '213':
+      return formatAlgeriaNumber(clean);
     default:
       return phone;
   }
@@ -342,6 +390,12 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isEgyptMobile(local);
     case '255':
       return isTanzaniaMobile(local);
+    case '243':
+      return isDRCMobile(local);
+    case '256':
+      return isUgandaMobile(local);
+    case '213':
+      return isAlgeriaMobile(local);
     default:
       return false;
   }

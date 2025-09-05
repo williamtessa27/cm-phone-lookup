@@ -14,7 +14,7 @@
 
 
 
-Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **11 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿 avec plus de **53 opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, etc.) à partir d'un numéro de téléphone.  
+Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **14 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, **RDC** 🇨🇩, **Ouganda** 🇺🇬, **Algérie** 🇩🇿 avec plus de **65+ opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, Mobilis, Djezzy, Ooredoo, etc.) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -160,6 +160,18 @@ console.log(operatorEG); // "EGYPT_VODAFONE"
 const operatorTZ = detectOperator('+255741234567');
 console.log(operatorTZ); // "TANZANIA_VODACOM"
 
+// RDC (République Démocratique du Congo)
+const operatorCD = detectOperator('+243811234567');
+console.log(operatorCD); // "DRC_VODACOM"
+
+// Ouganda
+const operatorUG = detectOperator('+256771234567');
+console.log(operatorUG); // "UGANDA_MTN"
+
+// Algérie
+const operatorDZ = detectOperator('+213512345678');
+console.log(operatorDZ); // "ALGERIA_MOBILIS"
+
 // Côte d'Ivoire
 const operatorCI = detectOperator('+22501234567');
 console.log(operatorCI); // "IVORY_COAST_ORANGE"
@@ -292,6 +304,18 @@ console.log(isMtn); // true
 | **TANZANIA_TTCL** | 73 | Mixte | 🇹🇿 Tanzania |
 | **TANZANIA_VODACOM** | 74, 75, 76 | Mobile | 🇹🇿 Tanzania |
 | **TANZANIA_ZANTEL** | 77 | Mobile | 🇹🇿 Tanzania |
+| **DRC_VODACOM** | 81, 82, 83 | Mobile | 🇨🇩 RDC |
+| **DRC_ORANGE** | 91, 92, 93 | Mobile | 🇨🇩 RDC |
+| **DRC_AIRTEL** | 97, 98 | Mobile | 🇨🇩 RDC |
+| **DRC_AFRICELL** | 99 | Mobile | 🇨🇩 RDC |
+| **UGANDA_AIRTEL** | 70, 74, 75 | Mobile | 🇺🇬 Uganda |
+| **UGANDA_MTN** | 76, 77, 78, 79 | Mobile | 🇺🇬 Uganda |
+| **UGANDA_LYCAMOBILE** | 72 | Mobile | 🇺🇬 Uganda |
+| **UGANDA_UTEL** | 71 | Mobile | 🇺🇬 Uganda |
+| **UGANDA_AFRICELL** | 73 | Mobile | 🇺🇬 Uganda |
+| **ALGERIA_MOBILIS** | 5, 9 | Mobile | 🇩🇿 Algeria |
+| **ALGERIA_DJEZZY** | 65, 66, 67, 7, 8 | Mobile | 🇩🇿 Algeria |
+| **ALGERIA_OOREDOO** | 77, 78, 79 | Mobile | 🇩🇿 Algeria |
 
 ## 🔧 API Reference
 
@@ -510,7 +534,7 @@ npm run build
 
 ### ✅ **Fonctionnalités Classiques**
 - **Détection automatique** des opérateurs multi-pays
-- **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225), Nigeria (+234), Ghana (+233)
+- **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225), Nigeria (+234), Ghana (+233), Kenya (+254), Afrique du Sud (+27), Maroc (+212), Éthiopie (+251), Égypte (+20), Tanzanie (+255), RDC (+243), Ouganda (+256), Algérie (+213)
 - **Validation complète** des numéros de téléphone par pays
 - **Support TypeScript** avec types complets
 - **Formatage automatique** des numéros adapté au pays
@@ -559,10 +583,10 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus d
 
 ## 🙏 Remerciements
 
-- Tous les opérateurs télécoms camerounais, sénégalais, ivoiriens, nigérians et ghanéens
-- La communauté développeur camerounaise, sénégalaise, ivoirienne, nigériane et ghanéenne
+- Tous les opérateurs télécoms des 14 pays africains supportés
+- Les communautés développeurs africaines
 - Tous les contributeurs open-source
 
 ---
 
-**Made with ❤️ in Cameroon 🇨🇲, Senegal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳�� and Ghana 🇬🇭**
+**Made with ❤️ across Africa 🌍 - Supporting 14 African countries: 🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇩🇿**

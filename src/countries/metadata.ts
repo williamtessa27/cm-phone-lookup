@@ -122,6 +122,36 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     timezone: 'UTC+3',
     population: '61.7M',
     capital: 'Dodoma'
+  },
+  '243': {
+    name: 'DR Congo',
+    nameLocal: 'République Démocratique du Congo',
+    flag: '🇨🇩',
+    language: 'fr', // 🇨🇩 RDC : Français uniquement
+    currency: 'CDF',
+    timezone: 'UTC+1',
+    population: '95.9M',
+    capital: 'Kinshasa'
+  },
+  '256': {
+    name: 'Uganda',
+    nameLocal: 'Uganda',
+    flag: '🇺🇬',
+    language: ['en', 'sw'], // 🇺🇬 Uganda : Anglais + Swahili
+    currency: 'UGX',
+    timezone: 'UTC+3',
+    population: '47.1M',
+    capital: 'Kampala'
+  },
+  '213': {
+    name: 'Algeria',
+    nameLocal: 'الجزائر',
+    flag: '🇩🇿',
+    language: ['ar', 'fr'], // 🇩🇿 Algeria : Arabe + Français
+    currency: 'DZD',
+    timezone: 'UTC+1',
+    population: '44.9M',
+    capital: 'Algiers'
   }
 };
 

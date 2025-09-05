@@ -322,6 +322,24 @@ const operatorTypes: Record<Operator, string> = {
   TANZANIA_VODACOM: 'Mobile',
   TANZANIA_ZANTEL: 'Mobile',
 
+  // RDC (République Démocratique du Congo)
+  DRC_VODACOM: 'Mobile',
+  DRC_ORANGE: 'Mobile',
+  DRC_AIRTEL: 'Mobile',
+  DRC_AFRICELL: 'Mobile',
+
+  // Ouganda
+  UGANDA_AIRTEL: 'Mobile',
+  UGANDA_MTN: 'Mobile',
+  UGANDA_LYCAMOBILE: 'Mobile',
+  UGANDA_UTEL: 'Mobile',
+  UGANDA_AFRICELL: 'Mobile',
+
+  // Algérie
+  ALGERIA_MOBILIS: 'Mobile',
+  ALGERIA_DJEZZY: 'Mobile',
+  ALGERIA_OOREDOO: 'Mobile',
+
   // Inconnu
   Unknown: 'Inconnu',
 };
