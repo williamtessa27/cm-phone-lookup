@@ -32,6 +32,8 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   
   // Codes pays supportés (ordre important pour éviter les conflits)
   if (number.startsWith('237')) return '237'; // Cameroun
+  if (number.startsWith('243')) return '243'; // RDC (République Démocratique du Congo)
+  if (number.startsWith('256')) return '256'; // Ouganda
   if (number.startsWith('221')) return '221'; // Sénégal  
   if (number.startsWith('225')) return '225'; // Côte d'Ivoire
   if (number.startsWith('234')) return '234'; // Nigeria
@@ -39,6 +41,7 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   if (number.startsWith('255')) return '255'; // Tanzanie
   if (number.startsWith('254')) return '254'; // Kenya
   if (number.startsWith('251')) return '251'; // Éthiopie
+  if (number.startsWith('213')) return '213'; // Algérie
   if (number.startsWith('212')) return '212'; // Maroc
   if (number.startsWith('27')) return '27';   // Afrique du Sud (à la fin car plus court)
   if (number.startsWith('20')) return '20';   // Égypte (à la fin car plus court)
