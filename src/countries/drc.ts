@@ -66,6 +66,8 @@ export function formatDRCNumber(cleanNumber: string): string {
   
   if (local.length === 8) {
     return `+243 ${local.slice(0, 2)} ${local.slice(2, 5)} ${local.slice(5)}`;
+  } else if (local.length === 9) {
+    return `+243 ${local.slice(0, 2)} ${local.slice(2, 5)} ${local.slice(5)}`;
   }
   return cleanNumber;
 }

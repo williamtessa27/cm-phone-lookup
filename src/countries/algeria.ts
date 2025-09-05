@@ -9,10 +9,10 @@ export const ALGERIA_CONFIG: CountryConfig = {
   operators: ALGERIA_OPERATORS,
   validation: {
     // Format Algérie : 8-9 chiffres après le code pays
-    // Exemples: +213 5 12 34 56 78 (8 chiffres), +213 65 123 4567 (9 chiffres)
-    // Pattern: 0[5-9]xxxxxxx ou 0[5-9]xxxxxxxx (avec le 0 initial)
-    mobile: /^[05-9][0-9]{7,8}$/,
-    totalLength: 9, // Longueur maximale
+    // Exemples: +213 5 12 34 56 78 (9 chiffres), +213 77 123 4567 (9 chiffres)
+    // Pattern: [5-9]xxxxxxxx (9 chiffres sans le 0 initial)
+    mobile: /^[5-9][0-9]{8}$/,
+    totalLength: 9, // Longueur requise
   },
   formatting: {
     pattern: 'XXX XXX XXX',
@@ -27,11 +27,23 @@ export function detectAlgeriaOperator(localNumber: string): AlgeriaOperator | 'U
   // Retire le 0 initial s'il existe pour la comparaison
   const numberForComparison = localNumber.startsWith('0') ? localNumber.substring(1) : localNumber;
   
-  for (const [operator, prefixes] of Object.entries(ALGERIA_OPERATORS)) {
-    if (prefixes.some(prefix => numberForComparison.startsWith(prefix))) {
-      return operator as AlgeriaOperator;
-    }
+  // Mobilis: série 5 et 9
+  if (numberForComparison.startsWith('5') || numberForComparison.startsWith('9')) {
+    return 'ALGERIA_MOBILIS';
   }
+  
+  // Ooredoo: séries 77, 78, 79 (vérifier en premier car plus spécifique)
+  if (numberForComparison.startsWith('77') || numberForComparison.startsWith('78') || numberForComparison.startsWith('79')) {
+    return 'ALGERIA_OOREDOO';
+  }
+  
+  // Djezzy: séries 65, 66, 67, 7, 8
+  if (numberForComparison.startsWith('65') || numberForComparison.startsWith('66') || 
+      numberForComparison.startsWith('67') || numberForComparison.startsWith('7') || 
+      numberForComparison.startsWith('8')) {
+    return 'ALGERIA_DJEZZY';
+  }
+  
   return 'Unknown';
 }
 

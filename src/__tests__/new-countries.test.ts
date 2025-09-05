@@ -112,34 +112,34 @@ describe('Algeria - Code 213', () => {
     });
 
     test('should detect Djezzy Algeria', () => {
-      expect(detectOperator('+21306512345678')).toBe('ALGERIA_DJEZZY');
-      expect(detectOperator('+21307123456')).toBe('ALGERIA_DJEZZY');
-      expect(detectOperator('+21308123456')).toBe('ALGERIA_DJEZZY');
+      expect(detectOperator('+21365123456')).toBe('ALGERIA_DJEZZY');
+      expect(detectOperator('+21371234567')).toBe('ALGERIA_DJEZZY');
+      expect(detectOperator('+21381234567')).toBe('ALGERIA_DJEZZY');
     });
 
     test('should detect Ooredoo Algeria', () => {
-      expect(detectOperator('+21305512345678')).toBe('ALGERIA_OOREDOO');
-      expect(detectOperator('+213077123456')).toBe('ALGERIA_OOREDOO');
+      expect(detectOperator('+213771234567')).toBe('ALGERIA_OOREDOO');
+      expect(detectOperator('+213781234567')).toBe('ALGERIA_OOREDOO');
     });
   });
 
   describe('Validation', () => {
     test('should validate correct Algeria numbers', () => {
       expect(isValidNumber('+213512345678')).toBe(true);
-      expect(isValidNumber('+21307123456')).toBe(true);
-      expect(isValidNumber('21306512345678')).toBe(true);
+      expect(isValidNumber('+213771234567')).toBe(true);
+      expect(isValidNumber('213912345678')).toBe(true);
     });
 
     test('should reject invalid Algeria numbers', () => {
       expect(isValidNumber('+213412345678')).toBe(false); // Invalid prefix
-      expect(isValidNumber('+21351234567')).toBe(false);  // Too short for some formats
+      expect(isValidNumber('+21351234567')).toBe(false);  // Too short
     });
   });
 
   describe('Formatting', () => {
     test('should format Algeria numbers correctly', () => {
       expect(formatPhoneNumber('+213512345678')).toMatch(/^\+213 \d/);
-      expect(formatPhoneNumber('21307123456')).toMatch(/^\+213 \d/);
+      expect(formatPhoneNumber('213771234567')).toMatch(/^\+213 \d/);
     });
   });
 });
