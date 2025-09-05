@@ -249,7 +249,7 @@ describe('Métadonnées des pays', () => {
       const arabicCountries = languages.filter(lang => 
         lang === 'ar' || (Array.isArray(lang) && lang.includes('ar'))
       ).length;
-      expect(arabicCountries).toBe(2);
+      expect(arabicCountries).toBe(3); // Maroc, Égypte, Algérie
     });
   });
 
