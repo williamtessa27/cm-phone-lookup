@@ -8,6 +8,17 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### ✨ Ajouté
+- **Support RDC** 🇨🇩 : Vodacom DRC, Orange DRC, Airtel DRC, Africell DRC
+- **Validation RDC** : Support du format national 9 chiffres (+243 XX XXX XXXX)
+- **Métadonnées RDC** : Informations complètes (Kinshasa, CDF, UTC+1, français)
+- **Support Ouganda** 🇺🇬 : Airtel Uganda, MTN Uganda, Lycamobile, UTel, Africell Uganda
+- **Validation Ouganda** : Support du format national 9 chiffres (+256 XXX XXX XXX)
+- **Métadonnées Ouganda** : Informations complètes (Kampala, UGX, UTC+3, anglais/swahili)
+- **Support Algérie** 🇩🇿 : Mobilis, Djezzy, Ooredoo
+- **Validation Algérie** : Support du format national 9 chiffres (+213 XXX XXX XXX)
+- **Métadonnées Algérie** : Informations complètes (Algiers, DZD, UTC+1, arabe/français)
+- **12 nouveaux opérateurs** : Couverture complète des 3 nouveaux pays
+- **Tests complets** : 24 nouveaux tests pour valider tous les opérateurs
 - **Support Tanzanie** 🇹🇿 : Halotel (Viettel), Tigo Tanzania, Smile Tanzania, Airtel Tanzania, TTCL, Vodacom Tanzania, Zantel
 - **Validation tanzanienne** : Support du format national 9 chiffres (+255 XXX XXX XXX)
 - **Métadonnées tanzaniennes** : Informations complètes (Dodoma, TZS, UTC+3, langues swahili/anglais)
@@ -24,7 +35,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Support Afrique du Sud** 🇿🇦 : Vodacom, MTN, Cell C, Telkom, Virgin Mobile avec validation et formatage  
 - **Support Maroc** 🇲🇦 : Maroc Telecom, Orange Maroc, Inwi avec validation et formatage
 - **Nouveaux opérateurs** : 21+ nouveaux opérateurs ajoutés pour l'Afrique de l'Est, du Sud et du Nord
-- **Couverture continentale étendue** : La librairie couvre maintenant 11 pays africains majeurs
+- **Couverture continentale étendue** : La librairie couvre maintenant 14 pays africains majeurs
 - **Préfixes officiels** : Intégration des préfixes les plus récents (Kenya 011x, Afrique du Sud 06xx, Éthiopie 07x, Égypte 1x)
 
 ### 🔧 Corrigé
