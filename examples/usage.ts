@@ -22,7 +22,7 @@ import {
   type ValidationError,
 } from '../src/index';
 
-console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭 Exemples d'utilisation TypeScript de CM Phone Lookup V1.5.0\n");
+console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇷🇼🇩🇿 Exemples d'utilisation TypeScript de CM Phone Lookup V1.10.0 (15 pays africains)\n");
 
 // 🆕 NOUVEAU : Exemple 1: API Unifiée avec PhoneLookup.analyze()
 console.log("🎯 Exemple 1: API Unifiée avec PhoneLookup.analyze()");
@@ -332,8 +332,10 @@ const operatorTypes: Record<Operator, string> = {
   UGANDA_AIRTEL: 'Mobile',
   UGANDA_MTN: 'Mobile',
   UGANDA_LYCAMOBILE: 'Mobile',
-  UGANDA_UTEL: 'Mobile',
-  UGANDA_AFRICELL: 'Mobile',
+
+  // Rwanda
+  RWANDA_MTN: 'Mobile',
+  RWANDA_AIRTEL: 'Mobile',
 
   // Algérie
   ALGERIA_MOBILIS: 'Mobile',

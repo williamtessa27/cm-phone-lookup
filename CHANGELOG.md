@@ -8,16 +8,19 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### ✨ Ajouté
-- **Support RDC** 🇨🇩 : Vodacom DRC, Orange DRC, Airtel DRC, Africell DRC
+- **Support RDC** 🇨🇩 : Vodacom DRC, Orange DRC, Airtel DRC, Africell DRC (préfixes mis à jour)
 - **Validation RDC** : Support du format national 9 chiffres (+243 XX XXX XXXX)
 - **Métadonnées RDC** : Informations complètes (Kinshasa, CDF, UTC+1, français)
-- **Support Ouganda** 🇺🇬 : Airtel Uganda, MTN Uganda, Lycamobile, UTel, Africell Uganda
+- **Support Ouganda** 🇺🇬 : Airtel Uganda, MTN Uganda, Lycamobile (préfixes mis à jour)
 - **Validation Ouganda** : Support du format national 9 chiffres (+256 XXX XXX XXX)
 - **Métadonnées Ouganda** : Informations complètes (Kampala, UGX, UTC+3, anglais/swahili)
+- **Support Rwanda** 🇷🇼 : MTN Rwanda, Airtel Rwanda (nouveau pays)
+- **Validation Rwanda** : Support du format national 9 chiffres (+250 XXX XXX XXX)
+- **Métadonnées Rwanda** : Informations complètes (Kigali, RWF, UTC+2, kinyarwanda/anglais/français)
 - **Support Algérie** 🇩🇿 : Mobilis, Djezzy, Ooredoo
 - **Validation Algérie** : Support du format national 9 chiffres (+213 XXX XXX XXX)
 - **Métadonnées Algérie** : Informations complètes (Algiers, DZD, UTC+1, arabe/français)
-- **12 nouveaux opérateurs** : Couverture complète des 3 nouveaux pays
+- **Support 15 pays africains** : Couverture complète avec Rwanda ajouté
 - **Tests complets** : 24 nouveaux tests pour valider tous les opérateurs
 - **Support Tanzanie** 🇹🇿 : Halotel (Viettel), Tigo Tanzania, Smile Tanzania, Airtel Tanzania, TTCL, Vodacom Tanzania, Zantel
 - **Validation tanzanienne** : Support du format national 9 chiffres (+255 XXX XXX XXX)
