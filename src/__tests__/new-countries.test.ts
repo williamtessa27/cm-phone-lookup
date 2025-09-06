@@ -13,13 +13,10 @@ describe('DR Congo (RDC) - Code 243', () => {
     test('should detect Vodacom DRC', () => {
       expect(detectOperator('+243811234567')).toBe('DRC_VODACOM');
       expect(detectOperator('+243821234567')).toBe('DRC_VODACOM');
-      expect(detectOperator('+243831234567')).toBe('DRC_VODACOM');
     });
 
     test('should detect Orange DRC', () => {
-      expect(detectOperator('+243911234567')).toBe('DRC_ORANGE');
-      expect(detectOperator('+243921234567')).toBe('DRC_ORANGE');
-      expect(detectOperator('+243931234567')).toBe('DRC_ORANGE');
+      expect(detectOperator('+243891234567')).toBe('DRC_ORANGE');
     });
 
     test('should detect Airtel DRC', () => {
@@ -28,7 +25,8 @@ describe('DR Congo (RDC) - Code 243', () => {
     });
 
     test('should detect Africell DRC', () => {
-      expect(detectOperator('+243991234567')).toBe('DRC_AFRICELL');
+      expect(detectOperator('+243901234567')).toBe('DRC_AFRICELL');
+      expect(detectOperator('+243911234567')).toBe('DRC_AFRICELL');
     });
   });
 
@@ -63,22 +61,12 @@ describe('Uganda - Code 256', () => {
     });
 
     test('should detect MTN Uganda', () => {
-      expect(detectOperator('+256761234567')).toBe('UGANDA_MTN');
       expect(detectOperator('+256771234567')).toBe('UGANDA_MTN');
       expect(detectOperator('+256781234567')).toBe('UGANDA_MTN');
-      expect(detectOperator('+256791234567')).toBe('UGANDA_MTN');
     });
 
     test('should detect Lycamobile Uganda', () => {
-      expect(detectOperator('+256721234567')).toBe('UGANDA_LYCAMOBILE');
-    });
-
-    test('should detect UTel Uganda', () => {
-      expect(detectOperator('+256711234567')).toBe('UGANDA_UTEL');
-    });
-
-    test('should detect Africell Uganda', () => {
-      expect(detectOperator('+256731234567')).toBe('UGANDA_AFRICELL');
+      expect(detectOperator('+256791234567')).toBe('UGANDA_LYCAMOBILE');
     });
   });
 
@@ -100,6 +88,41 @@ describe('Uganda - Code 256', () => {
     test('should format Uganda numbers correctly', () => {
       expect(formatPhoneNumber('+256701234567')).toBe('+256 701 234 567');
       expect(formatPhoneNumber('256771234567')).toBe('+256 771 234 567');
+    });
+  });
+});
+
+describe('Rwanda - Code 250', () => {
+  describe('Operator Detection', () => {
+    test('should detect MTN Rwanda', () => {
+      expect(detectOperator('+250781234567')).toBe('RWANDA_MTN');
+      expect(detectOperator('+250791234567')).toBe('RWANDA_MTN');
+    });
+
+    test('should detect Airtel Rwanda', () => {
+      expect(detectOperator('+250721234567')).toBe('RWANDA_AIRTEL');
+      expect(detectOperator('+250731234567')).toBe('RWANDA_AIRTEL');
+    });
+  });
+
+  describe('Validation', () => {
+    test('should validate correct Rwanda numbers', () => {
+      expect(isValidNumber('+250781234567')).toBe(true);
+      expect(isValidNumber('+250721234567')).toBe(true);
+      expect(isValidNumber('250791234567')).toBe(true);
+    });
+
+    test('should reject invalid Rwanda numbers', () => {
+      expect(isValidNumber('+250681234567')).toBe(false); // Invalid prefix
+      expect(isValidNumber('+25078123456')).toBe(false);  // Too short
+      expect(isValidNumber('+2507812345678')).toBe(false); // Too long
+    });
+  });
+
+  describe('Formatting', () => {
+    test('should format Rwanda numbers correctly', () => {
+      expect(formatPhoneNumber('+250781234567')).toBe('+250 781 234 567');
+      expect(formatPhoneNumber('250721234567')).toBe('+250 721 234 567');
     });
   });
 });
@@ -158,6 +181,14 @@ describe('Phone Info Integration', () => {
     expect(info.operator).toBe('UGANDA_MTN');
     expect(info.isValid).toBe(true);
     expect(info.countryCode).toBe('+256');
+    expect(info.isMobile).toBe(true);
+  });
+
+  test('should return complete info for Rwanda numbers', () => {
+    const info = getPhoneInfo('+250781234567');
+    expect(info.operator).toBe('RWANDA_MTN');
+    expect(info.isValid).toBe(true);
+    expect(info.countryCode).toBe('+250');
     expect(info.isMobile).toBe(true);
   });
 

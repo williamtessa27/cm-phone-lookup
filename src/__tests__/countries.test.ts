@@ -170,7 +170,7 @@ describe('Métadonnées des pays', () => {
       expect(countries).toContain('251'); // Éthiopie
       expect(countries).toContain('20');  // Égypte
       expect(countries).toContain('255'); // Tanzanie
-      expect(countries).toHaveLength(14); // 11 pays originaux + 3 nouveaux (RDC, Ouganda, Algérie)
+      expect(countries).toHaveLength(15); // 11 pays originaux + 4 nouveaux (RDC, Ouganda, Rwanda, Algérie)
     });
 
     test('retourne les codes dans un ordre cohérent', () => {
@@ -210,7 +210,7 @@ describe('Métadonnées des pays', () => {
         return Array.isArray(metadata?.language);
       });
       
-      expect(bilingualCountries).toHaveLength(9); // Cameroun, Kenya, Afrique du Sud, Maroc, Éthiopie, Égypte, Tanzanie, Ouganda, Algérie
+      expect(bilingualCountries).toHaveLength(10); // Cameroun, Kenya, Afrique du Sud, Maroc, Éthiopie, Égypte, Tanzanie, Ouganda, Rwanda, Algérie
       expect(bilingualCountries).toContain('237'); // Cameroun
       
       const cameroon = getCountryMetadata('237');
@@ -237,13 +237,13 @@ describe('Métadonnées des pays', () => {
       const frenchCountries = languages.filter(lang => 
         lang === 'fr' || (Array.isArray(lang) && lang.includes('fr'))
       ).length;
-      expect(frenchCountries).toBe(6); // Cameroun, Sénégal, Côte d'Ivoire, Maroc, RDC, Algérie
+      expect(frenchCountries).toBe(7); // Cameroun, Sénégal, Côte d'Ivoire, Maroc, RDC, Rwanda, Algérie
       
       // Anglais : Cameroun (bilingue), Nigeria, Ghana, Kenya, Afrique du Sud
       const englishCountries = languages.filter(lang => 
         lang === 'en' || (Array.isArray(lang) && lang.includes('en'))
       ).length;
-      expect(englishCountries).toBe(9); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie, Égypte, Tanzanie, Ouganda
+      expect(englishCountries).toBe(10); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie, Égypte, Tanzanie, Ouganda, Rwanda
       
       // Arabe : Maroc, Égypte
       const arabicCountries = languages.filter(lang => 
@@ -271,7 +271,7 @@ describe('Métadonnées des pays', () => {
         
         // Vérifications de format
         expect(metadata?.name).toMatch(/^[A-Za-z\s]+$/);
-        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹|🇪🇬|🇹🇿|🇨🇩|🇺🇬|🇩🇿$/); // Drapeaux des pays supportés
+        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹|🇪🇬|🇹🇿|🇨🇩|🇺🇬|🇷🇼|🇩🇿$/); // Drapeaux des pays supportés
         expect(metadata?.currency).toMatch(/^[A-Z]{3}$/); // Code ISO 4217
       });
     });

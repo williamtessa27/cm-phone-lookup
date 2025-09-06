@@ -152,6 +152,16 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     timezone: 'UTC+1',
     population: '44.9M',
     capital: 'Algiers'
+  },
+  '250': {
+    name: 'Rwanda',
+    nameLocal: 'Rwanda',
+    flag: '🇷🇼',
+    language: ['rw', 'en', 'fr'], // 🇷🇼 Rwanda : Kinyarwanda + Anglais + Français
+    currency: 'RWF',
+    timezone: 'UTC+2',
+    population: '13.3M',
+    capital: 'Kigali'
   }
 };
 
