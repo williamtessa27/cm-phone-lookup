@@ -13,10 +13,11 @@ L’Afrique mérite ses propres outils open source, adaptés à son contexte té
 
 ## 📅 Milestones
 
-### ✅ Court terme (1-2 mois)
-- Ajouter **au moins 3 pays par semaine** (ex : Mali 🇲🇱, Ouganda 🇺🇬, Éthiopie 🇪🇹)  
-- Améliorer la documentation (anglais, exemples avec React/Next.js)  
-- Mettre en place badges `npm`, `GitHub Actions`, `coverage`
+### ✅ Court terme (1-2 mois) - ACCOMPLI
+- ✅ Ajouter **Ouganda** 🇺🇬, **Rwanda** 🇷🇼, **RDC** 🇨🇩 (15 pays supportés)
+- ✅ Améliorer la documentation avec nouveaux pays
+- ✅ Mettre en place badges `npm`, `GitHub Actions`, `coverage`
+- ✅ Support de 65+ opérateurs africains
 
 ### 🚀 Moyen terme (3-6 mois)
 - Couverture de **toute l’Afrique**  
@@ -32,12 +33,14 @@ L’Afrique mérite ses propres outils open source, adaptés à son contexte té
 ---
 
 ## 🔖 Issues prioritaires
+- [x] ✅ Ajouter l'Ouganda 🇺🇬 (FAIT)
+- [x] ✅ Ajouter le Rwanda 🇷🇼 (FAIT)  
+- [x] ✅ Ajouter la RDC 🇨🇩 (FAIT)
 - [ ] Ajouter le Mali 🇲🇱 (#XX)  
-- [ ] Ajouter l’Ouganda 🇺🇬 (#XX)  
-- [ ] Ajouter l’Éthiopie 🇪🇹 (#XX)  
+- [ ] Ajouter l'Éthiopie 🇪🇹 (#XX)  
 - [ ] Traduire le README en anglais (#XX)  
 - [ ] Ajouter des exemples avec React et Next.js (#XX)  
-- [ ] Ajouter badges npm + coverage tests (#XX)  
+- [x] ✅ Ajouter badges npm + coverage tests (FAIT)
 - [ ] Discussion : intégration NestJS (#XX)  
 - [ ] Correction des numéros courts (#XX)
 

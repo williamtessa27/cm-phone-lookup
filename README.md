@@ -14,7 +14,7 @@
 
 
 
-Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **14 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, **RDC** 🇨🇩, **Ouganda** 🇺🇬, **Algérie** 🇩🇿 avec plus de **65+ opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, Mobilis, Djezzy, Ooredoo, etc.) à partir d'un numéro de téléphone.  
+Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **15 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, **RDC** 🇨🇩, **Ouganda** 🇺🇬, **Rwanda** 🇷🇼, **Algérie** 🇩🇿 avec plus de **65+ opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, Mobilis, Djezzy, Ooredoo, etc.) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -168,6 +168,10 @@ console.log(operatorCD); // "DRC_VODACOM"
 const operatorUG = detectOperator('+256771234567');
 console.log(operatorUG); // "UGANDA_MTN"
 
+// Rwanda
+const operatorRW = detectOperator('+250781234567');
+console.log(operatorRW); // "RWANDA_MTN"
+
 // Algérie
 const operatorDZ = detectOperator('+213512345678');
 console.log(operatorDZ); // "ALGERIA_MOBILIS"
@@ -304,15 +308,15 @@ console.log(isMtn); // true
 | **TANZANIA_TTCL** | 73 | Mixte | 🇹🇿 Tanzania |
 | **TANZANIA_VODACOM** | 74, 75, 76 | Mobile | 🇹🇿 Tanzania |
 | **TANZANIA_ZANTEL** | 77 | Mobile | 🇹🇿 Tanzania |
-| **DRC_VODACOM** | 81, 82, 83 | Mobile | 🇨🇩 RDC |
-| **DRC_ORANGE** | 91, 92, 93 | Mobile | 🇨🇩 RDC |
+| **DRC_VODACOM** | 81, 82 | Mobile | 🇨🇩 RDC |
+| **DRC_ORANGE** | 89 | Mobile | 🇨🇩 RDC |
 | **DRC_AIRTEL** | 97, 98 | Mobile | 🇨🇩 RDC |
-| **DRC_AFRICELL** | 99 | Mobile | 🇨🇩 RDC |
-| **UGANDA_AIRTEL** | 70, 74, 75 | Mobile | 🇺🇬 Uganda |
-| **UGANDA_MTN** | 76, 77, 78, 79 | Mobile | 🇺🇬 Uganda |
-| **UGANDA_LYCAMOBILE** | 72 | Mobile | 🇺🇬 Uganda |
-| **UGANDA_UTEL** | 71 | Mobile | 🇺🇬 Uganda |
-| **UGANDA_AFRICELL** | 73 | Mobile | 🇺🇬 Uganda |
+| **DRC_AFRICELL** | 90, 91 | Mobile | 🇨🇩 RDC |
+| **UGANDA_AIRTEL** | 70, 74, 75, 76 | Mobile | 🇺🇬 Uganda |
+| **UGANDA_MTN** | 77, 78 | Mobile | 🇺🇬 Uganda |
+| **UGANDA_LYCAMOBILE** | 79 | Mobile | 🇺🇬 Uganda |
+| **RWANDA_MTN** | 78, 79 | Mobile | 🇷🇼 Rwanda |
+| **RWANDA_AIRTEL** | 72, 73 | Mobile | 🇷🇼 Rwanda |
 | **ALGERIA_MOBILIS** | 5, 9 | Mobile | 🇩🇿 Algeria |
 | **ALGERIA_DJEZZY** | 65, 66, 67, 7, 8 | Mobile | 🇩🇿 Algeria |
 | **ALGERIA_OOREDOO** | 77, 78, 79 | Mobile | 🇩🇿 Algeria |
@@ -534,7 +538,7 @@ npm run build
 
 ### ✅ **Fonctionnalités Classiques**
 - **Détection automatique** des opérateurs multi-pays
-- **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225), Nigeria (+234), Ghana (+233), Kenya (+254), Afrique du Sud (+27), Maroc (+212), Éthiopie (+251), Égypte (+20), Tanzanie (+255), RDC (+243), Ouganda (+256), Algérie (+213)
+- **Support multi-pays** : Cameroun (+237), Sénégal (+221), Côte d'Ivoire (+225), Nigeria (+234), Ghana (+233), Kenya (+254), Afrique du Sud (+27), Maroc (+212), Éthiopie (+251), Égypte (+20), Tanzanie (+255), RDC (+243), Ouganda (+256), Rwanda (+250), Algérie (+213)
 - **Validation complète** des numéros de téléphone par pays
 - **Support TypeScript** avec types complets
 - **Formatage automatique** des numéros adapté au pays
@@ -583,10 +587,10 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus d
 
 ## 🙏 Remerciements
 
-- Tous les opérateurs télécoms des 14 pays africains supportés
+- Tous les opérateurs télécoms des 15 pays africains supportés
 - Les communautés développeurs africaines
 - Tous les contributeurs open-source
 
 ---
 
-**Made with ❤️ across Africa 🌍 - Supporting 14 African countries: 🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇩🇿**
+**Made with ❤️ across Africa 🌍 - Supporting 15 African countries: 🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇷🇼🇩🇿**

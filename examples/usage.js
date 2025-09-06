@@ -16,7 +16,7 @@ const {
   validatePhoneNumber
 } = require('../dist/index.js');
 
-console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭 Exemples d'utilisation de CM Phone Lookup V1.5.0 (Multi-pays)\n");
+console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇷🇼🇩🇿 Exemples d'utilisation de CM Phone Lookup V1.10.0 (15 pays africains)\n");
 
 // 🆕 NOUVEAU : Exemple 1: API Unifiée avec PhoneLookup.analyze()
 console.log("🎯 Exemple 1: API Unifiée avec PhoneLookup.analyze()");

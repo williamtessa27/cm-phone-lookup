@@ -64,8 +64,8 @@ export type Operator =
   | 'UGANDA_AIRTEL'
   | 'UGANDA_MTN'
   | 'UGANDA_LYCAMOBILE'
-  | 'UGANDA_UTEL'
-  | 'UGANDA_AFRICELL'
+  | 'RWANDA_MTN'
+  | 'RWANDA_AIRTEL'
   | 'ALGERIA_MOBILIS'
   | 'ALGERIA_DJEZZY'
   | 'ALGERIA_OOREDOO'
@@ -96,6 +96,7 @@ import { detectEgyptOperator, validateEgyptNumber, formatEgyptNumber, isEgyptMob
 import { detectTanzaniaOperator, validateTanzaniaNumber, formatTanzaniaNumber, isTanzaniaMobile, isTanzaniaFixed } from './countries/tanzania';
 import { detectDRCOperator, validateDRCNumber, formatDRCNumber, isDRCMobile } from './countries/drc';
 import { detectUgandaOperator, validateUgandaNumber, formatUgandaNumber, isUgandaMobile } from './countries/uganda';
+import { detectRwandaOperator, validateRwandaNumber, formatRwandaNumber, isRwandaMobile } from './countries/rwanda';
 import { detectAlgeriaOperator, validateAlgeriaNumber, formatAlgeriaNumber, isAlgeriaMobile } from './countries/algeria';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
@@ -113,6 +114,7 @@ import { EGYPT_OPERATORS } from './operators/egypt';
 import { TANZANIA_OPERATORS } from './operators/tanzania';
 import { DRC_OPERATORS } from './operators/drc';
 import { UGANDA_OPERATORS } from './operators/uganda';
+import { RWANDA_OPERATORS } from './operators/rwanda';
 import { ALGERIA_OPERATORS } from './operators/algeria';
 
 // Objet unifié des préfixes pour la compatibilité
@@ -178,8 +180,8 @@ const prefixes: Record<Operator, string[]> = {
   UGANDA_AIRTEL: [...UGANDA_OPERATORS.UGANDA_AIRTEL],
   UGANDA_MTN: [...UGANDA_OPERATORS.UGANDA_MTN],
   UGANDA_LYCAMOBILE: [...UGANDA_OPERATORS.UGANDA_LYCAMOBILE],
-  UGANDA_UTEL: [...UGANDA_OPERATORS.UGANDA_UTEL],
-  UGANDA_AFRICELL: [...UGANDA_OPERATORS.UGANDA_AFRICELL],
+  RWANDA_MTN: [...RWANDA_OPERATORS.RWANDA_MTN],
+  RWANDA_AIRTEL: [...RWANDA_OPERATORS.RWANDA_AIRTEL],
   ALGERIA_MOBILIS: [...ALGERIA_OPERATORS.ALGERIA_MOBILIS],
   ALGERIA_DJEZZY: [...ALGERIA_OPERATORS.ALGERIA_DJEZZY],
   ALGERIA_OOREDOO: [...ALGERIA_OPERATORS.ALGERIA_OOREDOO],
@@ -227,6 +229,8 @@ export function detectOperator(phone: string): Operator {
       return detectDRCOperator(local) as Operator;
     case '256':
       return detectUgandaOperator(local) as Operator;
+    case '250':
+      return detectRwandaOperator(local) as Operator;
     case '213':
       return detectAlgeriaOperator(local) as Operator;
     default:
@@ -272,6 +276,8 @@ export function isValidNumber(phone: string): boolean {
       return validateDRCNumber(clean);
     case '256':
       return validateUgandaNumber(clean);
+    case '250':
+      return validateRwandaNumber(clean);
     case '213':
       return validateAlgeriaNumber(clean);
     default:
@@ -351,6 +357,8 @@ export function formatPhoneNumber(phone: string): string {
       return formatDRCNumber(clean);
     case '256':
       return formatUgandaNumber(clean);
+    case '250':
+      return formatRwandaNumber(clean);
     case '213':
       return formatAlgeriaNumber(clean);
     default:
@@ -394,6 +402,8 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isDRCMobile(local);
     case '256':
       return isUgandaMobile(local);
+    case '250':
+      return isRwandaMobile(local);
     case '213':
       return isAlgeriaMobile(local);
     default:
