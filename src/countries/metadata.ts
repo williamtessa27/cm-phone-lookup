@@ -153,6 +153,26 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     population: '44.9M',
     capital: 'Algiers'
   },
+  '223': {
+    name: 'Mali',
+    nameLocal: 'Mali',
+    flag: '🇲🇱',
+    language: 'fr', // 🇲🇱 Mali : Français uniquement
+    currency: 'XOF',
+    timezone: 'UTC+0',
+    population: '21.9M',
+    capital: 'Bamako'
+  },
+  '249': {
+    name: 'Sudan',
+    nameLocal: 'السودان',
+    flag: '🇸🇩',
+    language: ['ar', 'en'], // 🇸🇩 Sudan : Arabe + Anglais
+    currency: 'SDG',
+    timezone: 'UTC+2',
+    population: '45.7M',
+    capital: 'Khartoum'
+  },
   '250': {
     name: 'Rwanda',
     nameLocal: 'Rwanda',
@@ -162,6 +182,16 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     timezone: 'UTC+2',
     population: '13.3M',
     capital: 'Kigali'
+  },
+  '258': {
+    name: 'Mozambique',
+    nameLocal: 'Moçambique',
+    flag: '🇲🇿',
+    language: 'pt', // 🇲🇿 Mozambique : Portugais uniquement
+    currency: 'MZN',
+    timezone: 'UTC+2',
+    population: '32.2M',
+    capital: 'Maputo'
   }
 };
 

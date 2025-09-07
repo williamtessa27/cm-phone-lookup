@@ -1,7 +1,7 @@
 {
   "name": "@williamtessa27/cm-phone-lookup",
-  "version": "1.10.0",
-  "description": "Librairie JavaScript professionnelle pour la détection d'opérateurs mobiles multi-pays avec API unifiée, validation avancée et métadonnées enrichies. Supporte 15 pays africains : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, RDC 🇨🇩, Ouganda 🇺🇬, Rwanda 🇷🇼, Algérie 🇩🇿 avec 65+ opérateurs (MTN, Orange, Vodacom, Safaricom, Airtel, Mobilis, Djezzy, Ooredoo, etc.).",
+  "version": "1.11.0",
+  "description": "Librairie JavaScript professionnelle pour la détection d'opérateurs mobiles multi-pays avec API unifiée, validation avancée et métadonnées enrichies. Supporte 18 pays africains : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, RDC 🇨🇩, Ouganda 🇺🇬, Rwanda 🇷🇼, Algérie 🇩🇿, Mali 🇲🇱, Soudan 🇸🇩, Mozambique 🇲🇿 avec 75+ opérateurs (MTN, Orange, Vodacom, Safaricom, Airtel, Mobilis, Djezzy, Ooredoo, Zain Sudan, Movitel, Tmcel, etc.).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

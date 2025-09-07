@@ -14,7 +14,7 @@
 
 
 
-Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **15 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, **RDC** 🇨🇩, **Ouganda** 🇺🇬, **Rwanda** 🇷🇼, **Algérie** 🇩🇿 avec plus de **65+ opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, Mobilis, Djezzy, Ooredoo, etc.) à partir d'un numéro de téléphone.  
+Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **18 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, **RDC** 🇨🇩, **Ouganda** 🇺🇬, **Rwanda** 🇷🇼, **Algérie** 🇩🇿, **Mali** 🇲🇱, **Soudan** 🇸🇩, **Mozambique** 🇲🇿 avec plus de **75+ opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, Mobilis, Djezzy, Ooredoo, Zain Sudan, Movitel, Tmcel, etc.) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -176,6 +176,18 @@ console.log(operatorRW); // "RWANDA_MTN"
 const operatorDZ = detectOperator('+213512345678');
 console.log(operatorDZ); // "ALGERIA_MOBILIS"
 
+// Mali
+const operatorML = detectOperator('+22370123456');
+console.log(operatorML); // "MALI_ORANGE"
+
+// Soudan
+const operatorSD = detectOperator('+24991123456');
+console.log(operatorSD); // "SUDAN_ZAIN"
+
+// Mozambique
+const operatorMZ = detectOperator('+25882123456');
+console.log(operatorMZ); // "MOZAMBIQUE_VODACOM"
+
 // Côte d'Ivoire
 const operatorCI = detectOperator('+22501234567');
 console.log(operatorCI); // "IVORY_COAST_ORANGE"
@@ -320,6 +332,15 @@ console.log(isMtn); // true
 | **ALGERIA_MOBILIS** | 5, 9 | Mobile | 🇩🇿 Algeria |
 | **ALGERIA_DJEZZY** | 65, 66, 67, 7, 8 | Mobile | 🇩🇿 Algeria |
 | **ALGERIA_OOREDOO** | 77, 78, 79 | Mobile | 🇩🇿 Algeria |
+| **MALI_ORANGE** | 70, 71, 72, 73, 74, 75, 76 | Mobile | 🇲🇱 Mali |
+| **MALI_MOOV** | 60, 61, 62, 63, 64 | Mobile | 🇲🇱 Mali |
+| **MALI_TELECEL** | 65, 66, 67 | Mobile | 🇲🇱 Mali |
+| **SUDAN_ZAIN** | 91, 92, 93, 95 | Mobile | 🇸🇩 Sudan |
+| **SUDAN_MTN** | 96, 97, 98 | Mobile | 🇸🇩 Sudan |
+| **SUDAN_SUDANI** | 99 | Mobile | 🇸🇩 Sudan |
+| **MOZAMBIQUE_VODACOM** | 82, 84 | Mobile | 🇲🇿 Mozambique |
+| **MOZAMBIQUE_MOVITEL** | 86, 87 | Mobile | 🇲🇿 Mozambique |
+| **MOZAMBIQUE_TMCEL** | 83 | Mobile | 🇲🇿 Mozambique |
 
 ## 🔧 API Reference
 
