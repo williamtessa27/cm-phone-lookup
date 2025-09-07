@@ -167,6 +167,136 @@ describe('Algeria - Code 213', () => {
   });
 });
 
+describe('Mali - Code 223', () => {
+  describe('Operator Detection', () => {
+    test('should detect Orange Mali', () => {
+      expect(detectOperator('+22370123456')).toBe('MALI_ORANGE');
+      expect(detectOperator('+22371123456')).toBe('MALI_ORANGE');
+      expect(detectOperator('+22372123456')).toBe('MALI_ORANGE');
+      expect(detectOperator('+22373123456')).toBe('MALI_ORANGE');
+      expect(detectOperator('+22374123456')).toBe('MALI_ORANGE');
+      expect(detectOperator('+22375123456')).toBe('MALI_ORANGE');
+      expect(detectOperator('+22376123456')).toBe('MALI_ORANGE');
+    });
+
+    test('should detect Moov Mali', () => {
+      expect(detectOperator('+22360123456')).toBe('MALI_MOOV');
+      expect(detectOperator('+22361123456')).toBe('MALI_MOOV');
+      expect(detectOperator('+22362123456')).toBe('MALI_MOOV');
+      expect(detectOperator('+22363123456')).toBe('MALI_MOOV');
+      expect(detectOperator('+22364123456')).toBe('MALI_MOOV');
+    });
+
+    test('should detect Telecel Mali', () => {
+      expect(detectOperator('+22365123456')).toBe('MALI_TELECEL');
+      expect(detectOperator('+22366123456')).toBe('MALI_TELECEL');
+      expect(detectOperator('+22367123456')).toBe('MALI_TELECEL');
+    });
+  });
+
+  describe('Validation', () => {
+    test('should validate correct Mali numbers', () => {
+      expect(isValidNumber('+22370123456')).toBe(true);
+      expect(isValidNumber('+22360123456')).toBe(true);
+      expect(isValidNumber('22365123456')).toBe(true);
+    });
+
+    test('should reject invalid Mali numbers', () => {
+      expect(isValidNumber('+22350123456')).toBe(false); // Invalid prefix
+      expect(isValidNumber('+2237012345')).toBe(false);  // Too short
+      expect(isValidNumber('+22370123456789')).toBe(false); // Too long
+    });
+  });
+
+  describe('Formatting', () => {
+    test('should format Mali numbers correctly', () => {
+      expect(formatPhoneNumber('+22370123456')).toBe('+223 70 12 34 56');
+      expect(formatPhoneNumber('22360123456')).toBe('+223 60 12 34 56');
+    });
+  });
+});
+
+describe('Sudan - Code 249', () => {
+  describe('Operator Detection', () => {
+    test('should detect Zain Sudan', () => {
+      expect(detectOperator('+249911234567')).toBe('SUDAN_ZAIN');
+      expect(detectOperator('+249921234567')).toBe('SUDAN_ZAIN');
+      expect(detectOperator('+249931234567')).toBe('SUDAN_ZAIN');
+      expect(detectOperator('+249951234567')).toBe('SUDAN_ZAIN');
+    });
+
+    test('should detect MTN Sudan', () => {
+      expect(detectOperator('+249961234567')).toBe('SUDAN_MTN');
+      expect(detectOperator('+249971234567')).toBe('SUDAN_MTN');
+      expect(detectOperator('+249981234567')).toBe('SUDAN_MTN');
+    });
+
+    test('should detect Sudani', () => {
+      expect(detectOperator('+249991234567')).toBe('SUDAN_SUDANI');
+    });
+  });
+
+  describe('Validation', () => {
+    test('should validate correct Sudan numbers', () => {
+      expect(isValidNumber('+249911234567')).toBe(true);
+      expect(isValidNumber('+249961234567')).toBe(true);
+      expect(isValidNumber('249991234567')).toBe(true);
+    });
+
+    test('should reject invalid Sudan numbers', () => {
+      expect(isValidNumber('+249901234567')).toBe(false); // Invalid prefix
+      expect(isValidNumber('+24991123456')).toBe(false);  // Too short
+      expect(isValidNumber('+2499112345678')).toBe(false); // Too long
+    });
+  });
+
+  describe('Formatting', () => {
+    test('should format Sudan numbers correctly', () => {
+      expect(formatPhoneNumber('+249911234567')).toBe('+249 91 123 4567');
+      expect(formatPhoneNumber('249961234567')).toBe('+249 96 123 4567');
+    });
+  });
+});
+
+describe('Mozambique - Code 258', () => {
+  describe('Operator Detection', () => {
+    test('should detect Vodacom Mozambique', () => {
+      expect(detectOperator('+258821234567')).toBe('MOZAMBIQUE_VODACOM');
+      expect(detectOperator('+258841234567')).toBe('MOZAMBIQUE_VODACOM');
+    });
+
+    test('should detect Movitel', () => {
+      expect(detectOperator('+258861234567')).toBe('MOZAMBIQUE_MOVITEL');
+      expect(detectOperator('+258871234567')).toBe('MOZAMBIQUE_MOVITEL');
+    });
+
+    test('should detect Tmcel', () => {
+      expect(detectOperator('+258831234567')).toBe('MOZAMBIQUE_TMCEL');
+    });
+  });
+
+  describe('Validation', () => {
+    test('should validate correct Mozambique numbers', () => {
+      expect(isValidNumber('+258821234567')).toBe(true);
+      expect(isValidNumber('+258861234567')).toBe(true);
+      expect(isValidNumber('258831234567')).toBe(true);
+    });
+
+    test('should reject invalid Mozambique numbers', () => {
+      expect(isValidNumber('+258801234567')).toBe(false); // Invalid prefix
+      expect(isValidNumber('+25882123456')).toBe(false);  // Too short
+      expect(isValidNumber('+2588212345678')).toBe(false); // Too long
+    });
+  });
+
+  describe('Formatting', () => {
+    test('should format Mozambique numbers correctly', () => {
+      expect(formatPhoneNumber('+258821234567')).toBe('+258 82 123 4567');
+      expect(formatPhoneNumber('258861234567')).toBe('+258 86 123 4567');
+    });
+  });
+});
+
 describe('Phone Info Integration', () => {
   test('should return complete info for DRC numbers', () => {
     const info = getPhoneInfo('+243811234567');
@@ -197,6 +327,30 @@ describe('Phone Info Integration', () => {
     expect(info.operator).toBe('ALGERIA_MOBILIS');
     expect(info.isValid).toBe(true);
     expect(info.countryCode).toBe('+213');
+    expect(info.isMobile).toBe(true);
+  });
+
+  test('should return complete info for Mali numbers', () => {
+    const info = getPhoneInfo('+22370123456');
+    expect(info.operator).toBe('MALI_ORANGE');
+    expect(info.isValid).toBe(true);
+    expect(info.countryCode).toBe('+223');
+    expect(info.isMobile).toBe(true);
+  });
+
+  test('should return complete info for Sudan numbers', () => {
+    const info = getPhoneInfo('+249911234567');
+    expect(info.operator).toBe('SUDAN_ZAIN');
+    expect(info.isValid).toBe(true);
+    expect(info.countryCode).toBe('+249');
+    expect(info.isMobile).toBe(true);
+  });
+
+  test('should return complete info for Mozambique numbers', () => {
+    const info = getPhoneInfo('+258821234567');
+    expect(info.operator).toBe('MOZAMBIQUE_VODACOM');
+    expect(info.isValid).toBe(true);
+    expect(info.countryCode).toBe('+258');
     expect(info.isMobile).toBe(true);
   });
 });

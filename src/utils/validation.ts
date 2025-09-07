@@ -33,8 +33,11 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   // Codes pays supportés (ordre important pour éviter les conflits)
   if (number.startsWith('237')) return '237'; // Cameroun
   if (number.startsWith('243')) return '243'; // RDC (République Démocratique du Congo)
+  if (number.startsWith('258')) return '258'; // Mozambique
   if (number.startsWith('256')) return '256'; // Ouganda
   if (number.startsWith('250')) return '250'; // Rwanda
+  if (number.startsWith('249')) return '249'; // Soudan
+  if (number.startsWith('223')) return '223'; // Mali
   if (number.startsWith('221')) return '221'; // Sénégal  
   if (number.startsWith('225')) return '225'; // Côte d'Ivoire
   if (number.startsWith('234')) return '234'; // Nigeria

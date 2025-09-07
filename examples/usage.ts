@@ -22,7 +22,7 @@ import {
   type ValidationError,
 } from '../src/index';
 
-console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇷🇼🇩🇿 Exemples d'utilisation TypeScript de CM Phone Lookup V1.10.0 (15 pays africains)\n");
+console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇷🇼🇩🇿🇲🇱🇸🇩🇲🇿 Exemples d'utilisation TypeScript de CM Phone Lookup V1.11.0 (18 pays africains)\n");
 
 // 🆕 NOUVEAU : Exemple 1: API Unifiée avec PhoneLookup.analyze()
 console.log("🎯 Exemple 1: API Unifiée avec PhoneLookup.analyze()");
@@ -336,6 +336,21 @@ const operatorTypes: Record<Operator, string> = {
   // Rwanda
   RWANDA_MTN: 'Mobile',
   RWANDA_AIRTEL: 'Mobile',
+
+  // Mali
+  MALI_ORANGE: 'Mobile',
+  MALI_MOOV: 'Mobile',
+  MALI_TELECEL: 'Mobile',
+
+  // Soudan
+  SUDAN_ZAIN: 'Mobile',
+  SUDAN_MTN: 'Mobile',
+  SUDAN_SUDANI: 'Mobile',
+
+  // Mozambique
+  MOZAMBIQUE_VODACOM: 'Mobile',
+  MOZAMBIQUE_MOVITEL: 'Mobile',
+  MOZAMBIQUE_TMCEL: 'Mobile',
 
   // Algérie
   ALGERIA_MOBILIS: 'Mobile',

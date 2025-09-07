@@ -15,9 +15,10 @@ L’Afrique mérite ses propres outils open source, adaptés à son contexte té
 
 ### ✅ Court terme (1-2 mois) - ACCOMPLI
 - ✅ Ajouter **Ouganda** 🇺🇬, **Rwanda** 🇷🇼, **RDC** 🇨🇩 (15 pays supportés)
+- ✅ Ajouter **Mali** 🇲🇱, **Soudan** 🇸🇩, **Mozambique** 🇲🇿 (18 pays supportés)
 - ✅ Améliorer la documentation avec nouveaux pays
 - ✅ Mettre en place badges `npm`, `GitHub Actions`, `coverage`
-- ✅ Support de 65+ opérateurs africains
+- ✅ Support de 75+ opérateurs africains
 
 ### 🚀 Moyen terme (3-6 mois)
 - Couverture de **toute l’Afrique**  

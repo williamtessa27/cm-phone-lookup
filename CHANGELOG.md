@@ -8,6 +8,17 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### ✨ Ajouté
+- **Support Mali** 🇲🇱 : Orange Mali, Moov Africa Mali, Telecel Mali (nouveau pays)
+- **Validation Mali** : Support du format national 8 chiffres (+223 XX XX XX XX)
+- **Métadonnées Mali** : Informations complètes (Bamako, XOF, UTC+0, français)
+- **Support Soudan** 🇸🇩 : Zain Sudan, MTN Sudan, Sudani (nouveau pays)
+- **Validation Soudan** : Support du format national 9 chiffres (+249 XX XXX XXX)
+- **Métadonnées Soudan** : Informations complètes (Khartoum, SDG, UTC+2, arabe/anglais)
+- **Support Mozambique** 🇲🇿 : Vodacom Mozambique, Movitel, Tmcel (nouveau pays)
+- **Validation Mozambique** : Support du format national 9 chiffres (+258 XX XXX XXX)
+- **Métadonnées Mozambique** : Informations complètes (Maputo, MZN, UTC+2, portugais)
+- **Support 18 pays africains** : Couverture étendue avec Mali, Soudan et Mozambique
+- **Tests complets** : 36 nouveaux tests pour valider tous les nouveaux opérateurs
 - **Support RDC** 🇨🇩 : Vodacom DRC, Orange DRC, Airtel DRC, Africell DRC (préfixes mis à jour)
 - **Validation RDC** : Support du format national 9 chiffres (+243 XX XXX XXXX)
 - **Métadonnées RDC** : Informations complètes (Kinshasa, CDF, UTC+1, français)
@@ -20,8 +31,6 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Support Algérie** 🇩🇿 : Mobilis, Djezzy, Ooredoo
 - **Validation Algérie** : Support du format national 9 chiffres (+213 XXX XXX XXX)
 - **Métadonnées Algérie** : Informations complètes (Algiers, DZD, UTC+1, arabe/français)
-- **Support 15 pays africains** : Couverture complète avec Rwanda ajouté
-- **Tests complets** : 24 nouveaux tests pour valider tous les opérateurs
 - **Support Tanzanie** 🇹🇿 : Halotel (Viettel), Tigo Tanzania, Smile Tanzania, Airtel Tanzania, TTCL, Vodacom Tanzania, Zantel
 - **Validation tanzanienne** : Support du format national 9 chiffres (+255 XXX XXX XXX)
 - **Métadonnées tanzaniennes** : Informations complètes (Dodoma, TZS, UTC+3, langues swahili/anglais)
