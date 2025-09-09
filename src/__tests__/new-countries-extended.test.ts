@@ -74,6 +74,18 @@ describe('Angola 🇦🇴 - Tests complets', () => {
       expect(validateAngolaNumber('+2449112345678')).toBe(false); // Trop long
       expect(validateAngolaNumber('+237911234567')).toBe(false);  // Mauvais code pays
     });
+
+    test('gère les cas d\'erreur et edge cases', () => {
+      // Test des fonctions directes avec des numéros invalides
+      expect(validateAngolaNumber('+244')).toBe(false);
+      expect(validateAngolaNumber('+244123')).toBe(false);
+      expect(formatAngolaNumber('+244')).toBe('+244');
+      expect(formatAngolaNumber('+244123')).toBe('+244123');
+      expect(formatAngolaNumber('+237911234567')).toBe('+237911234567'); // Mauvais code pays
+      expect(isAngolaMobile('')).toBe(false);
+      expect(isAngolaMobile('123')).toBe(false);
+      expect(isAngolaMobile('811234567')).toBe(false); // Préfixe invalide
+    });
   });
 
   describe('Formatage', () => {
@@ -146,6 +158,18 @@ describe('Burkina Faso 🇧🇫 - Tests complets', () => {
       expect(validateBurkinaFasoNumber('+226701234567')).toBe(false); // Trop long
       expect(validateBurkinaFasoNumber('+22170123456')).toBe(false);  // Mauvais code pays
     });
+
+    test('gère les cas d\'erreur et edge cases', () => {
+      // Test des fonctions directes avec des numéros invalides
+      expect(validateBurkinaFasoNumber('+226')).toBe(false);
+      expect(validateBurkinaFasoNumber('+226123')).toBe(false);
+      expect(formatBurkinaFasoNumber('+226')).toBe('+226');
+      expect(formatBurkinaFasoNumber('+226123')).toBe('+226123');
+      expect(formatBurkinaFasoNumber('+22170123456')).toBe('+22170123456'); // Mauvais code pays
+      expect(isBurkinaFasoMobile('')).toBe(false);
+      expect(isBurkinaFasoMobile('123')).toBe(false);
+      expect(isBurkinaFasoMobile('68123456')).toBe(false); // Préfixe invalide
+    });
   });
 
   describe('Formatage', () => {
@@ -211,6 +235,18 @@ describe('Soudan du Sud 🇸🇸 - Tests complets', () => {
       expect(validateSouthSudanNumber('+21192123456')).toBe(false);  // Trop court
       expect(validateSouthSudanNumber('+2119212345678')).toBe(false); // Trop long
       expect(validateSouthSudanNumber('+249921234567')).toBe(false);  // Mauvais code pays (Soudan)
+    });
+
+    test('gère les cas d\'erreur et edge cases', () => {
+      // Test des fonctions directes avec des numéros invalides
+      expect(validateSouthSudanNumber('+211')).toBe(false);
+      expect(validateSouthSudanNumber('+211123')).toBe(false);
+      expect(formatSouthSudanNumber('+211')).toBe('+211');
+      expect(formatSouthSudanNumber('+211123')).toBe('+211123');
+      expect(formatSouthSudanNumber('+249921234567')).toBe('+249921234567'); // Mauvais code pays
+      expect(isSouthSudanMobile('')).toBe(false);
+      expect(isSouthSudanMobile('123')).toBe(false);
+      expect(isSouthSudanMobile('881234567')).toBe(false); // Préfixe invalide
     });
   });
 
