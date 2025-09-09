@@ -112,7 +112,7 @@ describe('Métadonnées des pays', () => {
       expect(metadata?.currency).toBe('ETB');
       expect(metadata?.timezone).toBe('UTC+3');
       expect(metadata?.capital).toBe('Addis Ababa');
-      expect(metadata?.population).toBe('120.3M');
+      expect(metadata?.population).toBe('~120.3M');
     });
 
     test('retourne les métadonnées de l\'Égypte', () => {
@@ -126,7 +126,7 @@ describe('Métadonnées des pays', () => {
       expect(metadata?.currency).toBe('EGP');
       expect(metadata?.timezone).toBe('UTC+2');
       expect(metadata?.capital).toBe('Cairo');
-      expect(metadata?.population).toBe('104.3M');
+      expect(metadata?.population).toBe('~104.3M');
     });
 
     test('retourne les métadonnées de la Tanzanie', () => {
@@ -140,7 +140,7 @@ describe('Métadonnées des pays', () => {
       expect(metadata?.currency).toBe('TZS');
       expect(metadata?.timezone).toBe('UTC+3');
       expect(metadata?.capital).toBe('Dodoma');
-      expect(metadata?.population).toBe('61.7M');
+      expect(metadata?.population).toBe('~61.7M');
     });
 
     test('retourne null pour un code pays non supporté', () => {
@@ -170,7 +170,10 @@ describe('Métadonnées des pays', () => {
       expect(countries).toContain('251'); // Éthiopie
       expect(countries).toContain('20');  // Égypte
       expect(countries).toContain('255'); // Tanzanie
-      expect(countries).toHaveLength(18); // 11 pays originaux + 7 nouveaux (RDC, Ouganda, Rwanda, Algérie, Mali, Soudan, Mozambique)
+      expect(countries).toContain('244'); // Angola
+      expect(countries).toContain('226'); // Burkina Faso
+      expect(countries).toContain('211'); // Soudan du Sud
+      expect(countries).toHaveLength(21); // 11 pays originaux + 10 nouveaux (RDC, Ouganda, Rwanda, Algérie, Mali, Soudan, Mozambique, Angola, Burkina Faso, Soudan du Sud)
     });
 
     test('retourne les codes dans un ordre cohérent', () => {
@@ -237,13 +240,13 @@ describe('Métadonnées des pays', () => {
       const frenchCountries = languages.filter(lang => 
         lang === 'fr' || (Array.isArray(lang) && lang.includes('fr'))
       ).length;
-      expect(frenchCountries).toBe(8); // Cameroun, Sénégal, Côte d'Ivoire, Maroc, RDC, Rwanda, Algérie, Mali
+      expect(frenchCountries).toBe(9); // Cameroun, Sénégal, Côte d'Ivoire, Maroc, RDC, Rwanda, Algérie, Mali, Burkina Faso
       
       // Anglais : Cameroun (bilingue), Nigeria, Ghana, Kenya, Afrique du Sud
       const englishCountries = languages.filter(lang => 
         lang === 'en' || (Array.isArray(lang) && lang.includes('en'))
       ).length;
-      expect(englishCountries).toBe(11); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie, Égypte, Tanzanie, Ouganda, Rwanda, Soudan
+      expect(englishCountries).toBe(12); // Cameroun, Nigeria, Ghana, Kenya, Afrique du Sud, Éthiopie, Égypte, Tanzanie, Ouganda, Rwanda, Soudan, Soudan du Sud
       
       // Arabe : Maroc, Égypte
       const arabicCountries = languages.filter(lang => 
@@ -271,7 +274,7 @@ describe('Métadonnées des pays', () => {
         
         // Vérifications de format
         expect(metadata?.name).toMatch(/^[A-Za-z\s]+$/);
-        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹|🇪🇬|🇹🇿|🇨🇩|🇺🇬|🇷🇼|🇩🇿|🇲🇱|🇸🇩|🇲🇿$/); // Drapeaux des pays supportés
+        expect(metadata?.flag).toMatch(/^🇨🇲|🇸🇳|🇨🇮|🇳🇬|🇬🇭|🇰🇪|🇿🇦|🇲🇦|🇪🇹|🇪🇬|🇹🇿|🇨🇩|🇺🇬|🇷🇼|🇩🇿|🇲🇱|🇸🇩|🇲🇿|🇦🇴|🇧🇫|🇸🇸$/); // Drapeaux des pays supportés
         expect(metadata?.currency).toMatch(/^[A-Z]{3}$/); // Code ISO 4217
       });
     });

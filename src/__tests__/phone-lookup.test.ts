@@ -111,9 +111,9 @@ describe('PhoneLookup - Classe avec API unifiée', () => {
     test('getStats() retourne les statistiques globales', () => {
       const stats = PhoneLookup.getStats();
       
-      expect(stats.totalCountries).toBe(11);
-      expect(stats.totalOperators).toBeGreaterThan(30);
-      expect(stats.countries).toHaveLength(11);
+      expect(stats.totalCountries).toBe(21);
+      expect(stats.totalOperators).toBeGreaterThan(70);
+      expect(stats.countries).toHaveLength(21);
       
       const cameroon = stats.countries.find(c => c.code === '+237');
       expect(cameroon).toBeDefined();

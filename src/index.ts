@@ -78,6 +78,14 @@ export type Operator =
   | 'ALGERIA_MOBILIS'
   | 'ALGERIA_DJEZZY'
   | 'ALGERIA_OOREDOO'
+  | 'ANGOLA_UNITEL'
+  | 'ANGOLA_MOVICEL'
+  | 'ANGOLA_AFRICELL'
+  | 'BURKINA_FASO_ORANGE'
+  | 'BURKINA_FASO_MOOV'
+  | 'BURKINA_FASO_TELECEL'
+  | 'SOUTH_SUDAN_MTN'
+  | 'SOUTH_SUDAN_ZAIN'
   | 'Unknown';
 
 export interface PhoneInfo {
@@ -110,6 +118,9 @@ import { detectMaliOperator, validateMaliNumber, formatMaliNumber, isMaliMobile 
 import { detectSudanOperator, validateSudanNumber, formatSudanNumber, isSudanMobile } from './countries/sudan';
 import { detectMozambiqueOperator, validateMozambiqueNumber, formatMozambiqueNumber, isMozambiqueMobile } from './countries/mozambique';
 import { detectAlgeriaOperator, validateAlgeriaNumber, formatAlgeriaNumber, isAlgeriaMobile } from './countries/algeria';
+import { detectAngolaOperator, validateAngolaNumber, formatAngolaNumber, isAngolaMobile } from './countries/angola';
+import { detectBurkinaFasoOperator, validateBurkinaFasoNumber, formatBurkinaFasoNumber, isBurkinaFasoMobile } from './countries/burkina-faso';
+import { detectSouthSudanOperator, validateSouthSudanNumber, formatSouthSudanNumber, isSouthSudanMobile } from './countries/south-sudan';
 import { cleanPhoneNumber, detectCountryCode, extractLocalNumber } from './utils/validation';
 
 // Imports des opérateurs
@@ -131,6 +142,9 @@ import { MALI_OPERATORS } from './operators/mali';
 import { SUDAN_OPERATORS } from './operators/sudan';
 import { MOZAMBIQUE_OPERATORS } from './operators/mozambique';
 import { ALGERIA_OPERATORS } from './operators/algeria';
+import { ANGOLA_OPERATORS } from './operators/angola';
+import { BURKINA_FASO_OPERATORS } from './operators/burkina-faso';
+import { SOUTH_SUDAN_OPERATORS } from './operators/south-sudan';
 
 // Objet unifié des préfixes pour la compatibilité
 const prefixes: Record<Operator, string[]> = {
@@ -209,6 +223,14 @@ const prefixes: Record<Operator, string[]> = {
   ALGERIA_MOBILIS: [...ALGERIA_OPERATORS.ALGERIA_MOBILIS],
   ALGERIA_DJEZZY: [...ALGERIA_OPERATORS.ALGERIA_DJEZZY],
   ALGERIA_OOREDOO: [...ALGERIA_OPERATORS.ALGERIA_OOREDOO],
+  ANGOLA_UNITEL: [...ANGOLA_OPERATORS.ANGOLA_UNITEL],
+  ANGOLA_MOVICEL: [...ANGOLA_OPERATORS.ANGOLA_MOVICEL],
+  ANGOLA_AFRICELL: [...ANGOLA_OPERATORS.ANGOLA_AFRICELL],
+  BURKINA_FASO_ORANGE: [...BURKINA_FASO_OPERATORS.BURKINA_FASO_ORANGE],
+  BURKINA_FASO_MOOV: [...BURKINA_FASO_OPERATORS.BURKINA_FASO_MOOV],
+  BURKINA_FASO_TELECEL: [...BURKINA_FASO_OPERATORS.BURKINA_FASO_TELECEL],
+  SOUTH_SUDAN_MTN: [...SOUTH_SUDAN_OPERATORS.SOUTH_SUDAN_MTN],
+  SOUTH_SUDAN_ZAIN: [...SOUTH_SUDAN_OPERATORS.SOUTH_SUDAN_ZAIN],
   Unknown: [],
 };
 
@@ -263,6 +285,12 @@ export function detectOperator(phone: string): Operator {
       return detectMozambiqueOperator(local) as Operator;
     case '213':
       return detectAlgeriaOperator(local) as Operator;
+    case '244':
+      return detectAngolaOperator(local) as Operator;
+    case '226':
+      return detectBurkinaFasoOperator(local) as Operator;
+    case '211':
+      return detectSouthSudanOperator(local) as Operator;
     default:
       return 'Unknown';
   }
@@ -316,6 +344,12 @@ export function isValidNumber(phone: string): boolean {
       return validateMozambiqueNumber(clean);
     case '213':
       return validateAlgeriaNumber(clean);
+    case '244':
+      return validateAngolaNumber(clean);
+    case '226':
+      return validateBurkinaFasoNumber(clean);
+    case '211':
+      return validateSouthSudanNumber(clean);
     default:
       return false;
   }
@@ -403,6 +437,12 @@ export function formatPhoneNumber(phone: string): string {
       return formatMozambiqueNumber(clean);
     case '213':
       return formatAlgeriaNumber(clean);
+    case '244':
+      return formatAngolaNumber(clean);
+    case '226':
+      return formatBurkinaFasoNumber(clean);
+    case '211':
+      return formatSouthSudanNumber(clean);
     default:
       return phone;
   }
@@ -454,6 +494,12 @@ function isMobileNumber(local: string, countryCode: string | null): boolean {
       return isMozambiqueMobile(local);
     case '213':
       return isAlgeriaMobile(local);
+    case '244':
+      return isAngolaMobile(local);
+    case '226':
+      return isBurkinaFasoMobile(local);
+    case '211':
+      return isSouthSudanMobile(local);
     default:
       return false;
   }

@@ -20,7 +20,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['fr', 'en'], // 🇨🇲 Cameroun : Bilingue officiel (Français + Anglais)
     currency: 'XAF',
     timezone: 'UTC+1',
-    population: '27.2M',
+    population: '~27.2M',
     capital: 'Yaoundé'
   },
   '221': {
@@ -30,7 +30,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: 'fr', // 🇸🇳 Sénégal : Français uniquement
     currency: 'XOF',
     timezone: 'UTC+0',
-    population: '17.2M',
+    population: '~17.2M',
     capital: 'Dakar'
   },
   '225': {
@@ -40,7 +40,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: 'fr', // 🇨🇮 Côte d'Ivoire : Français uniquement
     currency: 'XOF',
     timezone: 'UTC+0',
-    population: '27.5M',
+    population: '~27.5M',
     capital: 'Yamoussoukro'
   },
   '234': {
@@ -50,7 +50,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: 'en', // 🇳🇬 Nigeria : Anglais uniquement
     currency: 'NGN',
     timezone: 'UTC+1',
-    population: '223.8M',
+    population: '~223.8M',
     capital: 'Abuja'
   },
   '233': {
@@ -60,7 +60,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: 'en', // 🇬🇭 Ghana : Anglais uniquement
     currency: 'GHS',
     timezone: 'UTC+0',
-    population: '32.8M',
+    population: '~32.8M',
     capital: 'Accra'
   },
   '254': {
@@ -70,7 +70,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['en', 'sw'], // 🇰🇪 Kenya : Anglais + Swahili
     currency: 'KES',
     timezone: 'UTC+3',
-    population: '53.8M',
+    population: '~53.8M',
     capital: 'Nairobi'
   },
   '27': {
@@ -80,7 +80,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['en', 'af', 'zu'], // 🇿🇦 South Africa : Anglais + Afrikaans + Zulu
     currency: 'ZAR',
     timezone: 'UTC+2',
-    population: '60.4M',
+    population: '~60.4M',
     capital: 'Pretoria'
   },
   '212': {
@@ -90,7 +90,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['ar', 'fr'], // 🇲🇦 Morocco : Arabe + Français
     currency: 'MAD',
     timezone: 'UTC+0',
-    population: '37.1M',
+    population: '~37.1M',
     capital: 'Rabat'
   },
   '251': {
@@ -100,7 +100,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['am', 'en'], // 🇪🇹 Ethiopia : Amharique + Anglais
     currency: 'ETB',
     timezone: 'UTC+3',
-    population: '120.3M',
+    population: '~120.3M',
     capital: 'Addis Ababa'
   },
   '20': {
@@ -110,7 +110,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['ar', 'en'], // 🇪🇬 Egypt : Arabe + Anglais
     currency: 'EGP',
     timezone: 'UTC+2',
-    population: '104.3M',
+    population: '~104.3M',
     capital: 'Cairo'
   },
   '255': {
@@ -120,7 +120,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['sw', 'en'], // 🇹🇿 Tanzania : Swahili + Anglais
     currency: 'TZS',
     timezone: 'UTC+3',
-    population: '61.7M',
+    population: '~61.7M',
     capital: 'Dodoma'
   },
   '243': {
@@ -130,7 +130,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: 'fr', // 🇨🇩 RDC : Français uniquement
     currency: 'CDF',
     timezone: 'UTC+1',
-    population: '95.9M',
+    population: '~95.9M',
     capital: 'Kinshasa'
   },
   '256': {
@@ -140,7 +140,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['en', 'sw'], // 🇺🇬 Uganda : Anglais + Swahili
     currency: 'UGX',
     timezone: 'UTC+3',
-    population: '47.1M',
+    population: '~47.1M',
     capital: 'Kampala'
   },
   '213': {
@@ -150,7 +150,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['ar', 'fr'], // 🇩🇿 Algeria : Arabe + Français
     currency: 'DZD',
     timezone: 'UTC+1',
-    population: '44.9M',
+    population: '~44.9M',
     capital: 'Algiers'
   },
   '223': {
@@ -160,7 +160,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: 'fr', // 🇲🇱 Mali : Français uniquement
     currency: 'XOF',
     timezone: 'UTC+0',
-    population: '21.9M',
+    population: '~21.9M',
     capital: 'Bamako'
   },
   '249': {
@@ -170,7 +170,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['ar', 'en'], // 🇸🇩 Sudan : Arabe + Anglais
     currency: 'SDG',
     timezone: 'UTC+2',
-    population: '45.7M',
+    population: '~45.7M',
     capital: 'Khartoum'
   },
   '250': {
@@ -180,7 +180,7 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: ['rw', 'en', 'fr'], // 🇷🇼 Rwanda : Kinyarwanda + Anglais + Français
     currency: 'RWF',
     timezone: 'UTC+2',
-    population: '13.3M',
+    population: '~13.3M',
     capital: 'Kigali'
   },
   '258': {
@@ -190,8 +190,38 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
     language: 'pt', // 🇲🇿 Mozambique : Portugais uniquement
     currency: 'MZN',
     timezone: 'UTC+2',
-    population: '32.2M',
+    population: '~32.2M',
     capital: 'Maputo'
+  },
+  '244': {
+    name: 'Angola',
+    nameLocal: 'Angola',
+    flag: '🇦🇴',
+    language: 'pt', // 🇦🇴 Angola : Portugais uniquement
+    currency: 'AOA',
+    timezone: 'UTC+1',
+    population: '~33.9M',
+    capital: 'Luanda'
+  },
+  '226': {
+    name: 'Burkina Faso',
+    nameLocal: 'Burkina Faso',
+    flag: '🇧🇫',
+    language: 'fr', // 🇧🇫 Burkina Faso : Français uniquement
+    currency: 'XOF',
+    timezone: 'UTC+0',
+    population: '~22.7M',
+    capital: 'Ouagadougou'
+  },
+  '211': {
+    name: 'South Sudan',
+    nameLocal: 'South Sudan',
+    flag: '🇸🇸',
+    language: 'en', // 🇸🇸 Soudan du Sud : Anglais uniquement
+    currency: 'SSP',
+    timezone: 'UTC+3',
+    population: '~11.2M',
+    capital: 'Juba'
   }
 };
 

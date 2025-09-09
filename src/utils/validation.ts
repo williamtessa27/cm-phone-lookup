@@ -32,11 +32,13 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   
   // Codes pays supportés (ordre important pour éviter les conflits)
   if (number.startsWith('237')) return '237'; // Cameroun
+  if (number.startsWith('244')) return '244'; // Angola
   if (number.startsWith('243')) return '243'; // RDC (République Démocratique du Congo)
   if (number.startsWith('258')) return '258'; // Mozambique
   if (number.startsWith('256')) return '256'; // Ouganda
   if (number.startsWith('250')) return '250'; // Rwanda
   if (number.startsWith('249')) return '249'; // Soudan
+  if (number.startsWith('226')) return '226'; // Burkina Faso
   if (number.startsWith('223')) return '223'; // Mali
   if (number.startsWith('221')) return '221'; // Sénégal  
   if (number.startsWith('225')) return '225'; // Côte d'Ivoire
@@ -47,6 +49,7 @@ export function detectCountryCode(cleanNumber: string): CountryCode | null {
   if (number.startsWith('251')) return '251'; // Éthiopie
   if (number.startsWith('213')) return '213'; // Algérie
   if (number.startsWith('212')) return '212'; // Maroc
+  if (number.startsWith('211')) return '211'; // Soudan du Sud
   if (number.startsWith('27')) return '27';   // Afrique du Sud (à la fin car plus court)
   if (number.startsWith('20')) return '20';   // Égypte (à la fin car plus court)
   
@@ -73,6 +76,14 @@ export function extractLocalNumber(cleanNumber: string, countryCode: CountryCode
     case '20': // Égypte (2 chiffres)
       return number.slice(2);
     case '237': // Cameroun (3 chiffres)
+    case '244': // Angola (3 chiffres)
+    case '243': // RDC (3 chiffres)
+    case '258': // Mozambique (3 chiffres)
+    case '256': // Ouganda (3 chiffres)
+    case '250': // Rwanda (3 chiffres)
+    case '249': // Soudan (3 chiffres)
+    case '226': // Burkina Faso (3 chiffres)
+    case '223': // Mali (3 chiffres)
     case '221': // Sénégal (3 chiffres)
     case '225': // Côte d'Ivoire (3 chiffres)
     case '234': // Nigeria (3 chiffres)
@@ -80,7 +91,9 @@ export function extractLocalNumber(cleanNumber: string, countryCode: CountryCode
     case '255': // Tanzanie (3 chiffres)
     case '254': // Kenya (3 chiffres)
     case '251': // Éthiopie (3 chiffres)
+    case '213': // Algérie (3 chiffres)
     case '212': // Maroc (3 chiffres)
+    case '211': // Soudan du Sud (3 chiffres)
       return number.slice(3);
     default:
       return number.slice(3);

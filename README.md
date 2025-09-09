@@ -14,7 +14,7 @@
 
 
 
-Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **18 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, **RDC** 🇨🇩, **Ouganda** 🇺🇬, **Rwanda** 🇷🇼, **Algérie** 🇩🇿, **Mali** 🇲🇱, **Soudan** 🇸🇩, **Mozambique** 🇲🇿 avec plus de **75+ opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, Mobilis, Djezzy, Ooredoo, Zain Sudan, Movitel, Tmcel, etc.) à partir d'un numéro de téléphone.  
+Une **librairie JavaScript professionnelle** pour la détection d'opérateurs mobiles multi-pays avec **API unifiée**, **validation avancée** et **métadonnées enrichies**. Supporte **21 pays africains** : Cameroun 🇨🇲, Sénégal 🇸🇳, Côte d'Ivoire 🇨🇮, Nigeria 🇳🇬, Ghana 🇬🇭, Kenya 🇰🇪, Afrique du Sud 🇿🇦, Maroc 🇲🇦, Éthiopie 🇪🇹, Égypte 🇪🇬, Tanzanie 🇹🇿, RDC 🇨🇩, Ouganda 🇺🇬, Rwanda 🇷🇼, Algérie 🇩🇿, Mali 🇲🇱, Soudan 🇸🇩, Mozambique 🇲🇿, **Angola** 🇦🇴, **Burkina Faso** 🇧🇫, **Soudan du Sud** 🇸🇸 avec plus de **80+ opérateurs** (MTN, Orange, Vodacom, Safaricom, Airtel, Ethio Telecom, Vodafone Egypt, Halotel, Mobilis, Djezzy, Ooredoo, Zain Sudan, Movitel, Tmcel, **Unitel**, **Movicel**, **Africell Angola**, **Telecel Faso**, **Zain South Sudan**, etc.) à partir d'un numéro de téléphone.  
 Compatible **JavaScript** et **TypeScript**.
 
 ---
@@ -163,6 +163,18 @@ console.log(operatorTZ); // "TANZANIA_VODACOM"
 // RDC (République Démocratique du Congo)
 const operatorCD = detectOperator('+243811234567');
 console.log(operatorCD); // "DRC_VODACOM"
+
+// Angola
+const operatorAO = detectOperator('+244911234567');
+console.log(operatorAO); // "ANGOLA_UNITEL"
+
+// Burkina Faso
+const operatorBF = detectOperator('+22670123456');
+console.log(operatorBF); // "BURKINA_FASO_ORANGE"
+
+// Soudan du Sud
+const operatorSS = detectOperator('+211921234567');
+console.log(operatorSS); // "SOUTH_SUDAN_MTN"
 
 // Ouganda
 const operatorUG = detectOperator('+256771234567');
@@ -341,6 +353,14 @@ console.log(isMtn); // true
 | **MOZAMBIQUE_VODACOM** | 82, 84 | Mobile | 🇲🇿 Mozambique |
 | **MOZAMBIQUE_MOVITEL** | 86, 87 | Mobile | 🇲🇿 Mozambique |
 | **MOZAMBIQUE_TMCEL** | 83 | Mobile | 🇲🇿 Mozambique |
+| **ANGOLA_UNITEL** | 91, 92 | Mobile | 🇦🇴 Angola |
+| **ANGOLA_MOVICEL** | 93 | Mobile | 🇦🇴 Angola |
+| **ANGOLA_AFRICELL** | 94, 95 | Mobile | 🇦🇴 Angola |
+| **BURKINA_FASO_ORANGE** | 70, 71, 72 | Mobile | 🇧🇫 Burkina Faso |
+| **BURKINA_FASO_MOOV** | 74, 75 | Mobile | 🇧🇫 Burkina Faso |
+| **BURKINA_FASO_TELECEL** | 76 | Mobile | 🇧🇫 Burkina Faso |
+| **SOUTH_SUDAN_MTN** | 92, 95 | Mobile | 🇸🇸 Soudan du Sud |
+| **SOUTH_SUDAN_ZAIN** | 91, 97 | Mobile | 🇸🇸 Soudan du Sud |
 
 ## 🔧 API Reference
 

@@ -16,7 +16,7 @@ const {
   validatePhoneNumber
 } = require('../dist/index.js');
 
-console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇷🇼🇩🇿🇲🇱🇸🇩🇲🇿 Exemples d'utilisation de CM Phone Lookup V1.11.0 (18 pays africains)\n");
+console.log("🇨🇲🇸🇳🇨🇮🇳🇬🇬🇭🇰🇪🇿🇦🇲🇦🇪🇹🇪🇬🇹🇿🇨🇩🇺🇬🇷🇼🇩🇿🇲🇱🇸🇩🇲🇿🇦🇴🇧🇫🇸🇸 Exemples d'utilisation de CM Phone Lookup V1.12.0 (21 pays africains)\n");
 
 // 🆕 NOUVEAU : Exemple 1: API Unifiée avec PhoneLookup.analyze()
 console.log("🎯 Exemple 1: API Unifiée avec PhoneLookup.analyze()");
@@ -233,8 +233,8 @@ console.log("📋 Exemple 15: Opérateurs supportés");
 const operators = getSupportedOperators();
 console.log(`Opérateurs supportés: ${operators.join(', ')}\n`);
 
-// Exemple 16: Traitement en lot multi-pays
-console.log("🔄 Exemple 16: Traitement en lot multi-pays");
+// Exemple 16: Traitement en lot multi-pays (avec nouveaux pays)
+console.log("🔄 Exemple 16: Traitement en lot multi-pays (avec nouveaux pays)");
 const phoneNumbers = [
   "+237650123456",  // CAMEROON_MTN
   "237655123456",   // CAMEROON_ORANGE
@@ -247,7 +247,13 @@ const phoneNumbers = [
   "+2340803123456", // NIGERIA_MTN
   "2340802123456",  // NIGERIA_AIRTEL
   "+233241234567",  // GHANA_MTN
-  "233201234567"    // GHANA_VODAFONE
+  "233201234567",   // GHANA_VODAFONE
+  "+244911234567",  // ANGOLA_UNITEL
+  "+244931234567",  // ANGOLA_MOVICEL
+  "+22670123456",   // BURKINA_FASO_ORANGE
+  "+22674123456",   // BURKINA_FASO_MOOV
+  "+211921234567",  // SOUTH_SUDAN_MTN
+  "+211911234567"   // SOUTH_SUDAN_ZAIN
 ];
 
 console.log("Analyse de plusieurs numéros:");
@@ -256,5 +262,26 @@ phoneNumbers.forEach(phone => {
   console.log(`${phone} → ${info.operator} (${info.isValid ? 'Valide' : 'Invalide'})`);
 });
 
-console.log("\n🎉 Tous les exemples V1.5.0 sont terminés !");
-console.log("🚀 Votre librairie est maintenant beaucoup plus professionnelle et facile à utiliser !");
+// 🆕 NOUVEAU : Exemple 17: Test des nouveaux pays
+console.log("\n🆕 Exemple 17: Test des nouveaux pays (Angola, Burkina Faso, Soudan du Sud)");
+try {
+  // Angola
+  const angolaResult = PhoneLookup.analyze('+244911234567');
+  console.log(`🇦🇴 Angola: ${angolaResult.operator} - ${angolaResult.country?.name} (${angolaResult.country?.capital})`);
+  
+  // Burkina Faso
+  const burkinaResult = PhoneLookup.analyze('+22670123456');
+  console.log(`🇧🇫 Burkina Faso: ${burkinaResult.operator} - ${burkinaResult.country?.name} (${burkinaResult.country?.capital})`);
+  
+  // Soudan du Sud
+  const southSudanResult = PhoneLookup.analyze('+211921234567');
+  console.log(`🇸🇸 Soudan du Sud: ${southSudanResult.operator} - ${southSudanResult.country?.name} (${southSudanResult.country?.capital})`);
+  
+  console.log('\n✅ Tous les nouveaux pays fonctionnent parfaitement !');
+} catch (error) {
+  console.log('❌ Erreur avec les nouveaux pays:', error);
+}
+
+console.log("\n🎉 Tous les exemples V1.12.0 sont terminés !");
+console.log("🚀 Votre librairie supporte maintenant 21 pays africains avec 80+ opérateurs !");
+console.log("🌍 Nouveaux pays ajoutés: Angola 🇦🇴, Burkina Faso 🇧🇫, Soudan du Sud 🇸🇸");
