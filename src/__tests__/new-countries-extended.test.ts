@@ -115,6 +115,16 @@ describe('Angola 🇦🇴 - Tests complets', () => {
       expect(result.country?.name).toBe('Angola');
       expect(result.country?.flag).toBe('🇦🇴');
     });
+
+    test('getAngolaNumberInfo() fournit des informations détaillées', () => {
+      const info = getAngolaNumberInfo('911234567');
+      expect(info.operator).toBe('ANGOLA_UNITEL');
+      expect(info.isValid).toBe(true);
+      expect(info.isMobile).toBe(true);
+      expect(info.isFixed).toBe(false);
+      expect(info.length).toBe(9);
+      expect(info.prefix).toBe('91');
+    });
   });
 });
 
@@ -199,6 +209,16 @@ describe('Burkina Faso 🇧🇫 - Tests complets', () => {
       expect(result.country?.name).toBe('Burkina Faso');
       expect(result.country?.flag).toBe('🇧🇫');
     });
+
+    test('getBurkinaFasoNumberInfo() fournit des informations détaillées', () => {
+      const info = getBurkinaFasoNumberInfo('70123456');
+      expect(info.operator).toBe('BURKINA_FASO_ORANGE');
+      expect(info.isValid).toBe(true);
+      expect(info.isMobile).toBe(true);
+      expect(info.isFixed).toBe(false);
+      expect(info.length).toBe(8);
+      expect(info.prefix).toBe('70');
+    });
   });
 });
 
@@ -276,6 +296,16 @@ describe('Soudan du Sud 🇸🇸 - Tests complets', () => {
       expect(result.isValid).toBe(true);
       expect(result.country?.name).toBe('South Sudan');
       expect(result.country?.flag).toBe('🇸🇸');
+    });
+
+    test('getSouthSudanNumberInfo() fournit des informations détaillées', () => {
+      const info = getSouthSudanNumberInfo('921234567');
+      expect(info.operator).toBe('SOUTH_SUDAN_MTN');
+      expect(info.isValid).toBe(true);
+      expect(info.isMobile).toBe(true);
+      expect(info.isFixed).toBe(false);
+      expect(info.length).toBe(9);
+      expect(info.prefix).toBe('92');
     });
   });
 });
