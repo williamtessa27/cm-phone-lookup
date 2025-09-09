@@ -158,7 +158,7 @@ export class PhoneLookup {
    * Obtient les statistiques globales
    */
   static getStats() {
-    const countries = ['237', '221', '225', '234', '233', '254', '27', '212', '251', '20', '255'];
+    const countries = ['237', '221', '225', '234', '233', '254', '27', '212', '251', '20', '255', '243', '256', '250', '213', '223', '249', '258', '244', '226', '211'];
     const countryStats = countries.map(code => {
       const metadata = getCountryMetadata(code);
       return {
@@ -191,7 +191,17 @@ export class PhoneLookup {
       '212': 3, // Morocco
       '251': 2, // Ethiopia
       '20': 4,  // Egypt
-      '255': 8  // Tanzania
+      '255': 8, // Tanzania
+      '243': 4, // DRC
+      '256': 3, // Uganda
+      '250': 2, // Rwanda
+      '213': 3, // Algeria
+      '223': 3, // Mali
+      '249': 3, // Sudan
+      '258': 3, // Mozambique
+      '244': 3, // Angola
+      '226': 3, // Burkina Faso
+      '211': 2  // South Sudan
     };
     return operators[countryCode as keyof typeof operators] || 0;
   }
